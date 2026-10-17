@@ -1,0 +1,528 @@
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║       HAMZA POWERPLAYER — ULTIMATE WEBSITE PROMPT · PART 3 · INSANITY EDITION         ║
+║         PEOPLE WILL STARE · JAWS WILL DROP · IMPOSSIBLE LOOKING · LEGENDARY           ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+THIS IS PART 3 — THE FINAL WEAPON.
+Read Part 1 and Part 2 first. This file adds:
+  → 1 jaw-dropping AIRPLANE animation carrying the name across the screen
+  → 5 brand-new sections that no portfolio on Earth has ever done
+  → 8 new effects so extreme they look physically impossible in a browser
+  → A full 3D space scene that responds to mouse movement
+  → Animations so dense, smooth, and layered that visitors forget to scroll
+
+Every single feature is MANDATORY. Zero compromises. Zero shortcuts.
+This is the prompt that makes people screenshot the URL and send it to friends.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✈️  THE SIGNATURE FEATURE — AIRPLANE NAME BANNER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+THE AIRPLANE ANIMATION (Canvas-based, runs on fixed layer above background):
+
+  AIRPLANE DESIGN (drawn entirely in HTML5 Canvas, no images):
+    • A sleek modern aircraft silhouette drawn with canvas arc() + lineTo()
+    • Body: pointed nose, tapered fuselage, swept-back wings, tail fins
+    • Color: white with neon cyan engine glow (#00f0ff)
+    • Engine glow: animated flame/exhaust trail using radial gradient
+    • Size: 80px wingspan on desktop, 50px on mobile
+    • The plane is drawn in fine detail — not a blob, an actual recognizable plane
+
+  BANNER TRAIL BEHIND THE PLANE:
+    • A long rectangular banner trails behind the plane (connected by a thin rope line)
+    • Banner width: 320px on desktop, scales on mobile
+    • Banner background: semi-transparent dark glass (rgba(0,0,0,0.7))
+    • Banner border: 1px neon cyan glow
+    • Banner text: "HAMZA POWERPLAYER" in Orbitron Bold
+    • Text color: bright white with neon cyan glow
+    • The banner cloth has a subtle wave animation (sine wave on y-axis of each
+      point along the banner's top and bottom edges — cloth physics simulation)
+    • The banner text appears to be "written on fabric" with slight perspective
+
+  FLIGHT PATH:
+    • The plane enters from the LEFT edge of the screen (off-screen)
+    • It flies across to the RIGHT edge of the screen (off-screen)
+    • Flight altitude: 18% from top of viewport (upper area of hero)
+    • Flight path is NOT perfectly straight — subtle vertical sine wave:
+        y = baseAltitude + Math.sin(x * 0.015) * 18
+      Creates natural gentle climb-and-dip movement
+    • Plane banks (rolls) slightly: canvas rotation matches the slope
+      of the flight path at each point (it tilts when climbing, tilts other way
+      when descending) — a real plane banking effect
+    • Speed: crosses full viewport width in 8 seconds
+
+  TIMING AND REPETITION:
+    • First flight: begins 3.5 seconds after page load (after loading screen)
+    • Repeat: every 25 seconds the plane re-enters from the left
+    • Between flights: nothing — clean sky. The anticipation makes it better.
+    • On mobile: plane still runs but at 60% size
+
+  SOUND VISUAL CUE (no audio — visual only):
+    • 0.3 seconds before plane enters frame: a subtle horizontal ripple effect
+      at that altitude level (like air disturbance before arrival)
+    • As plane passes: the hero title "HAMZA POWERPLAYER" briefly glows
+      brighter (text-shadow expands for 600ms then returns)
+    • After plane exits: small cloud puff CSS animation fades out at exit point
+
+  ENGINE EXHAUST TRAIL:
+    • Behind the engine nacelles: 3 particle streams
+    • Particles: tiny white/cyan dots spawning at engine position
+    • Each particle: drifts backward + slightly downward, fades to opacity 0
+      over 1.2 seconds
+    • The trail creates a realistic contrail effect
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌍  SPINNING GLOBE — "AVAILABLE WORLDWIDE"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Location: Inside the About section, replacing the static avatar area.
+
+  GLOBE DESIGN (pure Canvas, no libraries, no WebGL):
+    • A simplified world map projected onto a rotating sphere
+    • Drawn as latitude/longitude grid lines on a circle:
+        - Horizontal lines (parallels): 9 lines, cyan at 8% opacity
+        - Vertical lines (meridians): 12 lines, drawn as ellipses
+    • Over the grid: 8 glowing dot markers at major continents
+    • Each dot has a pulsing ring animation (ripple outward, fade, repeat)
+    • Globe slowly auto-rotates (360° over 12 seconds)
+    • Mouse hover: rotation speed increases (user is "spinning" it)
+    • A neon equator line brighter than the rest
+
+  PAKISTAN SPECIAL MARKER:
+    • Pakistan's location has a GOLD dot (not cyan) — double size
+    • Pulsing rings are gold + larger
+    • On hover over Pakistan dot: tooltip appears "HAMZA POWERPLAYER — HQ"
+    • When Pakistan dot faces front of globe: globe briefly flashes a gold rim
+
+  ORBIT RING AROUND GLOBE:
+    • A thin glowing ring orbits the globe at 45° tilt
+    • Ring color: gradient cyan → violet, 2px stroke
+    • Rotates continuously (10s loop)
+    • A small satellite-dot travels along this ring
+
+  BELOW GLOBE:
+    • "AVAILABLE WORLDWIDE" in Syne, letter-spacing 6px, muted
+    • Small grid of country flag emojis (10 countries, slow fade carousel)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡  8 NEW EXTREME EFFECTS (Effects 23–30)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EFFECT 23: LIGHTNING STRIKE DIVIDERS
+  • Between every section: instead of a plain HR line, a lightning bolt
+    animated SVG strikes from left to right when scrolled into view
+  • SVG polyline with stroke-dashoffset animation (draws itself)
+  • Lightning color: #00f0ff with blur filter for glow
+  • After drawing: brief white flash at 10% opacity full width, then fades
+  • Zigzag path: 8–10 points, genuinely looks like lightning
+  • Takes 0.6 seconds to draw, flash lasts 0.15 seconds
+  • This appears between EVERY section — 18 lightning dividers total
+
+EFFECT 24: FLOATING 3D NAME LETTERS
+  • The letters of "HAMZA" float independently as separate elements in the hero
+    ABOVE the main title (decorative, background layer)
+  • Each letter: 120px, Orbitron Black, opacity 0.04
+  • Each floats on its own path:
+      H: drifts slowly up-left, slight rotation ±5°
+      A: drifts slowly up-right, scale pulses 1.0→1.08
+      M: moves in slow figure-8 orbit
+      Z: slow clockwise rotation + gentle drift down
+      A: bobs vertically, slight left-right oscillation
+  • All movements use sine waves with different frequencies
+  • Mouse proximity: letters drift away from cursor (gentle repel)
+  • Desktop only — hidden on mobile
+
+EFFECT 25: SHOCKWAVE CLICK RIPPLE
+  • Every click anywhere on the page generates a shockwave ripple
+  • Origin: exact click point
+  • Animation: expanding circle 0px → 200px, opacity 1 → 0
+  • Color: rgba(0,240,255,0.5) border only (no fill)
+  • Duration: 0.8 seconds, ease-out
+  • If clicking a button: a second GOLD wave spawns 100ms later
+  • Canvas-based particle burst at click point: 12 particles scatter radially
+    Each particle: 4px, travels 40–80px, fades over 0.5s
+  • On mobile: enabled for taps (touchstart event)
+
+EFFECT 26: NEON SIGN FLICKER ON SECTION LABELS
+  • All section labels ([ ABOUT ] [ SKILLS ] [ PROJECTS ] etc.)
+    have a realistic neon sign flicker animation on entry into viewport
+  • Sequence:
+      1. Label is invisible
+      2. Rapid flicker: on/off/on/off/on (like a neon tube warming up)
+         3 flickers in 400ms with random timing
+      3. Settles to full brightness with a brief power-surge (brightness 150%)
+      4. Then normal glowing state with very subtle 0.3% opacity flicker
+         every 8–12 seconds (random, ongoing)
+  • Each label has a matching color drop-shadow that flickers with it
+  • The "hum" of the neon is implied by the slight color shift during flicker
+    (shifts from cyan → slightly warmer/cooler and back)
+
+EFFECT 27: MOUSE SPOTLIGHT
+  • A soft radial light spotlight follows the mouse across dark sections
+  • Effect: radial-gradient centered at mouse position
+    rgba(0,240,255,0.04) center → transparent edge (300px radius)
+  • Applied as a background-image on section container
+  • Updated via mousemove event at 60fps
+  • On hover over cards: spotlight intensifies (radius shrinks to 150px,
+    opacity doubles) — feels like shining a flashlight on the card
+  • Transitions smoothly with CSS transition (but position is direct)
+  • Does NOT render in prefers-reduced-motion mode
+
+EFFECT 28: DNA / HELIX SCROLL INDICATOR
+  • On the right side, replacing the plain scroll progress bar (or alongside it):
+  • An animated DNA double-helix drawn on a 30px × 100vh canvas
+  • Two sine wave strands offset by 180° rotate continuously
+  • Strand 1: cyan  |  Strand 2: violet
+  • Connection rungs drawn between them at every 30px interval
+  • The helix "fills" from bottom to top as user scrolls (progress indicator)
+  • Filled portion: bright, full opacity
+  • Unfilled portion: dark, 20% opacity
+  • Each rung that becomes "filled" pulses briefly gold before settling cyan
+  • On hover: helix spins faster, tooltip shows "% scrolled"
+
+EFFECT 29: REACTIVE AUDIO WAVEFORM HERO BORDER
+  • The hero section has an animated waveform border along the BOTTOM edge
+  • 200 vertical bars, each 2px wide, heights animated with random sine waves
+  • Colors: gradient from left (#00f0ff) → center (#7c3aed) → right (#ff2d55)
+  • Heights oscillate: each bar has individual frequency and phase offset
+  • Looks like a live equalizer or audio spectrum at the bottom of the hero
+  • On page load: bars start at 0 height and animate UP over 1.5s (dramatic reveal)
+  • The waveform reacts to mouse X position: bars near the mouse get taller
+  • This same waveform appears at TOP of the footer (upside down, mirrored)
+
+EFFECT 30: PARTICLE EXPLOSION ON SECTION ENTRY
+  • When any major section enters viewport for the first time:
+    A burst of 40 particles explodes from the section label position
+  • Particles: mix of dots, plus-signs (+), and small stars
+  • Colors: section accent color (each section has one from Part 1 palette)
+  • Each particle: random direction, random speed, travels 60–120px
+  • All particles fade to opacity 0 over 1.0 second
+  • Canvas-based, spawned at world position of the section label
+  • This happens ONCE per section per page visit
+  • The burst is SATISFYING — not subtle. It pops.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🆕  5 BRAND NEW SECTIONS (Part 3 exclusive)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NEW SECTION I — THE WAR ROOM (LIVE METRICS DASHBOARD)
+  Position: After Hero, before About
+
+  • Section label: [ WAR ROOM ]  (neon flicker effect #26)
+  • H2: "Real-Time Status"
+  • Full-width dark section styled like a NASA mission control dashboard
+  • 6 metric panels arranged in a grid (3×2 on desktop, 2×3 on mobile):
+
+    Panel 1: ACTIVE PROJECTS
+      Large number: "3" — animates counting up on entry
+      Subtext: "Currently in development"
+      Status bar: 3 colored segments (one per project)
+      Each segment has a blinking cursor at its end
+
+    Panel 2: CODE OUTPUT
+      Displays fake scrolling code:
+      Lines of real-looking code scroll upward slowly
+      (Actual code snippets from Flutter/Python/JS — use real syntax)
+      Monospace font, syntax-colored (keywords cyan, strings gold, comments muted)
+      Looks like a live IDE output terminal
+
+    Panel 3: APP STORE RATINGS
+      Circular gauge (SVG donut chart) showing 4.9 / 5.0
+      Animated fill: arc draws clockwise on scroll entry
+      Center: "4.9★" in gold Orbitron
+      Outer ring: animated rotating segments
+
+    Panel 4: GLOBAL REACH
+      World map (simplified SVG) with pulsing dots on:
+      Pakistan · UAE · UK · USA · Canada · Germany · Australia
+      Lines connecting Pakistan to each dot animate on entry
+      Below: "7 Countries · Growing Daily"
+
+    Panel 5: BUILD STREAK
+      Large fire emoji 🔥 animating (scale pulse)
+      Counter: "Day 847" counting up from 0
+      Below: small calendar grid showing last 30 days all green (GitHub-style)
+      Green squares pulse in sequence left→right on entry
+
+    Panel 6: NEXT LAUNCH
+      Countdown timer: Days · Hours · Minutes · Seconds
+      All updating live every second via JS
+      Target date: 3 months from current date
+      Label: "NEXT APP LAUNCH"
+      Background: dramatic gradient red→orange
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEW SECTION J — THE INFINITY SCROLL (BRAND TICKER)
+  Position: Between Hero and About
+
+  • A full-width, seamlessly looping horizontal ticker tape
+  • TWO rows, scrolling in OPPOSITE directions
+  • Row 1 (left→right): Text items separated by ✦ symbols:
+      HAMZA POWERPLAYER ✦ APP DEVELOPER ✦ AI BUILDER ✦ PAKISTAN ✦
+      BUILDING THE FUTURE ✦ MOBILE APPS ✦ ARTIFICIAL INTELLIGENCE ✦
+      CREATIVE TECH ✦ NEXT-GEN DEVELOPER ✦ DREAM BIG ✦ BUILD MORE ✦
+  • Row 2 (right→left): Tech tags separated by ◆ symbols:
+      FLUTTER ◆ PYTHON ◆ FIREBASE ◆ REACT ◆ AI APIS ◆ FIGMA ◆
+      NODE.JS ◆ DART ◆ SUPABASE ◆ GPT-4 ◆ CLAUDE ◆ GEMINI ◆ GIT ◆
+  • Row 1 font: Orbitron, 14px, uppercase, color: rgba(240,240,255,0.7)
+  • Row 2 font: Syne, 12px, uppercase, color: rgba(0,240,255,0.5)
+  • Both rows have a fade-out on left and right edges (mask-image gradient)
+  • CSS animation: transform: translateX() at constant speed, no JS needed
+  • Section height: 80px total (two 40px rows)
+  • Background: a slightly different dark shade to demarcate it: #060614
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEW SECTION K — THE GRAVITY ROOM (INTERACTIVE PHYSICS)
+  Position: After Skills, before Tech Stack Universe
+
+  • Section label: [ INTERACT ]
+  • H2: "Play With The Elements"
+  • A full-width interactive physics canvas (600px tall)
+  • 30 floating "balls" in the canvas, each labeled with a tech/skill word:
+      Flutter · AI · Python · React · Firebase · Apps · Design
+      Automation · Code · Build · Ship · Scale · Vision · Future
+      Mobile · Web · APIs · Data · UI/UX · Dark Mode · etc.
+  • Ball physics:
+      - Each ball has velocity, mass, and bounces off canvas walls
+      - Balls collide with each other (elastic collision math)
+      - Each ball: 50–80px circle, glass style with the tech word inside
+      - Color: random from palette (cyan, violet, gold, red accents)
+  • Mouse interaction:
+      - Click and drag: grab a ball and throw it (velocity = drag speed)
+      - Hover: ball grows slightly + shows tooltip with skill level
+      - Right-click: EXPLODE — all balls fly outward from that point
+  • On mobile: tap to throw balls, device tilt moves the gravity direction
+    (deviceorientation → gravity vector changes, balls roll to tilted edge)
+  • Above canvas: instruction text fades in on entry:
+      "CLICK · DRAG · THROW — everything here is under your control"
+  • This section is PURE FUN — visitors will spend 30+ seconds here
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEW SECTION L — THE MIRROR (CURSOR FACE SECTION)
+  Position: After Testimonials, before Contact
+
+  • Section label: [ PRESENCE ]
+  • H2: "You're In The Right Place"
+  • Dark full-width section with a single dramatic effect:
+  • A large text block, 90% viewport width, Orbitron Black, opacity 0.06,
+    reading "HAMZA POWERPLAYER" tiled and repeated in a grid pattern
+    (like a luxury fashion brand background — Louis Vuitton monogram style)
+  • Over this: a circular spotlight (400px diameter) follows the cursor
+    as it moves, revealing the monogram pattern vividly beneath it
+  • The spotlight has a soft edge (radial-gradient mask)
+  • The pattern INSIDE the spotlight is full opacity, pattern outside is 0.06
+  • Effect: visitor literally "shines a light" revealing the brand name
+  • Below center: text content:
+      "If you're here, you already know what you want."
+      "Let's build it."
+      [ LET'S TALK → ] button (magnetic, gradient fill)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEW SECTION M — THE BREAKOUT (SCREENSAVER MODE)
+  Position: Triggered automatically after 60 seconds of inactivity (not a scroll section)
+
+  • After 60 seconds of no mouse/scroll/key input: screensaver activates
+  • SCREENSAVER SEQUENCE:
+      Phase 1: Overlay fades in (rgba(4,4,10,0.92) over full page)
+      Phase 2: Large "HP" monogram appears center, starts slowly rotating
+      Phase 3: Particle field goes MAXIMUM intensity (500 particles)
+      Phase 4: Aurora background animates at 3× normal speed
+      Phase 5: Text appears slowly:
+          "HAMZA POWERPLAYER"
+          "Still building..."
+          [small blinking cursor ▋]
+      Phase 6: Loops with slow pulsing
+  • Any interaction (move, click, key): screensaver instantly dismisses
+    with a dramatic "shatter" effect (glass-crack CSS animation) before
+    the overlay disappears
+  • Mobile: activates after 90 seconds instead of 60
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔄  COMPLETE FINAL PAGE ORDER (Parts 1 + 2 + 3 combined)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  0.  Loading Screen
+  1.  Navigation (upgraded, scrollspy, mobile bottom bar)
+  2.  Hero Section (airplane ✈️ runs above, holographic text, waveform border)
+  3.  Infinity Scroll Ticker (NEW — Section J)
+  4.  War Room Dashboard (NEW — Section I)
+  5.  About Section (spinning globe replaces avatar)
+  6.  Skills Grid (neural network hover, field lines)
+  7.  Gravity Room — Interactive Physics (NEW — Section K)
+  8.  Tech Stack Universe (orbiting rings)
+  9.  Projects Showcase (3D tunnel background, morphing borders)
+  10. App Showcase — Phone Mockup
+  11. AI Capabilities Honeycomb
+  12. Developer Timeline
+  13. Vision 2030 Roadmap
+  14. Achievements / Counters
+  15. Live Activity Feed
+  16. Philosophy Manifesto
+  17. Developer Console / Terminal (code rain behind)
+  18. Testimonials Mosaic
+  19. The Mirror — Cursor Spotlight (NEW — Section L)
+  20. Contact Form
+  21. Footer (upgraded, waveform top border)
+
+  AUTOMATIC OVERLAYS (not sections — triggered by behavior):
+  22. Screensaver Mode (60s inactivity — Section M)
+  23. Konami Code Easter Egg (↑↑↓↓←→←→BA)
+  24. Ambient Toast Notifications (every 12–18s auto)
+
+  TOTAL VISIBLE SECTIONS: 21
+  TOTAL EFFECTS: 30
+  ALL IN ONE HTML FILE
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎬  ADDITIONAL CINEMATIC MOMENTS (Part 3 extras)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MOMENT 7 — THE TICKER ENTRANCE
+  When the brand ticker (Section J) first enters the viewport:
+  Both rows start at opacity 0. Row 1 fades in moving right from left.
+  Row 2 fades in moving left from right. They "slide into place" together.
+  Duration: 0.8 seconds. Beautiful.
+
+MOMENT 8 — GRAVITY ROOM ACTIVATION
+  When Section K (physics) enters viewport for the first time:
+  All 30 balls DROP FROM THE TOP of the canvas as if gravity just switched on.
+  They fall, bounce realistically, and settle into bouncing state.
+  This "activation" lasts 2 seconds before normal physics takes over.
+
+MOMENT 9 — THE MIRROR REVEAL
+  When Section L (mirror) enters viewport:
+  The cursor spotlight starts at radius 0 and slowly expands to 400px
+  over 1.5 seconds, revealing the brand name pattern beneath.
+  Visitor feels like THEY revealed it personally.
+
+MOMENT 10 — AIRPLANE BANKING ON ENTRY
+  The very first time the airplane crosses the hero:
+  It approaches from off-screen left, but it BANKS INTO VIEW —
+  the plane is initially angled ~15° downward (descending) and levels out
+  to horizontal as it reaches center screen. Like a real landing approach.
+  Subsequent passes: level flight only.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💫  ANIMATION PERFORMANCE RULES (Part 3 — strict)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  With this many animations, performance must be protected:
+
+  GPU COMPOSITING:
+  • Every animated element: will-change: transform, opacity
+  • NEVER animate width, height, top, left, margin, padding
+  • ONLY animate: transform, opacity, filter, background-position
+
+  CANVAS MANAGEMENT:
+  • All canvas operations in a SINGLE requestAnimationFrame loop
+  • Airplane canvas: separate layer (own RAF or shared with particles)
+  • Physics canvas: own RAF (separate from background)
+  • Background aurora: own RAF (lowest priority, can drop to 30fps)
+
+  MOBILE PERFORMANCE:
+  • Airplane: enabled, size reduced 50%
+  • Particles: max 40 (down from 120)
+  • Physics balls: max 15 (down from 30)
+  • Code rain: disabled
+  • DNA helix: simplified (single strand)
+  • 3D tilt on cards: disabled (performance)
+  • Floating 3D letters: disabled
+  • All canvas: devicePixelRatio capped at 1.5
+
+  INTERSECTION OBSERVER:
+  • Physics simulation PAUSES when section is NOT visible
+  • Ticker pauses when not in viewport (CSS animation-play-state)
+  • Code rain pauses when terminal section is not visible
+  • This alone saves 40% CPU when sections are off-screen
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎨  FINAL VISUAL POLISH CHECKLIST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Apply these details everywhere — they separate good from legendary:
+
+  □  Every glass card: has an inner top highlight line
+       (1px rgba(255,255,255,0.08) at top edge — catches the "light")
+
+  □  Every section: has its own subtle background variation
+       (alternating between #04040a and #06060f — barely noticeable but adds depth)
+
+  □  Every H2 heading: the FIRST LETTER is 120% size and gold (#f5c518)
+       Drop cap style — cinematic publishing aesthetic
+
+  □  All input fields: monospace font matching the terminal theme
+       Placeholder text in IBM Plex Mono italic
+
+  □  All section padding: clamp(60px, 10vh, 140px) top and bottom
+       Generous breathing room — never cramped
+
+  □  The page never has a white or light background anywhere
+       Not a single pixel of white — pure darkness throughout
+
+  □  Footer HAMZA POWERPLAYER background text: use -webkit-text-stroke
+       1px rgba(0,240,255,0.15) — outlined text effect, no fill
+
+  □  Scrollbar thumb: on grab, color shifts to gold (#f5c518)
+
+  □  All timestamps in the activity feed: use real JS Date for hours
+       So they look genuinely live
+
+  □  Countdown timer (War Room): ticks every 1000ms, show leading zeros
+       Format: 087 days · 14 hrs · 33 min · 07 sec
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚫  FINAL PROHIBITIONS (Part 3)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✗  The airplane must be DRAWN in canvas — not an emoji, not a Unicode char,
+     not a CSS shape. A real recognizable aircraft silhouette.
+  ✗  The globe must spin — a static globe is not acceptable
+  ✗  The physics balls must have real elastic collision — not fake overlap
+  ✗  The screensaver must only activate on INACTIVITY — never interrupt scrolling
+  ✗  Do NOT use any emoji as primary design elements (only in content text)
+  ✗  Do NOT break the single-file requirement — all code stays in one HTML file
+  ✗  Do NOT reduce the airplane feature — it is the HERO of Part 3
+  ✗  Lightning dividers must be SVG path animation — not a CSS border trick
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅  PART 3 FINAL OUTPUT REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Combine Part 1 + Part 2 + Part 3 into ONE perfect index.html file.
+
+  ✓  Airplane with HAMZA POWERPLAYER banner — drawn in canvas, flying every 25s
+  ✓  Spinning globe in About section — Pakistan dot gold, orbit ring
+  ✓  30 effects total — all functioning simultaneously at 60fps
+  ✓  21 visible sections in correct order
+  ✓  Screensaver activates at 60s inactivity
+  ✓  Interactive physics playground — click, drag, throw
+  ✓  Brand ticker with infinite scroll — two rows, opposite directions
+  ✓  War Room dashboard — countdown timer ticking live
+  ✓  Mirror section — cursor reveals monogram pattern
+  ✓  Lightning SVG dividers between every section
+  ✓  Shockwave on every click
+  ✓  DNA helix scroll indicator
+  ✓  All Part 1 + Part 2 features still intact and working
+  ✓  Performance rules followed — 60fps on desktop, smooth on mobile
+
+  PERFORMANCE TARGETS:
+  ✓  First Contentful Paint < 1.5 seconds
+  ✓  Zero jank during scroll
+  ✓  All canvas animations running via requestAnimationFrame
+  ✓  Lighthouse Performance > 88
+  ✓  Lighthouse Accessibility > 90
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  People who see this website will say one thing:
+
+        "WHO BUILT THIS?!"
+
+  The answer is always the same:
+
+        HAMZA POWERPLAYER.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PART 3 END · SECTIONS: 21 VISIBLE + 3 OVERLAY · EFFECTS: 30 · OUTPUT: 1 HTML FILE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -1,0 +1,1003 @@
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║      HAMZA POWERPLAYER — ULTIMATE WEBSITE PROMPT · PART 5 · PAGES EDITION             ║
+║        PRIVACY · ABOUT · TERMS · CONTACT · BLOG · FAQ · LEGAL · AND MORE              ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+THIS IS PART 5 — THE COMPLETE PAGES SYSTEM.
+Parts 1–4 built the main portfolio website.
+Part 5 adds every essential page a professional brand needs.
+
+These pages must match the EXACT same design system as Parts 1–4:
+  — Same dark background (#04040a)
+  — Same color palette (cyan, violet, gold)
+  — Same fonts (Orbitron, Syne, IBM Plex Mono)
+  — Same glass cards, neon glows, particle effects
+  — Same navigation header and footer
+  — Every page must feel like it belongs to the same universe
+
+ADD THESE PAGES AS SEPARATE ROUTES in the same HTML file
+using a simple hash-based router:
+  window.location.hash → determines which page renders
+  All pages share: header, footer, particle background, aurora
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🗂  COMPLETE PAGE LIST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Page 1:  /about          — Full About Page
+  Page 2:  /privacy        — Privacy Policy
+  Page 3:  /terms          — Terms of Service
+  Page 4:  /contact        — Full Contact Page
+  Page 5:  /apps           — Apps Portfolio Page
+  Page 6:  /blog           — Blog / Articles Page
+  Page 7:  /faq            — FAQ Page
+  Page 8:  /hire           — Hire Me Page
+  Page 9:  /tools          — Free Tools Page
+  Page 10: /cookies        — Cookie Policy
+  Page 11: /disclaimer     — Disclaimer Page
+  Page 12: /sitemap        — Sitemap Page
+  Page 13: /404            — Custom 404 Error Page
+  Page 14: /coming-soon    — Coming Soon Page
+
+NAVIGATION FOOTER LINKS (add to existing footer):
+  About · Privacy · Terms · Contact · Apps · Blog
+  FAQ · Hire Me · Tools · Cookies · Disclaimer · Sitemap
+  All in small Syne font, muted color, grid layout in footer.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📄  PAGE DESIGN TEMPLATE (applies to ALL pages)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EVERY PAGE HAS:
+
+  PAGE HERO (top of each page, 280px tall):
+    Background: same aurora + particles as main site
+    Center: page label in Syne 14px, letter-spacing 6px, cyan, uppercase
+    Below label: page title in Orbitron 52px, white, neon glow
+    Below title: one-line description in Syne 20px, muted
+    Bottom: breadcrumb — Home › [Page Name]
+    Entry animation: title drops from above, label fades in
+
+  CONTENT AREA:
+    Max-width: 900px, centered, padding: 60px 24px
+    All headings: Orbitron Bold
+    All body text: Syne Regular, 17px, line-height 1.8
+    All text color: rgba(240,240,255,0.85)
+    Section dividers: thin gradient line (cyan→violet→transparent)
+
+  GLASS SECTION CARDS:
+    Important sections wrapped in glass cards
+    Background: rgba(255,255,255,0.02)
+    Border: 1px solid rgba(0,240,255,0.1)
+    Padding: 32px
+    Border-radius: 16px
+    Hover: border brightens slightly
+
+  LAST UPDATED BADGE:
+    Top-right of content: glass pill badge
+    "Last Updated: [Date]" in IBM Plex Mono 13px
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 1: /about — FULL ABOUT PAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hero: Label "WHO I AM" · Title "About Me" · Subtitle "The story behind the builder"
+
+SECTION A — THE IDENTITY (glass card):
+  Left: Animated HP monogram (the glowing logo from splash screen)
+        With breathing pulse ring and 3 orbital ring decorations
+  Right: Identity grid:
+    Name:       HAMZA POWERPLAYER
+    Role:       App Developer · AI Builder · Creator
+    Location:   Pakistan 🇵🇰
+    Status:     [ 🟢 Available for Projects ]  ← animated green pulse dot
+    Experience: 2+ Years Building
+    Mission:    Building the future of technology from Pakistan
+
+SECTION B — MY STORY (full width):
+  H2: "How It Started"
+  Paragraphs (write these naturally, first person):
+    — Started coding young, self-taught, no mentors
+    — Fell in love with building things from nothing
+    — First app, first failure, first success
+    — The obsession that never stopped
+    — Building openly for the world to see
+  Style: pull-quote styling on the most powerful line:
+    Enlarged text, left border neon line, slightly indented
+
+SECTION C — VALUES (3-column grid of glass cards):
+  Card 1 — BUILD IN PUBLIC
+    Icon: 🔓 (large, 48px)
+    Text: "Everything I build, I share. No secrets.
+           No gatekeeping. Just open creation."
+
+  Card 2 — QUALITY FIRST
+    Icon: ⚡
+    Text: "Every line of code, every pixel of UI.
+           If it ships with my name, it's excellent."
+
+  Card 3 — LEARN FOREVER
+    Icon: 🧠
+    Text: "Technology never stops evolving.
+           Neither do I. Ever."
+
+SECTION D — SKILLS TIMELINE:
+  H2: "What I Know"
+  Horizontal skill bar for each:
+    Flutter / Dart       ████████████░░  88%
+    Python               ███████████░░░  82%
+    Firebase             ████████████░░  88%
+    React Native         ████████░░░░░░  70%
+    AI / LLM APIs        ██████████████  95%
+    UI / UX Design       ████████████░░  85%
+    Node.js              ███████░░░░░░░  60%
+    Git / DevOps         ████████████░░  85%
+
+  Each bar: fill animation on scroll-reveal
+  Bar fill: gradient cyan→violet. Background: dark.
+  Percentage shown at right.
+
+SECTION E — FUN FACTS (asymmetric grid):
+  "Things You Should Know About Me"
+  6 fact cards in a masonry-style layout:
+    🔥 "I debug code at 2am and somehow enjoy it"
+    ☕ "Powered entirely by chai and stubbornness"
+    🌙 "My best ideas come right before I sleep"
+    🇵🇰 "Proudly Pakistani, building globally"
+    📱 "I use every app I build. If it frustrates me, I fix it."
+    🤖 "I believe AI is the most powerful tool ever given to developers"
+
+SECTION F — CURRENTLY (live status card):
+  H2: "Right Now"
+  Glass card with terminal aesthetic:
+    > Currently building: Marya AI Companion App
+    > Currently learning: LLM Fine-tuning
+    > Currently reading: AI development papers
+    > Currently listening: lo-fi while coding
+    > Next goal: 10,000 app downloads
+  Animated blinking cursor at end.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 2: /privacy — PRIVACY POLICY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hero: Label "LEGAL" · Title "Privacy Policy" · Subtitle "How we handle your data"
+
+DESIGN ELEMENT: Floating table of contents panel
+  Fixed left sidebar (desktop only):
+    Links to each section of the policy
+    Highlighted as user scrolls through
+    Glass card, thin border, small Syne font
+
+CONTENT:
+  Effective Date: June 2026
+  Last Updated: June 2026
+
+  1. INTRODUCTION (glass card with cyan left border)
+     "Welcome to HAMZA POWERPLAYER. I am Hamza, an independent app
+      developer based in Pakistan. This Privacy Policy explains how
+      I collect, use, and protect your personal information when you
+      use my website, apps, and services."
+
+  2. INFORMATION I COLLECT
+     Subsections:
+       a) Information You Provide
+          • Name, email, message (via contact form)
+          • Account details (if you sign up for apps)
+       b) Information Automatically Collected
+          • Device type, browser, operating system
+          • Pages visited, time spent (analytics only)
+          • IP address (anonymized)
+       c) Information I Do NOT Collect
+          Glass card with green accent:
+          ✓ I do NOT sell your data
+          ✓ I do NOT share data with advertisers
+          ✓ I do NOT store payment information
+          ✓ I do NOT collect data from children under 13
+
+  3. HOW I USE YOUR INFORMATION
+     • To respond to your messages and inquiries
+     • To improve my apps and website experience
+     • To send updates you explicitly requested
+     • To analyze usage patterns (anonymized only)
+
+  4. DATA STORAGE & SECURITY
+     "Your data is stored securely using industry-standard
+      encryption. I use Firebase (Google) infrastructure for
+      app data, which is GDPR compliant."
+     Security badge icons: 🔒 AES-256 · 🛡️ HTTPS Only · 🔐 Zero-Knowledge
+
+  5. THIRD-PARTY SERVICES
+     Table (glass card styled):
+       Service        Purpose              Privacy Link
+       ─────────────────────────────────────────────
+       Firebase       App Backend          [Google Privacy]
+       Google Analytics  Website Analytics  [GA Privacy]
+       ElevenLabs     Voice Services       [EL Privacy]
+       Anthropic API  AI Features          [Anthropic Privacy]
+
+  6. YOUR RIGHTS (GDPR / Pakistan PDPA)
+     Styled as icon list:
+     🔍 Right to Access — request your data
+     ✏️  Right to Correct — fix inaccurate data
+     🗑️  Right to Delete — request data removal
+     📤  Right to Export — get your data in JSON
+     🚫 Right to Object — opt out of processing
+     Contact email for requests: privacy@hamzapowerplayer.com
+
+  7. COOKIES
+     "I use minimal, essential cookies only. No tracking cookies.
+      No advertising cookies. See the Cookie Policy for details."
+     [Link to /cookies page]
+
+  8. CHILDREN'S PRIVACY
+     "My services are not directed at children under 13.
+      I do not knowingly collect data from minors."
+
+  9. CHANGES TO THIS POLICY
+     "I will notify you of significant changes via the website.
+      Continued use after changes means acceptance."
+
+  10. CONTACT
+      Glass contact card:
+      📧 privacy@hamzapowerplayer.com
+      📍 Pakistan
+      Response time: within 48 hours
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 3: /terms — TERMS OF SERVICE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hero: Label "LEGAL" · Title "Terms of Service" · Subtitle "Rules of engagement"
+
+CONTENT:
+  Effective Date: June 2026
+
+  QUICK SUMMARY (glass card, gold accent border — UNIQUE DESIGN):
+    Most people don't read Terms. Here's the SHORT VERSION:
+    ✓ Use my apps and website fairly
+    ✓ Don't steal my code or brand
+    ✓ Don't use my tools for harmful purposes
+    ✓ I build with care but can't guarantee perfection
+    ✓ Contact me if anything is wrong — I'll fix it
+    [ Read Full Terms Below ↓ ]
+
+  1. ACCEPTANCE OF TERMS
+     "By accessing or using any HAMZA POWERPLAYER website,
+      app, or service, you agree to these terms."
+
+  2. USE OF SERVICES
+     Permitted:
+       ✓ Personal, non-commercial use of apps
+       ✓ Sharing links to my content
+       ✓ Referencing my work with credit
+     Prohibited:
+       ✗ Reverse engineering my apps
+       ✗ Distributing modified versions without permission
+       ✗ Using my tools to harm others
+       ✗ Impersonating HAMZA POWERPLAYER
+
+  3. INTELLECTUAL PROPERTY
+     "All content, code, designs, logos, and brand elements
+      on this website and in my apps are owned by Hamza
+      (HAMZA POWERPLAYER) unless stated otherwise.
+      The HP monogram, HAMZA POWERPLAYER name, and associated
+      visual identity are my intellectual property."
+
+  4. APP-SPECIFIC TERMS
+     Glass card per app category:
+       FREE APPS: Use freely. Attribution appreciated.
+       PAID APPS: License for personal use only.
+       AI-POWERED FEATURES: Subject to AI provider terms.
+
+  5. DISCLAIMER OF WARRANTIES
+     "My apps and services are provided AS IS. While I build
+      with the highest quality standards, I cannot guarantee
+      error-free, uninterrupted service at all times."
+
+  6. LIMITATION OF LIABILITY
+     "HAMZA POWERPLAYER shall not be liable for indirect,
+      incidental, or consequential damages from use of services."
+
+  7. PRIVACY
+     "Your use of services is also governed by my
+      Privacy Policy. [Link to /privacy]"
+
+  8. CHANGES TO TERMS
+     "I reserve the right to update these terms.
+      Changes will be posted here with a new effective date."
+
+  9. GOVERNING LAW
+     "These terms are governed by the laws of Pakistan.
+      Disputes will be resolved through mutual agreement first."
+
+  10. CONTACT
+      For terms questions: legal@hamzapowerplayer.com
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 4: /contact — FULL CONTACT PAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hero: Label "GET IN TOUCH" · Title "Contact" · Subtitle "Let's build something together"
+
+TWO-COLUMN LAYOUT:
+
+LEFT COLUMN (40%):
+
+  STATUS CARD (live animated):
+    Large green pulse dot
+    "● AVAILABLE FOR PROJECTS"
+    Below: "Response time: usually within 24 hours"
+    Below: Pakistan time display (live JS clock)
+    "🕐 PKT: [current time]"
+
+  CONTACT METHODS:
+    Each as a glass card that slides in on scroll:
+
+    📧 EMAIL
+       hello@hamzapowerplayer.com
+       [Copy button] — copies to clipboard on click
+       "Best for: Project inquiries, collabs"
+
+    📱 WHATSAPP
+       Glass card, green accent
+       [Message on WhatsApp] button
+       "Best for: Quick questions"
+
+    🌐 SOCIAL
+       GitHub · LinkedIn · Twitter/X · Instagram
+       YouTube · TikTok
+       Each: glass circle icon, hover glow
+
+    📍 LOCATION
+       Lahore, Pakistan 🇵🇰
+       "Available for remote work worldwide"
+
+  WHAT TO INCLUDE IN YOUR MESSAGE:
+    Glass card, info style:
+    ✓ Your project idea or requirement
+    ✓ Your timeline / deadline
+    ✓ Your budget range (if applicable)
+    ✓ Where you heard about me
+
+RIGHT COLUMN (60%):
+
+  CONTACT FORM (upgraded from Parts 1-4):
+    All fields in glass card container.
+
+    Field 1: Full Name *
+      Placeholder: "Your full name"
+      Validation: required, min 2 chars
+
+    Field 2: Email Address *
+      Placeholder: "your@email.com"
+      Validation: required, valid email format
+
+    Field 3: Project Type * (select dropdown)
+      Options:
+      — Select project type...
+      — 📱 Mobile App Development
+      — 🌐 Web Development
+      — 🤖 AI Integration
+      — 🎨 UI/UX Design
+      — 💼 Business Consultation
+      — 🤝 Collaboration / Partnership
+      — ❓ Other
+
+    Field 4: Budget Range (select dropdown)
+      Options:
+      — Select budget range...
+      — Under $500
+      — $500 – $1,000
+      — $1,000 – $5,000
+      — $5,000 – $10,000
+      — $10,000+
+      — To be discussed
+
+    Field 5: Timeline (select dropdown)
+      — Select timeline...
+      — ASAP (within 1 week)
+      — 2–4 weeks
+      — 1–2 months
+      — 3+ months
+      — Flexible
+
+    Field 6: Message * (textarea, 6 rows)
+      Placeholder: "Tell me about your project, idea, or question..."
+
+    Field 7: How did you hear about me? (optional)
+      Placeholder: "YouTube, Google, friend, etc."
+
+    SUBMIT BUTTON:
+      Full width, gradient bg (cyan→violet), magnetic effect
+      Text: "SEND MESSAGE →"
+      Loading state: "SENDING..." with spinner
+      Success state: "✓ MESSAGE SENT! I'll reply within 24 hours."
+      Error state: "Something went wrong. Try emailing directly."
+
+    BELOW FORM: Privacy note
+      "🔒 Your information is safe. I never share your data.
+       Read my Privacy Policy."
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 5: /apps — APPS PORTFOLIO PAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hero: Label "MY WORK" · Title "Apps" · Subtitle "Built from scratch, shipped to the world"
+
+FILTER BAR (below hero):
+  Glass pill buttons: ALL · MOBILE · WEB · AI TOOLS · UTILITIES
+  Active filter: glowing cyan background
+  Clicking filters the app cards below (JS filter, no page reload)
+
+STATS ROW:
+  4 counters (animate on scroll):
+  8+ Apps · 2 Platforms · 4.9★ Avg Rating · 10K+ Downloads
+
+APP CARDS GRID (2 columns desktop, 1 mobile):
+  Each card MUCH MORE DETAILED than main portfolio:
+
+  Card: TOOLBOX MASTER
+    Header: gradient banner (cyan theme)
+    App icon: styled HP-branded placeholder
+    Category badge: "PRODUCTIVITY"
+    Platform badges: Android · Web
+    Rating: ★★★★★ 4.9 (127 reviews)
+    Description: Full paragraph
+    Tech stack: Flutter · Dart · Firebase
+    Status badge: [ ✓ LIVE ] in green
+    Screenshots row: 3 phone mockup thumbnails
+    [ View App ] [ Google Play ] buttons
+
+  Card: DAYPILOT
+    Header: violet theme
+    Category: "AI PRODUCTIVITY"
+    Platform: Android
+    Rating: ★★★★★ 4.8
+    Tech: Flutter · Claude AI · Firebase
+    Status: [ ✓ LIVE ]
+
+  Card: LOCKBOX PRO
+    Header: gold theme
+    Category: "SECURITY"
+    Platform: Android
+    Rating: ★★★★★ 5.0
+    Tech: Flutter · AES-256 · Biometrics
+    Status: [ ✓ LIVE ]
+
+  Card: MARYA AI COMPANION
+    Header: violet/red gradient
+    Category: "AI"
+    Platform: Android (Coming)
+    Tech: Expo · Claude · Gemini
+    Status: [ 🔥 IN DEVELOPMENT ]
+    Progress bar: 45% complete
+    [ Join Waitlist ] button
+
+  Card: SUBSIGHT
+    Card: FANTASY TEXT PRO
+    Card: TIMESTAMPCAM PRO
+    Card: BUDGET TRACKER
+    (fill with similar structure)
+
+  Card: YOUR NEXT APP?
+    Special dark card, dashed border
+    "Have an idea? I can build it."
+    [ Hire Me → ] button
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 6: /blog — BLOG & ARTICLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hero: Label "THOUGHTS" · Title "Blog" · Subtitle "Insights from the build"
+
+FEATURED POST (full-width card, large):
+  Glass card with wide banner image area (gradient placeholder)
+  "FEATURED" badge top-left (gold)
+  Title: "How I Built 3 Apps While Still in School"
+  Category: Dev Journey
+  Read time: 8 min read
+  Date: June 2026
+  Excerpt: 2-3 line preview
+  [ Read Article → ] button
+
+CATEGORY FILTER BAR:
+  ALL · DEV JOURNEY · TUTORIALS · AI · APPS · PRODUCTIVITY
+
+BLOG GRID (3 columns desktop, 1 mobile):
+  Each card:
+    Gradient banner (category color)
+    Category badge
+    Title (Orbitron 18px)
+    Date + read time
+    Excerpt (2 lines, truncated)
+    Author: small HP logo + "HAMZA POWERPLAYER"
+    [ Read More → ]
+
+  Posts (placeholders with realistic titles):
+    1. "How I Built 3 Apps While Still in School"
+    2. "Why I Chose Flutter Over React Native"
+    3. "Building AI Apps Without a CS Degree"
+    4. "My App Got 1000 Downloads — Here's How"
+    5. "The Best Free Tools for Indie Developers"
+    6. "How to Publish Your First App on Google Play"
+    7. "What I Learned From My First App Failure"
+    8. "Using Claude API to Build Smart Features"
+    9. "Pakistan's Rising Developer Community"
+
+NEWSLETTER SIGNUP (bottom of blog):
+  Glass card, wide, centered:
+  "📬 GET THE LATEST ARTICLES"
+  "New posts every week. No spam. Unsubscribe anytime."
+  Email input + [SUBSCRIBE] button (gradient)
+  Below: "Join 000+ developers already subscribed"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 7: /faq — FREQUENTLY ASKED QUESTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hero: Label "ANSWERS" · Title "FAQ" · Subtitle "Everything you wanted to know"
+
+SEARCH BAR:
+  Glass input field at top: "🔍 Search questions..."
+  Live JS filter: as you type, FAQ items hide/show matching
+
+FAQ CATEGORIES (tab selector):
+  GENERAL · APPS · HIRING · TECH · PRIVACY
+
+ACCORDION STYLE (click to expand, smooth animation):
+  Each item: glass card, + icon becomes × on expand
+  Question: Orbitron 16px, white
+  Answer: Syne 15px, muted, expands with CSS max-height transition
+
+  GENERAL QUESTIONS:
+    Q: Who is HAMZA POWERPLAYER?
+    A: "I'm Hamza, a Pakistani app developer and AI builder. I build
+        mobile apps, web tools, and AI-powered experiences. I document
+        my journey on YouTube and GitHub."
+
+    Q: Where are you based?
+    A: "I'm based in Lahore, Pakistan 🇵🇰 and work remotely
+        with clients worldwide."
+
+    Q: How long have you been coding?
+    A: "I've been building seriously for 2+ years, starting with
+        web development and moving into mobile and AI."
+
+    Q: Can I follow your work?
+    A: "Yes! Subscribe on YouTube, follow on GitHub, and
+        check this website for updates."
+
+  APP QUESTIONS:
+    Q: Are your apps free?
+    A: "Most apps have a free version. Some have premium features.
+        Check each app's page for pricing details."
+
+    Q: Which platforms are your apps on?
+    A: "Currently Google Play (Android). iOS is planned."
+
+    Q: How do I report a bug?
+    A: "Use the contact form or email bugs@hamzapowerplayer.com
+        with your device info and what happened."
+
+    Q: Can I request a feature?
+    A: "Absolutely. I love feature requests. Use the contact
+        form and select 'Feature Request' as the type."
+
+    Q: Is my data safe in your apps?
+    A: "Yes. I use AES-256 encryption, Firebase security rules,
+        and zero-knowledge architecture in sensitive apps."
+
+  HIRING QUESTIONS:
+    Q: Are you available for freelance work?
+    A: "Yes, I'm currently available for select projects. See
+        the Hire Me page for details and rates."
+
+    Q: What kind of projects do you take?
+    A: "Mobile apps (Flutter), web projects, AI integrations,
+        and UI/UX design. Minimum project: $500."
+
+    Q: How fast do you work?
+    A: "Depends on scope. Simple apps: 2–4 weeks.
+        Complex apps: 1–3 months. Rush available."
+
+    Q: Do you sign NDAs?
+    A: "Yes. I'm happy to sign NDAs before project discussions."
+
+  TECH QUESTIONS:
+    Q: What's your main tech stack?
+    A: "Flutter · Dart · Firebase · Python · AI APIs · React"
+
+    Q: Do you do backend development?
+    A: "Yes. Node.js, Firebase Functions, Supabase, REST APIs."
+
+    Q: Can you add AI to my existing app?
+    A: "Yes. I integrate GPT-4, Claude, Gemini, and custom
+        LLM solutions into existing projects."
+
+  STILL HAVE QUESTIONS:
+    Glass card at bottom:
+    "Didn't find your answer?"
+    [ Ask Me Directly → ] button linking to /contact
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 8: /hire — HIRE ME PAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hero: Label "WORK WITH ME" · Title "Hire Me" · Subtitle "Let's build your vision"
+
+AVAILABILITY BANNER (top, full width):
+  [ 🟢 CURRENTLY AVAILABLE ] — glass pill, green glow
+  "Taking on new projects — response within 24 hours"
+
+SERVICES (large glass cards, 2 columns):
+
+  Service 1: MOBILE APP DEVELOPMENT
+    Icon: 📱 (animated bounce)
+    Starting from: $800
+    Timeline: 3–8 weeks
+    What's included:
+      ✓ Full Flutter app (iOS + Android)
+      ✓ Firebase backend integration
+      ✓ UI/UX design included
+      ✓ Google Play / App Store submission
+      ✓ 30-day post-launch support
+    [ Get Quote → ]
+
+  Service 2: AI INTEGRATION
+    Icon: 🤖
+    Starting from: $500
+    Timeline: 1–3 weeks
+    What's included:
+      ✓ LLM integration (GPT-4/Claude/Gemini)
+      ✓ Custom prompt engineering
+      ✓ API setup & documentation
+      ✓ Testing & optimization
+    [ Get Quote → ]
+
+  Service 3: WEB DEVELOPMENT
+    Icon: 🌐
+    Starting from: $600
+    Timeline: 2–5 weeks
+    What's included:
+      ✓ Responsive design
+      ✓ React or vanilla JS
+      ✓ Backend API integration
+      ✓ SEO optimization
+      ✓ Performance optimization
+    [ Get Quote → ]
+
+  Service 4: UI/UX DESIGN
+    Icon: 🎨
+    Starting from: $300
+    Timeline: 1–2 weeks
+    What's included:
+      ✓ Figma wireframes & mockups
+      ✓ Full design system
+      ✓ Prototype & interactions
+      ✓ Handoff-ready files
+    [ Get Quote → ]
+
+HOW WE WORK TOGETHER (timeline/steps):
+  Step 1: DISCOVERY (Day 1–2)
+    You tell me about your project.
+    I ask questions, understand the vision.
+  Step 2: PROPOSAL (Day 3–5)
+    I send a detailed proposal with timeline and cost.
+    No commitment yet — just clarity.
+  Step 3: AGREEMENT (Day 5–7)
+    We agree on scope, sign contract, and set milestones.
+    50% deposit to begin.
+  Step 4: BUILD (Week 1–N)
+    I build. You get progress updates every 3 days.
+    Regular check-ins. No surprises.
+  Step 5: DELIVERY (Final week)
+    Final delivery, testing together, handoff.
+    Remaining 50% on delivery.
+  Step 6: SUPPORT (30 days)
+    Post-launch support included.
+    Bugs fixed free. New features: new quote.
+
+WHY HIRE ME (3 glass cards):
+  ⚡ FAST: "I respect deadlines like they're laws of physics."
+  🧠 SMART: "I solve the problem behind the problem."
+  🤝 HONEST: "If I can't do it, I'll tell you — and find someone who can."
+
+CTA SECTION:
+  Large glass card, centered:
+  "Ready to start building?"
+  [ CONTACT ME NOW → ] — huge gradient button, magnetic
+  Below: "Or email directly: hello@hamzapowerplayer.com"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 9: /tools — FREE TOOLS PAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hero: Label "FREE FOREVER" · Title "Tools" · Subtitle "Useful tools I built for developers"
+
+BANNER: "Everything here is 100% free. No signup. No limits."
+
+TOOLS GRID (3 columns):
+  Each tool: glass card with:
+    Tool icon (emoji or SVG)
+    Tool name (Orbitron)
+    Description (1-2 lines)
+    Tags: [Web] [Offline] [No-Login]
+    [ Use Tool → ] button
+
+  TOOL 1: Privacy Policy Generator
+    "Generate a privacy policy for your app in seconds."
+    Tags: Web · Free · Instant
+
+  TOOL 2: App Name Generator
+    "AI-powered app name ideas based on your description."
+    Tags: AI · Web · Free
+
+  TOOL 3: Color Palette Generator
+    "Generate dark/neon color palettes for apps."
+    Tags: Design · Web · Free
+
+  TOOL 4: Markdown README Generator
+    "Create a beautiful GitHub README from a form."
+    Tags: Dev · Web · Free
+
+  TOOL 5: App Size Estimator
+    "Estimate how much space your Flutter app will need."
+    Tags: Flutter · Web · Free
+
+  TOOL 6: API Endpoint Tester
+    "Quick test any REST API endpoint in browser."
+    Tags: Dev · Web · Free
+
+  MORE COMING SOON cards (2-3 placeholder cards with "COMING SOON" badge)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 10: /cookies — COOKIE POLICY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hero: Label "LEGAL" · Title "Cookie Policy" · Subtitle "What cookies we use and why"
+
+CONTENT:
+  QUICK SUMMARY (glass card, friendly tone):
+    "I use the minimum cookies necessary to make the
+     website function. No tracking cookies. No ad cookies.
+     No selling your data. Just the basics."
+
+  COOKIE TABLE:
+    Glass-styled HTML table:
+    Cookie Name | Purpose | Duration | Type
+    ────────────────────────────────────────────
+    session_id   | Keep you logged in | Session | Essential
+    theme_pref   | Remember dark mode | 1 year  | Preference
+    lang_pref    | Language setting   | 1 year  | Preference
+    analytics_   | Site improvement   | 30 days | Analytics (anonymized)
+
+  COOKIES I DO NOT USE:
+    ✗ Advertising cookies
+    ✗ Social media tracking cookies
+    ✗ Third-party marketing cookies
+    ✗ Fingerprinting technologies
+
+  MANAGING COOKIES:
+    Instructions for: Chrome · Firefox · Safari · Edge
+    "You can disable cookies in browser settings.
+     Some features may not work without essential cookies."
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 11: /disclaimer — DISCLAIMER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hero: Label "LEGAL" · Title "Disclaimer" · Subtitle "Important information about my content"
+
+CONTENT (concise glass sections):
+
+  GENERAL DISCLAIMER:
+    "The information on this website is for general
+     informational purposes. While I strive for accuracy,
+     I make no warranties about completeness or reliability."
+
+  TUTORIAL / BLOG DISCLAIMER:
+    "Code and tutorials provided are for educational purposes.
+     Test all code before production use. I am not responsible
+     for issues arising from implementing my tutorials."
+
+  EARNINGS / RESULTS DISCLAIMER:
+    "Any income or download figures mentioned are my own
+     results. Individual results will vary based on effort,
+     market, and many other factors."
+
+  AFFILIATE DISCLAIMER:
+    "Some links on this site may be affiliate links.
+     I only recommend tools I personally use and trust.
+     Clicking them may earn me a small commission at
+     no extra cost to you."
+
+  EXTERNAL LINKS:
+    "I link to external websites for reference. I am not
+     responsible for their content or privacy practices."
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 12: /sitemap — SITEMAP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hero: Label "NAVIGATION" · Title "Sitemap" · Subtitle "Every page, organized"
+
+Visual sitemap (not just a list — use a tree/grid visual):
+
+  Main Pages (large glass cards in grid):
+    🏠 Home          🙋 About        📱 Apps
+    📝 Blog          🛠 Tools        ❓ FAQ
+    📞 Contact       💼 Hire Me
+
+  Legal Pages (smaller, muted glass cards):
+    🔒 Privacy Policy   📜 Terms of Service
+    🍪 Cookie Policy    ⚠️ Disclaimer
+
+  Also includes:
+    Auto-generated XML sitemap link for SEO
+    [ Download sitemap.xml ] button
+    Last generated: [current date]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 13: /404 — CUSTOM 404 ERROR PAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+UNIQUE DESIGN — Most creative page on the entire site:
+
+Full-screen dark canvas.
+Center: a large terminal window animation:
+
+  > SYSTEM ERROR
+  > Error code: 404
+  > Description: PAGE_NOT_FOUND
+  > Location: [the URL they tried to visit]
+  > Searching for page..........
+  > Search complete: 0 results
+  > Recommendation: Return to base
+
+Below terminal: a glitch-animated "404" in massive Orbitron
+  The 404 glitches every 3 seconds (RGB split + offset)
+
+Below number:
+  "This page got lost in the multiverse."
+  Small Syne, muted
+
+Two buttons:
+  [ 🏠 GO HOME ] — gradient, large
+  [ 🔍 SEARCH SITE ] — ghost button
+
+Fun addition: a small floating HP logo that drifts around the 404
+  It bounces off invisible walls like a screensaver
+  Clicking it: triggers a mini particle explosion
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 14: /coming-soon — COMING SOON PAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For apps/features that aren't ready yet.
+Full-screen cinematic experience:
+
+  Background: full aurora + particles (maximum intensity)
+  Center: HP logo orbiting rings (from splash animation logic)
+  Large text: "SOMETHING BIG IS COMING"
+  Below: a real countdown timer (JS):
+    Set target date → shows DAYS : HOURS : MINUTES : SECONDS
+  Email waitlist form:
+    "Be the first to know"
+    Email input + [NOTIFY ME] button
+  Below form: "[N] people already waiting"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🍪  COOKIE CONSENT BANNER (global — appears once per visitor)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Appears at bottom of screen on first visit:
+Glass card, full-width, slide up from bottom:
+
+  Left text: "🍪 I use minimal cookies to improve your experience.
+              No tracking. No ads. Just essentials."
+             [Learn More] link → /cookies
+
+  Right buttons:
+    [ ACCEPT ] — cyan gradient, primary
+    [ DECLINE ] — ghost button
+
+Stored in localStorage: 'hp_cookie_consent' = 'accepted' | 'declined'
+If declined: analytics disabled. Essential cookies only.
+Banner never appears again after choice made.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📍  UPDATED NAVIGATION (add to header from Parts 1-4)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Main nav links: Home · About · Apps · Blog · Tools · Hire Me · Contact
+
+MEGA DROPDOWN on hover over "More":
+  Two column dropdown:
+  Left column: FAQ · Blog · Tools
+  Right column: Privacy · Terms · Sitemap
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📍  UPDATED FOOTER (replace footer from Parts 1-4)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Footer now has 4 columns:
+
+Column 1 — BRAND:
+  HP monogram (small, glowing)
+  "HAMZA POWERPLAYER"
+  "Building the future, one app at a time."
+  Pakistan 🇵🇰
+  Social icons row
+
+Column 2 — PAGES:
+  Home · About · Apps
+  Blog · Tools · FAQ
+
+Column 3 — WORK:
+  Hire Me · Contact
+  Projects · Services
+  Portfolio
+
+Column 4 — LEGAL:
+  Privacy Policy
+  Terms of Service
+  Cookie Policy
+  Disclaimer
+  Sitemap
+
+Bottom row:
+  "© 2026 HAMZA POWERPLAYER. All Rights Reserved."
+  "Made with obsession in Pakistan 🇵🇰"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔧  TECHNICAL REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROUTER (hash-based, pure JS):
+  window.addEventListener('hashchange', renderPage)
+  function renderPage() {
+    const hash = window.location.hash.slice(1) || 'home'
+    document.getElementById('page-content').innerHTML = pages[hash] || pages['404']
+  }
+
+SEO META TAGS (per page, update dynamically):
+  document.title = `${pageTitle} | HAMZA POWERPLAYER`
+  document.querySelector('meta[name="description"]').content = pageDesc
+
+SCROLL TO TOP on every page navigation:
+  window.scrollTo({top:0, behavior:'instant'})
+
+ACTIVE NAV LINK: highlight based on current hash
+
+PRINT STYLES for legal pages:
+  @media print: white background, black text
+  Legal pages must be printable cleanly
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅  FINAL OUTPUT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Combine ALL parts (1+2+3+4+5) into ONE index.html file.
+
+  ✓  14 complete pages all functional
+  ✓  Hash-based routing (no server needed)
+  ✓  Cookie consent banner working
+  ✓  All forms validated
+  ✓  All animations from Parts 1-4 preserved
+  ✓  FAQ accordion working
+  ✓  Blog filter working
+  ✓  Apps filter working
+  ✓  404 bouncing HP logo working
+  ✓  Countdown timer working on coming-soon
+  ✓  Updated navigation with dropdown
+  ✓  Updated 4-column footer
+  ✓  Print styles for legal pages
+  ✓  SEO meta tags updating per page
+  ✓  Scroll-to-top on navigation
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PART 5 END · 14 PAGES · FULLY LEGAL · FULLY PROFESSIONAL
+  HAMZA POWERPLAYER — A COMPLETE BRAND ECOSYSTEM ON ONE WEBSITE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

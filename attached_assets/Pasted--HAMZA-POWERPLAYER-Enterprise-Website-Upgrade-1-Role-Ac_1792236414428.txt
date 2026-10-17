@@ -1,0 +1,178 @@
+# HAMZA POWERPLAYER — Enterprise Website Upgrade
+
+## 1. Role
+
+Act as a senior full-stack engineer, UI/UX designer, SEO specialist, accessibility expert, and software quality engineer.
+
+You are working on my existing **HAMZA POWERPLAYER** developer website. The existing project is provided in the workspace. Inspect and improve the real project rather than generating an unrelated replacement.
+
+## 2. Absolute Rules
+
+- Inspect the complete repository, existing source files, dependencies, routing, assets, configuration, and current design before editing.
+- Preserve working functionality, existing branding, and useful content.
+- Never fabricate app features, release statuses, download counts, ratings, testimonials, repository URLs, or store links.
+- Never claim that a feature works, a test passed, a page is indexed, or a deployment succeeded unless you have verified it.
+- If information is missing, identify it clearly and use a maintainable configuration file for app metadata and links.
+- Make changes in small, logical stages. Keep the project buildable after each stage.
+- Do not replace the project with a generic template or introduce unnecessary dependencies.
+- Do not expose secrets, API keys, personal credentials, or private repository information.
+- Never delete existing files or working functionality without a demonstrated need.
+- Explain blockers honestly and provide exact evidence for any unresolved issue.
+
+## 3. Main Objective
+
+Transform the existing website into a polished, modern, fast, accessible, search-engine-friendly developer portfolio and application directory for HAMZA POWERPLAYER.
+
+The website must work properly on mobile, tablet, laptop, and desktop.
+
+Use the existing React, TypeScript, and Vite stack if confirmed by repository inspection. Select a suitable routing approach that fits the current project.
+
+## 4. Homepage
+
+Create a premium, distinctive homepage featuring:
+
+- Professional HAMZA POWERPLAYER branding.
+- A compelling hero section and clear navigation.
+- Featured applications and projects.
+- A searchable application directory.
+- Categories for Android apps, games, developer tools, and projects, where applicable.
+- GitHub and social profile links when their destinations are verified.
+- Clear calls to action for downloading apps, viewing project details, and exploring source code.
+- A professional footer containing relevant navigation, contact, privacy, and legal links.
+
+Avoid excessive animation, clutter, fake statistics, generic filler text, and unnecessary visual effects.
+
+## 5. Dedicated Pages
+
+Create individual detail pages for every confirmed app and project.
+
+Each page should support:
+
+- App or project name, icon, description, and current status.
+- Screenshots and promotional assets when available.
+- Verified features and technical details.
+- Google Play Store download link when published.
+- Alternative download links, including Uptodown where applicable.
+- GitHub repository link when verified and publicly accessible.
+- Privacy policy, support information, and release information when available.
+- A clear unavailable or coming-soon state for unpublished products.
+- Proper page title, meta description, canonical URL, and social sharing metadata.
+
+Create a consistent, maintainable page template instead of duplicating components.
+
+## 6. Application Directory and Metadata
+
+Build a central, typed app/project data source.
+
+Each record should support fields such as:
+
+- Unique ID and URL slug.
+- Name and short description.
+- Product type and publication status.
+- App icon and screenshot paths.
+- Google Play URL.
+- Alternative download URLs.
+- GitHub repository URL.
+- Website and privacy policy URLs.
+- Version and release date, when verified.
+- Feature list and search keywords.
+
+Validate external URLs, avoid broken links, and handle missing information gracefully.
+
+Do not invent links for PakiGPA, PhotoPass, THE LAST BELL, Subsight, or any other product. Discover verified information from existing project files and available repository evidence. Keep unresolved links clearly marked for me to provide.
+
+## 7. GitHub and Project Showcase
+
+Provide a dedicated projects section with:
+
+- Verified public repositories.
+- Project descriptions and development status.
+- Repository links and relevant documentation.
+- Technologies used when supported by actual project files.
+- Clear distinctions between published apps, completed projects, prototypes, and planned projects.
+
+Do not claim that private repositories are public or that the website has live GitHub synchronization unless you implement and verify it.
+
+Prefer manually maintained repository metadata initially. If GitHub API integration is useful, explain rate limits, privacy implications, and configuration requirements before adding it.
+
+## 8. SEO and Discoverability
+
+Implement appropriate, technically correct SEO:
+
+- Unique titles and meta descriptions for every page.
+- Semantic HTML and a logical heading hierarchy.
+- Canonical URLs using the verified production domain.
+- XML sitemap containing valid public pages.
+- Appropriate robots.txt rules.
+- Open Graph and social sharing metadata.
+- Structured data only when accurate and eligible, such as applicable SoftwareApplication or Organization markup.
+- Descriptive image alternative text.
+- Crawlable navigation and meaningful internal links.
+- Correct handling of unknown routes and missing pages.
+
+Do not promise Google rankings or indexing. Do not add fabricated reviews, ratings, or structured-data claims.
+
+## 9. Performance and Accessibility
+
+Optimize the existing implementation for:
+
+- Production bundle size and unnecessary JavaScript.
+- Image dimensions, formats, loading, and layout stability.
+- Responsive layouts and mobile navigation.
+- Accessible keyboard navigation and visible focus.
+- Adequate contrast and readable typography.
+- Reduced-motion preferences.
+- Semantic controls, descriptive links, and accessible forms.
+- Fast initial rendering and minimal layout shifts.
+
+Use lazy loading where appropriate. Avoid adding large libraries for features that can be implemented simply.
+
+## 10. Design Direction
+
+Create a cohesive, premium visual identity suitable for a serious independent developer brand.
+
+Use:
+- Strong typography and clear visual hierarchy.
+- Consistent spacing, colors, borders, and reusable components.
+- Attractive app cards and dedicated product pages.
+- Subtle, purposeful interactions.
+- Responsive layouts and polished empty/error states.
+
+The result must look intentionally designed, not like an unmodified starter template. Preserve existing brand elements where appropriate.
+
+## 11. Testing and Verification
+
+Before declaring completion:
+
+1. Inspect the repository and record its existing state.
+2. Establish the current build and test baseline.
+3. Implement changes incrementally.
+4. Run available type checks, linting, tests, and production builds.
+5. Fix errors caused by your changes.
+6. Test every route and navigation path you can access.
+7. Validate local links, image paths, metadata, and app data.
+8. Verify responsive layouts at representative viewport sizes where tooling permits.
+9. Check for console errors and broken assets where browser testing is available.
+10. Report all tests that could not be run and why.
+
+Never report a passing test without actual execution evidence. Distinguish successful checks from unverified behavior.
+
+## 12. Delivery Requirements
+
+Work directly in the existing workspace.
+
+First provide a concise audit of the repository, detected stack, current problems, and implementation plan. Then proceed with the upgrade in logical stages.
+
+At completion, provide:
+
+- A summary of implemented features.
+- A list of important changed and created files.
+- Build and test results with actual evidence.
+- Remaining missing app links or assets.
+- Any environment variables or configuration needed.
+- Exact instructions to run and deploy the website.
+- A short list of tasks requiring my approval or additional information.
+
+Prioritize correctness, maintainability, security, performance, accessibility, and professional design over rushing.
+
+**Start by inspecting the existing repository. Do not stop at writing a plan; implement the upgrade and verify your work.**

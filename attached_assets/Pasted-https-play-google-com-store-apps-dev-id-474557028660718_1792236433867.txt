@@ -1,0 +1,192 @@
+https://play.google.com/store/apps/dev?id=4745570286607188025                                   # SECOND PROMPT — COMPLETE LINK DISCOVERY, GITHUB, AND APP PAGE INTEGRATION
+
+Continue working in the existing HAMZA POWERPLAYER website repository. This prompt supplements the original website-upgrade prompt; do not restart the project.
+
+## 1. Discover ALL Existing Links
+
+Inspect the entire repository, including source code, configuration files, README files, HTML metadata, assets, Git remotes, project manifests, and existing application records.
+
+Find every existing reference to:
+
+- Google Play Store listings and developer profile.
+- Uptodown and other legitimate alternative download sources.
+- GitHub profile, repositories, releases, documentation, and source code.
+- Official website and individual product pages.
+- Instagram, YouTube, LinkedIn, TikTok, and other confirmed social profiles.
+- Privacy policies, terms, support pages, contact links, and email addresses.
+- Game pages, developer tools, published apps, and development projects.
+
+Search the entire workspace, not only the homepage.
+
+Create `docs/LINK_INVENTORY.md` documenting each discovered link, its associated product, its source, verification status, and intended website location.
+
+## 2. Discover GitHub Repositories
+
+GitHub profile: `HAMZAPOWERPLAYER`
+
+Start with the public profile:
+https://github.com/HAMZAPOWERPLAYER
+
+Inspect existing Git remotes and repository references first. Then, if network access is available, retrieve the profile's public repository list through the official GitHub API or accessible GitHub pages.
+
+For every relevant repository, identify:
+
+- Repository name and verified URL.
+- Description and project purpose.
+- Public/private visibility, when verifiable.
+- Main programming language, when available.
+- Topics, README, releases, and website links.
+- Related app or game, if supported by repository evidence.
+- Current development status, when verifiable.
+
+Handle pagination when retrieving repositories. Do not assume the first API response contains every repository.
+
+Never publish private repository names, private URLs, credentials, source code, or other confidential information. Never create a GitHub token or ask me to expose one just to list public repositories.
+
+If public repositories cannot be retrieved, explain the exact limitation and provide a clear manual configuration mechanism.
+
+## 3. Verify Google Play and Download Links
+
+Discover all available app identifiers and store URLs from the project files and verified public sources.
+
+For each published app:
+
+- Verify its exact Google Play listing URL.
+- Associate it with the correct product.
+- Confirm whether the listing is accessible when verification tools permit.
+- Identify its alternative download links, if available.
+- Never substitute another developer's similarly named app.
+- Never generate a store link from an assumed package name without checking it.
+- Never label an unpublished app as available for download.
+
+For Subsight, preserve this known alternative download URL:
+
+https://com-hamzapowerplayer-subsight.en.uptodown.com/android
+
+Use Google Play as the primary download destination only when the actual listing URL is verified.
+
+## 4. Create a Central Link and Product Registry
+
+Implement a maintainable typed data source for all products, repositories, and external links.
+
+Suggested location: `src/lib/products.ts` or the best equivalent for the existing architecture.
+
+Use reusable schemas and data models. Each product should support:
+
+- Stable ID and URL slug.
+- Name, description, category, and status.
+- App icon and available screenshots.
+- Google Play URL.
+- Alternative download URLs.
+- GitHub repository URL.
+- Website, privacy policy, documentation, and support URLs.
+- Version and release information when verified.
+- Relevant social links where applicable.
+
+Represent missing links explicitly as unavailable or unverified. Do not render fake URLs, empty clickable buttons, or links that silently redirect to unrelated destinations.
+
+Keep the central registry as the single source of truth for cards, detail pages, navigation, and the link directory.
+
+## 5. Build Dedicated Product Pages
+
+Every confirmed application and relevant project must have its own accessible detail page.
+
+Create a reusable page template containing:
+
+- Product introduction and available imagery.
+- Verified features and current status.
+- Download buttons for verified stores.
+- Alternative download links where appropriate.
+- GitHub source-code link when public.
+- Documentation, privacy, and support links when available.
+- Related projects and a clear return path to the directory.
+
+Use clean, stable URLs such as `/apps/subsight` and `/projects/the-last-bell`, adapting the routing to the current application.
+
+Ensure direct navigation, browser refresh, unknown routes, and production hosting work correctly.
+
+Create individual metadata for each page. Do not rely exclusively on client-side title changes if the chosen deployment needs server-side rendering or prerendering for reliable search-engine discovery. Select a solution appropriate for the existing hosting platform.
+
+## 6. Create a Complete Links Directory
+
+Add a dedicated `/links` page that organizes verified destinations into sections:
+
+- All published apps.
+- Google Play Store.
+- Alternative downloads.
+- GitHub repositories.
+- Games and development projects.
+- Official website pages.
+- Social media.
+- Privacy, documentation, and support.
+
+Provide search and category filters where useful.
+
+Each entry must have a clear title, destination, and associated product. External links should use appropriate security attributes when opening a new tab.
+
+Add a GitHub profile link to the global navigation or footer, and place repository links on their respective project pages.
+
+Do not overwhelm every page with every external link. Organize links clearly and place product-specific destinations on the appropriate pages.
+
+## 7. Audit Every Internal and External Link
+
+Implement a link-validation workflow that:
+
+1. Extracts all configured internal and external links.
+2. Checks internal routes and referenced local assets.
+3. Detects missing destinations, malformed URLs, duplicate records, and invalid slugs.
+4. Checks external destinations when network access is available.
+5. Records inaccessible, redirected, rate-limited, or unverified URLs accurately.
+6. Produces a useful report without failing the entire build merely because a third-party service is temporarily unavailable.
+
+Do not claim a URL works merely because it is syntactically valid. Distinguish format validation, HTTP verification, and actual page-content verification.
+
+Never automatically replace a failing link with a guessed alternative.
+
+## 8. Integrate All Verified Links Throughout the Website
+
+Update the homepage, application cards, project cards, product pages, footer, navigation, social icons, and links directory.
+
+Ensure every relevant button performs its advertised action.
+
+Use consistent labels such as:
+
+- Download on Google Play
+- Alternative Download
+- View on GitHub
+- View Documentation
+- Privacy Policy
+- Official Website
+- Watch on YouTube
+
+Show only the actions supported by the product's verified data.
+
+## 9. SEO and Structured Data
+
+Ensure every public product page has:
+
+- Unique title and meta description.
+- Correct canonical URL.
+- Appropriate Open Graph metadata.
+- Crawlable internal links.
+- Inclusion in the XML sitemap when appropriate.
+- Appropriate structured data only when its claims are verified.
+
+Exclude private, nonexistent, and unintended duplicate pages from public indexing. Do not invent ratings, review counts, prices, or publication dates.
+
+## 10. Final Verification and Reporting
+
+After implementation:
+
+- Run the existing type checks and production build.
+- Run any available tests.
+- Test every configured internal route.
+- Validate all local assets and configured link records.
+- Check the GitHub repository inventory against the accessible public repository list.
+- Review the app registry for missing Google Play links and incorrect associations.
+- Document external URLs that could not be verified.
+- Update `docs/LINK_INVENTORY.md` and provide a final summary.
+
+Do not claim that all links have been found unless you can demonstrate the scope of the search and its results. Private repositories and external accounts that you cannot access must be explicitly identified as limitations.
+
+**Execution instruction:** Inspect first, discover and verify links second, implement the registry and pages third, then run validation. Continue working in the existing repository and preserve all useful functionality from the first prompt. Do not stop after producing a plan or documentation; implement the changes.    

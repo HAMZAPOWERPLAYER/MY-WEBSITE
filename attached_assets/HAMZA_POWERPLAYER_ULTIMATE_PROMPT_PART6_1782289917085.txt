@@ -1,0 +1,943 @@
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║      HAMZA POWERPLAYER — ULTIMATE WEBSITE PROMPT · PART 6 · EMPIRE EDITION            ║
+║       MONETIZE · DOMINATE · COMMUNITY · BUSINESS · THE COMPLETE ECOSYSTEM              ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+THIS IS PART 6 — THE BUSINESS LAYER.
+Parts 1–4 built the most extreme developer portfolio on Earth.
+Part 5 added 14 professional pages with full routing.
+Part 6 transforms the entire site into a BUSINESS EMPIRE:
+
+  → 10 new mind-bending effects (Effects 41–50)
+  → 7 new sections that turn visitors into clients and fans
+  → Full monetization layer: packages, pricing, bookings
+  → Google Play Trophy Room — every app as a cinematic showcase
+  → Interactive resume you can actually download
+  → Community ecosystem hub (Discord, YouTube, Telegram)
+  → Real-time (mock) revenue dashboard with live-look animations
+  → Urdu/English language toggle — Pakistani developer, global reach
+  → A "Pakistan Tech Rising" manifesto section unlike anything online
+
+Every single feature is MANDATORY. The same rules as Parts 1–4 apply.
+Same design system. Same dark universe. Same obsession with excellence.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎨  DESIGN SYSTEM REMINDER (same as Parts 1–5 — no changes)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  --bg-base        : #04040a     --neon-cyan   : #00f0ff
+  --bg-surface     : #08081a     --neon-violet : #7c3aed
+  --glass          : rgba(255,255,255,0.03)
+  --gold           : #f5c518     --danger      : #ff2d55
+  --text-primary   : #f0f0ff     --success     : #00ff88
+  --text-muted     : #6b7280     --border-glow : rgba(0,240,255,0.15)
+
+  Fonts: Orbitron (headings) · Syne (labels/nav) · IBM Plex Mono (body/terminal)
+  Glassmorphism, aurora canvas, particle field, all existing effects: PRESERVED.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡  10 NEW EXTREME EFFECTS (Effects 41–50)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EFFECT 41: LANGUAGE MORPH TRANSITION
+  • When switching between English and Urdu (the new language toggle):
+    All text on screen simultaneously shatters into individual letter particles
+    Particles scatter outward (same physics engine as existing click shockwave)
+    New language text assembles from the scattered particles flying back together
+    Total transition: 1.1 seconds, absolutely smooth
+  • The RTL/LTR layout flip is animated — containers slide-pivot 180° on X axis
+    like flipping a physical card, revealing the Urdu content on the "back"
+  • Language toggle button: small pill in nav — [EN | اردو]
+    Glass pill, bilingual, toggles with a satisfying snap animation
+
+EFFECT 42: PRICING CARD HOLOGRAM LIFT
+  • The pricing cards in the Commission section (Section P) have a new hover state
+  • On hover: the card physically "lifts off" the page (translateZ + box-shadow)
+  • A holographic ghost of the card remains at the original position, faded
+  • The lifted card shows price details not visible in the flat state
+  • As user moves mouse across the lifted card: it pivots to reveal edge details
+    (like holding a physical card and tilting it under light)
+  • Recommended plan: constant gentle levitation animation (oscillates 0→8px)
+
+EFFECT 43: LIVE REVENUE TICKER (MOCK)
+  • A thin horizontal ribbon fixed at the very top of the page (above the nav)
+    Height: 28px, background: rgba(0,0,0,0.9), text: IBM Plex Mono 11px
+  • Continuous left-scroll ticker:
+    ⬆ +$47 · Privacy Policy Generator Pro · Google Play   |
+    ⬆ +$12 · Subsight Pro Unlock · Google Play   |
+    ⬆ +$89 · Link Analyzer Pro · Google Play   |
+    ★ 4.8 · New review on AppShield   |   🚀 Daily downloads: 847
+  • Numbers increment in real-time using JS:
+    Every 4–9 seconds (random interval): a new mock sale event is pushed to the ticker
+    Each event: different app name, random price between $2–$99
+    The ticker always has 6–8 items visible, new ones push old ones out the left
+  • Color coding:
+    Revenue events: gold #f5c518
+    Review events: cyan #00f0ff
+    Download events: violet #7c3aed
+  • Clicking any ticker item: smooth scrolls to the Apps section of the site
+  • On mobile: ticker is hidden (saves vertical space)
+
+EFFECT 44: MAGNETIC SECTION SNAPPING
+  • When user scroll velocity drops below a threshold near a section boundary:
+    The page gently "snaps" to the nearest section with a smooth deceleration
+  • Implemented with custom scroll physics:
+    Track scroll velocity via RAF + requestAnimationFrame
+    When velocity < 15px/frame AND within 120px of section boundary → snap
+    The snap uses a custom spring easing (not CSS scroll-snap which is too rigid)
+  • The snap is SUBTLE — feels like the page is alive and breathing
+    It should not feel like forced scroll snapping, just like gentle assistance
+  • Does NOT apply when user is actively scrolling fast (velocity > 15px/frame)
+  • Can be disabled via a small toggle in the corner: [FREE SCROLL | SNAP MODE]
+
+EFFECT 45: APP ICON 3D STACK
+  • In the Trophy Room section (Section N):
+    Each app's icon is displayed as a 3D icon stack (like iOS stacked cards)
+    3 identical icons stacked with 6px offset + subtle shadow between layers
+    Stack depth gives a physical, tactile feeling
+  • Hover any stack: the top card slides UP (translateY -40px) and rotates 15°
+    Revealing a secondary card with the app's download count and rating
+    The secondary card also slides: offsetting at 20° showing a third card
+    with the app's Play Store link button
+  • Each icon is rendered as a rounded-square CSS shape with gradient background
+    matching the app's actual color scheme (defined per-app)
+    No image files — all CSS gradient art + app initial letter in Orbitron Bold
+
+EFFECT 46: HEARTBEAT PERFORMANCE MONITOR (DECORATIVE)
+  • In the Control Room section (Section O): a live ECG-style heartbeat line
+  • A horizontal canvas 100% wide × 60px tall
+  • An ECG waveform animates continuously: flatline → sharp spike → flatline
+  • The spike pattern is custom-designed to spell "HP" in ECG peaks if you look closely
+  • Color: #00f0ff with a faint glow trail (the classic neon ECG look)
+  • Labels above specific spike peaks:
+    Spike 1: "AI ENGINE"    Spike 2: "APP BUILD"    Spike 3: "DEPLOY"
+  • On hover over the canvas: the ECG line goes CRITICAL (faster, bigger spikes)
+    and the color shifts to gold for 2 seconds before returning to cyan
+  • "SYSTEM VITALS: NOMINAL" label below in IBM Plex Mono with a green pulse dot
+
+EFFECT 47: TESTIMONIAL CARD FLIP REVEAL
+  • The testimonials in Section R now use a 3D card flip system
+  • Each testimonial card: identical front and back
+    Front: Blurred/obscured — only shows the reviewer's country flag + star rating
+    Back (after flip): Full review, reviewer name, app they reviewed
+  • Cards are FACE DOWN on load
+  • On scroll into viewport: cards flip face-up in a cascading sequence
+    Card 1 flips at 0ms, Card 2 at 150ms, Card 3 at 300ms, etc.
+  • The flip uses CSS rotateY with perspective(600px) — looks physically real
+  • Manual interaction: clicking any card flips it back face-down, then face-up
+  • The "suspense" of the face-down reveal makes each testimonial feel like a prize
+
+EFFECT 48: AMBIENT BREATHING BORDER
+  • All major glass cards now have a new ambient glow border that BREATHES
+  • The border glow oscillates between:
+    Dim: rgba(0,240,255,0.08) border + 0px spread
+    Bright: rgba(0,240,255,0.25) border + 12px spread
+  • Each card has a DIFFERENT breathing speed and phase (asynchronous):
+    Card 1: 3.2s cycle  |  Card 2: 4.1s cycle  |  Card 3: 2.8s cycle
+    This prevents synchronized "pulsing" (which looks fake/cheap)
+    The slight phase difference makes the page feel genuinely alive
+  • On hover: breathing pauses and border goes to maximum brightness instantly
+
+EFFECT 49: FLOATING SOCIAL PROOF BUBBLES
+  • Floating pop-up bubbles appear at random positions (top half of page only)
+    They look like notification bubbles from an imaginary notification center
+  • Each bubble: small glass card, 200px wide, gentle float-up + fade-out in 4s
+  • Examples of content:
+    "🇧🇷 Someone from Brazil downloaded Subsight"
+    "⭐️⭐️⭐️⭐️⭐️ 5-star review on Privacy Policy Generator"
+    "👁 847 people viewed this portfolio this week"
+    "🤝 New collaboration request from Dubai"
+    "📲 AppShield hit 1,000 installs"
+  • Fire rate: one bubble every 18–30 seconds (random interval)
+  • These are DISTINCT from the existing toast notifications (Effect 21)
+    Toasts: bottom-right, system-style
+    Bubbles: float up from anywhere in the upper half, organic placement
+  • Bubbles never appear on the same X position twice in a row
+  • Dismiss: clicking a bubble makes it pop (scale to 1.2× then opacity:0 in 200ms)
+
+EFFECT 50: THE SIGNATURE STAMP
+  • When any legal page (/privacy, /terms, /cookies, /disclaimer) is opened:
+    A large "HP" monogram STAMP animation plays in the page hero
+    The stamp comes from above: a circular HP seal (like a wax seal) SLAMS down
+    onto the hero with a brief shockwave ripple + the stamp impression appears
+    (inkpress effect: the seal appears with a brief saturation burst then settles)
+  • The stamp itself: the HP hexagonal logo seal from the brand assets
+    Drawn in CSS: hexagonal shape, HP initials in Orbitron inside
+    Color: gold on first hit → settles to muted gold (dried wax effect)
+  • Below the stamp: "OFFICIALLY AUTHENTICATED BY HAMZA POWERPLAYER"
+    In IBM Plex Mono, letter-spacing 4px, gold, fades in after stamp lands
+  • This plays ONCE per page visit (per legal page)
+    If user navigates between legal pages the stamp plays on each one
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🆕  7 NEW SECTIONS (Sections N–T)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+INSERT ORDER: Add Sections N–T between "The Vault" (Section 26) and "Footer" (Section 27).
+Full page order updated at the bottom of this document.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEW SECTION N — THE TROPHY ROOM (APP SHOWCASE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Section label: [ PLAY STORE ]
+  H2: "Every App. Earned."
+  Section background: slightly warmer dark (#050510) with ambient gold glow in corners
+
+  TROPHY ROOM DESIGN:
+  • Visual concept: a museum gallery — apps displayed on virtual pedestals
+  • 4 columns on desktop, 2 on tablet, 1 on mobile
+  • Each APP CARD is treated as a museum exhibit:
+
+  APP CARD ANATOMY:
+  ┌─────────────────────────────────────────────────────────────┐
+  │  [PEDESTAL]                                                  │
+  │  ┌───────────────┐  ← 3D stacked app icons (Effect 45)     │
+  │  │               │                                          │
+  │  │   APP ICON    │                                          │
+  │  │   (CSS art)   │                                          │
+  │  └───────────────┘                                          │
+  │       ★★★★★                ← Star rating (CSS stars)       │
+  │    4.8  (2,400 reviews)    ← In IBM Plex Mono               │
+  │                                                              │
+  │   APP NAME in Orbitron Bold 16px                            │
+  │   Short tagline in Syne 13px muted                          │
+  │                                                              │
+  │  [ FREE ] or [ $3.99 ]  ← Glass pill badge                  │
+  │  [ 1K+ DOWNLOADS ] ← Gold badge if over 1000               │
+  │                                                              │
+  │  [ VIEW ON PLAY STORE ↗ ]  ← Full-width ghost button       │
+  └─────────────────────────────────────────────────────────────┘
+
+  APPS TO INCLUDE (with color schemes for CSS icon art):
+  ┌──────────────────────────────────────────────────────────────────────────────┐
+  │ App Name               │ Icon Colors         │ Price   │ Category            │
+  ├──────────────────────────────────────────────────────────────────────────────┤
+  │ Subsight               │ Cyan + Deep Blue    │ FREE    │ Productivity        │
+  │ Link Analyzer Pro      │ Violet + Dark       │ $3.99   │ Security / Tools    │
+  │ AppShield              │ Green + Black       │ FREE    │ Dev Tools           │
+  │ Privacy Policy Gen Pro │ Gold + Dark         │ Free+   │ Legal / Business    │
+  │ SUBcription Ultra      │ Purple + Dark Blue  │ FREE    │ Finance             │
+  │ ElderPhone             │ Warm Orange + Dark  │ FREE    │ Accessibility       │
+  │ WarrantyVault          │ Steel Blue + Dark   │ FREE    │ Productivity        │
+  │ SubTrack Pro           │ Teal + Dark         │ FREE    │ Finance             │
+  │ TruthRate              │ Red + Dark          │ FREE    │ Reviews             │
+  │ Fantasy Text Pro       │ Rainbow + Dark      │ Free+   │ Creativity          │
+  │ Decision Maker         │ Yellow + Dark       │ FREE    │ Productivity        │
+  │ Premortem Studio       │ Deep Red + Black    │ FREE    │ Business            │
+  └──────────────────────────────────────────────────────────────────────────────┘
+
+  FILTER SYSTEM (above the grid):
+  [ ALL ] [ FREE ] [ PAID ] [ PRODUCTIVITY ] [ SECURITY ] [ DEV TOOLS ] [ FINANCE ]
+  Glass pill buttons, selected state: filled cyan
+  Filtering: fade-out hidden cards (opacity:0, scale:0.9) in 0.3s, fade-in visible
+  
+  ALL-APPS COUNT HEADER:
+    "12 Apps Published on Google Play"
+    Subline: "All built by one person. From scratch."
+
+  TOTAL DOWNLOADS COUNTER:
+    Large animated counter (Effect #7 logic):
+    "10,000+ Total Downloads"
+    Counts up from 0 when section enters viewport
+    Gold color, Orbitron font, large size
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEW SECTION O — THE CONTROL ROOM (LIVE DASHBOARD)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Section label: [ MISSION CONTROL ]
+  H2: "Live From The Lab"
+  Visual concept: NASA Mission Control + Bloomberg Terminal hybrid
+  Background: deepest dark with subtle green data lines (matrix-lite at 4% opacity)
+
+  DASHBOARD LAYOUT (CSS Grid, 4 columns desktop, 2 tablet, 1 mobile):
+
+  PANEL 1 — DEVELOPMENT STATUS (full-width top panel):
+    Terminal-style dark glass card.
+    Heartbeat ECG canvas (Effect 46) at top.
+    3 status rows with animated status dots:
+      ⬤ AI ENGINE        ONLINE   — cyan dot, pulse
+      ⬤ BUILD PIPELINE   ACTIVE   — violet dot, pulse
+      ⬤ DEPLOY READY     STANDING — gold dot, slow pulse
+    
+    Below: real-time clock in 4 time zones:
+      [IST 15:42]  [EST 10:12]  [GMT 15:12]  [PST 07:12]
+      All clocks update every second (JS Date).
+      Format: IBM Plex Mono, labeled by city name.
+      "ISLAMABAD · NEW YORK · LONDON · LOS ANGELES"
+
+  PANEL 2 — REVENUE TRACKER (mock, animated):
+    H3: "Revenue This Month"
+    Large number: "$247" updating every 18 seconds (new mock sale added)
+    A mini line chart (canvas-drawn, 30-day mock data)
+    Chart: thin cyan line, gold area fill beneath it
+    Dotted horizontal line = last month average
+    Labels: "APR" through current month
+    "↑ 23% vs last month" in green with up arrow
+
+  PANEL 3 — APP PERFORMANCE GRID:
+    H3: "App Health"
+    Mini table (glass card):
+    App Name          | Downloads↑ | Rating | Status
+    Subsight          |    847     |  4.7★  | ● LIVE
+    Link Analyzer Pro |    234     |  4.9★  | ● LIVE
+    AppShield         |    521     |  4.8★  | ● LIVE
+    Privacy Policy Gen|    312     |  4.6★  | ● LIVE
+    [+ 8 more]        |            |        |
+    "View all 12 apps →" link to Trophy Room
+
+  PANEL 4 — BUILD ACTIVITY (GitHub-style contribution grid):
+    H3: "Build Streak"
+    12 months × 7 rows of micro squares (CSS grid)
+    Each square: 10px, colored by mock activity level:
+      No activity:   rgba(255,255,255,0.04)
+      Low:           rgba(0,240,255,0.15)
+      Medium:        rgba(0,240,255,0.35)
+      High:          rgba(0,240,255,0.65)
+      Insane:        #00f0ff (pure cyan)
+    Tooltip on hover: "3 commits · 2 app updates"
+    Highlight: the current day box always pulses (breathing border)
+    Streak counter below: "🔥 Current Streak: 47 days"
+
+  PANEL 5 — WORLD TRAFFIC MAP (mini):
+    H3: "Visitors Today"
+    A simplified flat world map drawn in SVG (just continent outlines, very minimal)
+    8 pulsing location dots at key cities (London, New York, Mumbai, Dubai, etc.)
+    Pakistan dot: gold, larger
+    Total counter: "89 visitors from 14 countries today"
+    List below map: "🇺🇸 USA 31  🇬🇧 UK 18  🇵🇰 PK 14  🇦🇪 UAE 9  🇮🇳 IN 7  +"
+
+  PANEL 6 — YOUTUBE METRICS:
+    H3: "Channel Growth"
+    Large numbers in grid:
+      [SUBSCRIBERS]    [VIDEOS]    [TOTAL VIEWS]
+         2,400+           24          47,000+
+    Mini bar chart: views per video (last 6 videos, horizontal bars)
+    "HAMZA POWERPLAYER" YouTube channel label
+    [ VISIT CHANNEL ↗ ] button → youtube.com/... link
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEW SECTION P — THE COMMISSION ROOM (HIRE ME / PRICING)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Section label: [ WORK WITH ME ]
+  H2: "Let's Build Your Vision"
+  This replaces the basic Hire Me page — this is a FULL inline commission section.
+
+  AVAILABILITY BANNER (at top of section):
+  Full-width glass card with animated green pulse dot:
+    "● CURRENTLY ACCEPTING NEW PROJECTS — 2 SLOTS REMAINING"
+    Background: rgba(0,255,136,0.04) — success tinted glass
+    "Available from: [current month + 2 weeks]"
+    "Average response time: 6 hours"
+
+  WHAT I BUILD (icon row):
+  6 glass icon cards in a row:
+    📱 Mobile Apps     🌐 Web Apps      🤖 AI Integration
+    🛠 Dev Tools       🎨 UI/UX Design  ⚡ App Optimization
+  Each card: icon + label + 1 line description
+
+  PRICING TIERS (Effect 42 applied — hologram lift on hover):
+
+  THREE GLASS PRICING CARDS:
+  
+  ┌─────────────────────────────────────────────────────────┐
+  │  CARD 1: STARTER                                        │
+  │  Starting at $299                                       │
+  │  ─────────────────────────────────────────────          │
+  │  ✓ Single-screen app (React Native / Kotlin)            │
+  │  ✓ Basic UI design                                      │
+  │  ✓ Play Store submission                                │
+  │  ✓ 30-day support                                       │
+  │  ✗ Backend integration                                  │
+  │  ✗ Custom animations                                    │
+  │  ─────────────────────────────────────────────          │
+  │  Timeline: 1–2 weeks                                    │
+  │  [ GET STARTED → ]                                      │
+  └─────────────────────────────────────────────────────────┘
+
+  ┌─────────────────────────────────────────────────────────┐
+  │  CARD 2: PRO  ← [ MOST POPULAR ] badge, gold border    │
+  │  Starting at $799   ← slightly levitating (Effect 42)  │
+  │  ─────────────────────────────────────────────          │
+  │  ✓ Full app (5–8 screens)                               │
+  │  ✓ Premium UI with animations                           │
+  │  ✓ Firebase / API integration                           │
+  │  ✓ Play Store submission + ASO                          │
+  │  ✓ 60-day support + 1 update                           │
+  │  ✓ Source code delivered                                │
+  │  ─────────────────────────────────────────────          │
+  │  Timeline: 2–4 weeks                                    │
+  │  [ BUILD MY APP → ]                                     │
+  └─────────────────────────────────────────────────────────┘
+
+  ┌─────────────────────────────────────────────────────────┐
+  │  CARD 3: ENTERPRISE                                     │
+  │  Starting at $1,999                                     │
+  │  ─────────────────────────────────────────────          │
+  │  ✓ Full product (10+ screens)                           │
+  │  ✓ AI/ML integration                                    │
+  │  ✓ Custom backend + database                            │
+  │  ✓ Admin dashboard                                      │
+  │  ✓ Both Android + Web version                           │
+  │  ✓ 90-day support + unlimited fixes                     │
+  │  ✓ Full code ownership                                  │
+  │  ─────────────────────────────────────────────          │
+  │  Timeline: 4–8 weeks                                    │
+  │  [ LET'S TALK → ]                                       │
+  └─────────────────────────────────────────────────────────┘
+
+  HOW IT WORKS (timeline visualization):
+  4-step horizontal timeline with connecting neon line:
+    STEP 1          STEP 2          STEP 3          STEP 4
+   [💬 DISCUSS]  [📋 PLAN]      [⚡ BUILD]      [🚀 LAUNCH]
+   Brief + scope  Contract + $50%  Development     Delivery + $50%
+   1–2 days       milestone       & updates       + support
+
+  WHAT CLIENTS GET (glass card, 2-column list):
+    ✓ Daily progress updates          ✓ Clean, documented code
+    ✓ Figma designs before coding     ✓ Google Play-ready APK
+    ✓ Video demo before delivery      ✓ Post-launch bug fixes
+    ✓ NDA on request                  ✓ Direct WhatsApp access
+
+  PAST WORK GUARANTEE:
+    Glass card with gold border:
+    "If you're not satisfied with the final build — I fix it. Free.
+     I've never left a project unfinished. That record stays intact."
+    Attribution: "— Hamza, HAMZA POWERPLAYER"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEW SECTION Q — THE INTERACTIVE RESUME
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Section label: [ CURRICULUM VITAE ]
+  H2: "Every Line. Earned."
+  Visual concept: A physical resume document rendered in 3D perspective on the page
+    Tilted 6° (like holding a paper), with a subtle shadow beneath it
+    But interactive: click any section of the resume to expand it in-place
+
+  RESUME DOCUMENT DESIGN (glass card, max-width 740px, centered):
+    Top of resume card:
+      ┌──────────────────────────────────────────────┐
+      │  HAMZA POWERPLAYER                           │
+      │  App Developer · AI Builder · Creator        │
+      │  📍 Pakistan  ·  🌐 hamzapowerplayer.com    │
+      │  ✉ hamza@powerplayer.dev                    │
+      └──────────────────────────────────────────────┘
+    
+    SECTIONS OF THE RESUME (each is a collapsible accordion within the card):
+
+    → EXPERIENCE (click to expand)
+      Self-Employed · Independent App Developer · 2022 – Present
+       - 12+ apps published on Google Play
+       - Reaching 10,000+ global users
+       - YouTube content documenting the build journey
+       - 3D asset sales on Unity Asset Store
+
+    → SKILLS (click to expand — reveals mini skill bars within resume)
+      React Native / Expo · Kotlin / Jetpack Compose
+      Firebase / Supabase · Python · AI/LLM APIs
+      Adobe XD · Figma · Git · Google Play Console
+
+    → EDUCATION (click to expand)
+      Self-taught · Online Courses · Build-in-Public
+      "I believe the best education is shipping real products."
+
+    → APPS PORTFOLIO (click to expand — thumbnail grid of app icons)
+
+    → LANGUAGES (click to expand)
+      Urdu (Native) · English (Fluent) · Punjabi (Native)
+
+  DOWNLOAD BUTTON (floating action, below the resume card):
+    [ ⬇ DOWNLOAD CV — PDF ]
+    Gradient border, magnetic effect
+    On click: generates a print-friendly styled page (window.print())
+      @media print CSS: white bg, black text, no animations
+    A second button: [ ⬇ DOWNLOAD — DARK VERSION ]
+      Saves the current dark glass resume as a screenshot (html2canvas if available,
+      or just provides a "Right-click → Save As" instruction in a toast)
+
+  RESUME INTERACTIONS:
+    • Hover any job title or tech skill: it underlines with a neon glow
+    • The resume card can be TILTED with mouse movement (subtle 3D tilt, ±4°)
+    • On mobile: resume is displayed flat (no tilt, full width)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEW SECTION R — TESTIMONIALS GALLERY v2.0
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Section label: [ WHAT THEY SAY ]
+  H2: "Real Users. Real Words."
+  This upgrades the existing Testimonials Mosaic from Part 2 into a new system.
+
+  SOURCE TABS (glass pill tabs above the gallery):
+    [ GOOGLE PLAY ★ ] [ YOUTUBE 📺 ] [ LINKEDIN 💼 ] [ DIRECT 📩 ]
+    Each tab shows testimonials from that specific source.
+    Tab switch: same fade-filter animation as Trophy Room filter.
+
+  TESTIMONIAL CARDS (Effect 47 applies — card flip reveal):
+  Each card face reveals:
+    FRONT (face-down on load):
+      Just country flag + star rating (anonymous)
+    BACK (face-up after flip):
+      "This is the best subscription tracker I've found.
+       Clean, fast, offline. No BS."
+       — Verified Google Play User · 🇩🇪 Germany  ·  ★★★★★
+
+  Include at least 9 testimonials total across all tabs.
+  Google Play (5): reviews for Subsight, Link Analyzer, AppShield, Fantasy Text Pro, Privacy Policy Gen
+  YouTube (2): "Your build videos are the most honest on this platform"
+  LinkedIn (1): A professional recommendation
+  Direct (1): A client message (paraphrased)
+
+  RATING SUMMARY BAR (above the cards):
+    ★★★★★   4.8 average
+    ████████████████░░░░  5 stars: 78%
+    ██████░░░░░░░░░░░░░░  4 stars: 16%
+    ██░░░░░░░░░░░░░░░░░░  3 stars: 4%
+    ░░░░░░░░░░░░░░░░░░░░  1–2 stars: 2%
+  Bars: cyan fill animated on scroll-in
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEW SECTION S — COMMUNITY HUB
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Section label: [ JOIN THE MOVEMENT ]
+  H2: "Where Builders Meet"
+  Visual concept: a glowing signal map — each community is a lit node on a radar
+
+  RADAR VISUAL (canvas, 400px circle, centered above the cards):
+    Concentric rings expanding outward (radar pulse), color: rgba(0,240,255,0.06)
+    Each platform is a dot on the radar at different positions:
+      YouTube:  top-right, large gold dot (main channel)
+      Telegram: right, cyan dot
+      Patreon:  bottom-right, violet dot
+      LinkedIn: bottom, blue-tinted dot
+      GitHub:   left, white dot
+      WhatsApp: bottom-left, green dot
+    Each dot has a pulsing ring
+    A sweep line rotates (classic radar sweep, 4s full rotation)
+    When sweep crosses a dot: dot flashes brighter (like a radar blip)
+
+  PLATFORM CARDS (below radar, horizontal scroll on mobile, 3-column on desktop):
+
+  CARD 1 — YOUTUBE
+    Icon: play button CSS art
+    Name: "HAMZA POWERPLAYER" channel
+    Stat: "2,400+ Subscribers"
+    Desc: "Full builds. Real mistakes. Honest progress."
+    CTA: [ SUBSCRIBE ↗ ]
+    Color accent: gold (YouTube brand adjacent)
+
+  CARD 2 — PATREON
+    Icon: P badge CSS art  
+    Name: "Support the Mission"
+    Stat: "Join the inner circle"
+    Desc: "Early access to prompts, tools, source code & behind-the-scenes."
+    CTA: [ BECOME A PATRON ↗ ]
+    Color accent: violet (Patreon brand adjacent)
+
+  CARD 3 — TELEGRAM
+    Icon: paper plane CSS art
+    Name: "HAMZA PP Community"
+    Stat: "Dev tips daily"
+    Desc: "App dev news, build updates, exclusive content."
+    CTA: [ JOIN GROUP ↗ ]
+    Color accent: cyan
+
+  CARD 4 — GITHUB
+    Icon: octocat-inspired CSS shape (simplified)
+    Name: "@HAMZAPP99"
+    Stat: "Open-source tools"
+    Desc: "Follow the code. Fork it. Build with it."
+    CTA: [ FOLLOW ↗ ]
+    Color accent: white/muted
+
+  CARD 5 — LINKEDIN
+    Icon: square "in" CSS art
+    Name: "Hamza PowerPlayer"
+    Stat: "Professional network"
+    Desc: "Connect for collaboration, partnerships, and opportunities."
+    CTA: [ CONNECT ↗ ]
+    Color accent: blue-tinted cyan
+
+  CARD 6 — WHATSAPP
+    Icon: speech bubble CSS art
+    Name: "Direct Contact"
+    Stat: "Response: < 6 hours"
+    Desc: "Have a project? Drop a message. Let's talk."
+    CTA: [ MESSAGE NOW ↗ ]
+    Color accent: success green
+
+  Below cards:
+    "Built in public. Growing in public. Pakistan → World."
+    Syne, 20px, muted, centered.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEW SECTION T — PAKISTAN TECH RISING (THE MANIFESTO)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Section label: [ 🇵🇰 MADE IN PAKISTAN ]
+  H2: "Pakistan Builds."
+  This is the most emotionally charged section on the entire website.
+  It is not a generic section. It MEANS something.
+
+  DESIGN:
+  Background: The deepest, darkest section on the whole page (#02020a)
+  A subtle green and white aurora (Pakistan flag colors) in the background
+    — ONLY in this section's background area, behind the other auroras
+  The pakistan flag star+crescent drawn in canvas, very large (500px),
+    very faint (opacity 0.03), slowly rotating
+
+  OPENING STATEMENT (centered, Orbitron, 32px, white):
+    "They told us the world's technology comes from elsewhere."
+    "They were wrong."
+
+  PULL QUOTE (massive text, 64px, takes full width):
+    "Every great app started as code written somewhere.
+     Mine is written in Pakistan."
+
+  MANIFESTO TEXT (Syne, 17px, line-height 2, max-width 760px, centered):
+    Write naturally. First person. Powerful.
+    Topics to cover:
+    — Being a self-taught developer with no local mentor ecosystem
+    — Building apps used by people in 50+ countries, from a Pakistani city
+    — The belief that geography is not destiny
+    — The Pakistani tech generation that is quietly building world-class products
+    — The mission: be the proof that it's possible, so others believe too
+
+  PULL-QUOTE MIDPOINT (left-border neon line, slightly indented):
+    "I am not building despite being from Pakistan.
+     I am building because of who Pakistan made me."
+
+  COUNTRY STATS MINI-GRID:
+    3 glass cards in a row:
+      🌐 "Apps downloaded in 50+ countries"
+      📱 "12 apps shipped, 0 outside help"
+      🔥 "Started at 17. Still building."
+
+  CLOSING LINE (centered, IBM Plex Mono, muted, letter-spacing 4px):
+    "> LOCATION: PAKISTAN  ·  REACH: WORLDWIDE  ·  STATUS: BUILDING"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐  LANGUAGE TOGGLE — URDU SUPPORT SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  TOGGLE BUTTON (in navigation, right side near hamburger):
+    [ EN | اردو ]
+    Glass pill, 2 states: EN active = left side lit, اردو active = right side lit
+    Transition between states: Effect 41 (language morph)
+
+  URDU MODE CHANGES:
+    direction: rtl applied to <body>
+    text-align: right on all text containers
+    Fonts: Orbitron/Syne stay for Latin UI elements (logo, labels)
+    All body copy switches to Urdu (Noto Nastaliq Urdu — import from Google Fonts)
+    Number formatting stays in Western Arabic numerals (familiar globally)
+
+  WHAT GETS TRANSLATED TO URDU:
+    • All section H2 headings
+    • All body paragraphs in About section
+    • Pakistan Tech Rising manifesto text
+    • Nav labels
+    • Button labels
+    • The terminal sequence boot messages (boot in Urdu)
+    • Contact form placeholder text and labels
+
+  WHAT STAYS IN ENGLISH REGARDLESS:
+    • Tech stack names (React Native, Firebase, etc.)
+    • App names
+    • Code snippets in terminal
+    • IBM Plex Mono data readouts (stats, counters, numbers)
+    • Section labels ([ ABOUT ] etc. — these remain as design elements)
+
+  URDU SECTION HEADINGS (write these correctly):
+    "About Me" → "میرے بارے میں"
+    "Skills" → "مہارتیں"
+    "Projects" → "پروجیکٹس"
+    "Contact" → "رابطہ کریں"
+    "Apps" → "ایپس"
+    "Pakistan Tech Rising" → "پاکستان ٹیک اٹھ رہا ہے"
+
+  PERSISTENCE: Save language preference to localStorage key: 'hp_lang'
+    Page loads in saved preference. Default: 'en'.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📡  REVENUE TICKER INTEGRATION (global — top ribbon)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  This is Effect 43 but deserves its own section for implementation clarity.
+
+  RIBBON POSITION: Fixed at very top, full viewport width, height 28px.
+    z-index: 10001 (above everything including nav).
+    The main navigation sits 28px lower when ribbon is visible.
+    Ribbon can be dismissed: small [×] button right edge, stores in localStorage.
+
+  MOCK SALE DATA POOL (JS array, cycle randomly):
+    const mockSales = [
+      { type: 'sale',     text: '+$3.99 · Link Analyzer Pro · 🇺🇸 United States' },
+      { type: 'sale',     text: '+$1.99 · Privacy Policy Gen · 🇬🇧 United Kingdom' },
+      { type: 'review',   text: '★★★★★ New 5-star review · Subsight · 🇩🇪 Germany' },
+      { type: 'download', text: '↓ AppShield · New install · 🇦🇺 Australia' },
+      { type: 'sale',     text: '+$3.99 · Link Analyzer Pro · 🇨🇦 Canada' },
+      { type: 'milestone',text: '🎉 Subsight hit 1,000 installs!' },
+      { type: 'download', text: '↓ SUBcription Ultra · New install · 🇧🇷 Brazil' },
+      { type: 'sale',     text: '+$2.99 · Fantasy Text Pro · 🇯🇵 Japan' },
+      { type: 'review',   text: '★★★★★ "Best dev tool on the store" · AppShield' },
+    ]
+
+  INTERVAL: New item pushed to ticker every 7–12 seconds (random)
+  ANIMATION: CSS marquee-style continuous left scroll, seamless loop
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔧  NEW FLOATING GLOBAL ELEMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FLOATING CV DOWNLOAD BUTTON (new permanent FAB):
+  • Joins the existing HAMZA AI chat FAB (bottom-right)
+  • Positioned at bottom-LEFT (opposite corner, balanced)
+  • Design: rectangle pill, 48px tall, glass card
+  • Content: [ ⬇ CV ] label in Syne Bold
+  • On hover: expands to show full label: [ ⬇ DOWNLOAD MY CV ]
+  • On click: triggers the same print/download from Section Q resume
+
+BACK-TO-TOP BUTTON UPGRADE:
+  The existing scroll progress bar (Effect 22) gets a new feature:
+  When user reaches the BOTTOM of the page:
+  The progress bar indicator transforms into a back-to-top button
+  Animation: the bar compresses into a small ▲ icon at the top of the bar
+  Clicking it: smooth scroll to top with a brief wormhole transition
+  This replaces the need for a separate back-to-top button
+
+SHARE THIS SITE BUTTON (new, fixed bottom-right above HAMZA AI button):
+  • Small glass button: [🔗 SHARE]
+  • On click: Web Share API (navigator.share) for mobile native share sheet
+  • On desktop: a mini dropdown appears with copy-link + social share options:
+    [ Copy Link ] [ Share on Twitter/X ] [ Share on LinkedIn ] [ Share on WhatsApp ]
+  • Sharing text: "Check out this portfolio — this person is building the future.
+    hamzapowerplayer.com"
+  • Copy confirmation: brief "Copied! ✓" toast in gold
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔄  UPGRADES TO EXISTING SECTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+HERO UPGRADE:
+  The existing subtitle cycle (3 phrases) adds a new phrase:
+    "Building the Future from Pakistan 🇵🇰"
+  This phrase appears last in the cycle and lingers 1 second longer before cycling.
+
+NAV UPGRADE:
+  Add [ اردو ] language toggle pill next to existing nav items (see Language section above).
+  Mobile: language toggle also appears in the slide-out fullscreen nav.
+
+FOOTER UPGRADE:
+  Add a new line at the very bottom:
+    "URDU EDITION: Available in your language — switch above ↑"
+    Shown only in EN mode, in tiny IBM Plex Mono, muted.
+  When in Urdu mode this line is replaced by:
+    "اردو ورژن فعال ہے — ✓"
+
+HAMZA AI CHATBOT UPGRADE (built in from Part 4):
+  Add new keyword responses for common business queries:
+    "hire" / "work" / "cost" / "price" →
+      "Ready to build something? My rates start at $299 for a
+       starter app. Check out the Commission Room section or
+       drop me a WhatsApp. Direct link: [WhatsApp button]"
+    "app" / "apps" / "portfolio" →
+      "I've shipped 12 apps on Google Play. You can see them
+       all in the Trophy Room section below. Which type of app
+       are you looking for?"
+    "pakistan" / "pakistani" →
+      "Proudly building from Pakistan 🇵🇰 — reaching users in 
+       50+ countries. Check the 'Pakistan Tech Rising' section!"
+    "urdu" / "اردو" →
+      "Did you know the site has a full Urdu version?
+       Toggle it in the nav — [EN | اردو]"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋  COMPLETE FINAL PAGE ORDER (All 6 Parts Combined)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  GLOBAL FIXED ELEMENTS:
+    REVENUE TICKER (28px ribbon at top — Effect 43)
+    Navigation (scrollspy, mobile bottom bar, language toggle)
+
+  MAIN PAGE SECTIONS:
+  0.  Loading Screen
+  1.  Hero (airplane, holographic text, rocket button, gravity letters, waveform)
+  2.  Brand Ticker (infinite scroll)
+  3.  War Room Dashboard (live countdown, metrics)
+  4.  About (spinning globe)
+  5.  Skills — Solar System (6 orbiting planets)
+  6.  The Forge (skill build simulator)
+  7.  Gravity Room (physics playground)
+  8.  Tech Stack Universe (orbit rings)
+  9.  Projects Showcase (3D tunnel, morphing borders, card flip)
+  10. App Showcase (phone mockup)
+  11. Neural Network (animated brain)
+  12. AI Capabilities (honeycomb)
+  13. Developer Timeline
+  14. The Signal (radio broadcast)
+  15. Vision 2030 Roadmap
+  16. Achievements / Counters
+  17. Live Activity Feed
+  18. Philosophy Manifesto
+  19. The Wall of Fire (full-height quote)
+  20. Developer Console / Terminal (code rain, boot sequence)
+  21. The Multiverse (3 portals)
+  22. The Mirror (cursor spotlight reveal)
+  23. Contact Form
+  24. The Vault (secret projects, locked/unlockable)
+  ← NEW: PART 6 SECTIONS INSERT HERE →
+  25. Section N — The Trophy Room (all 12 apps)
+  26. Section O — The Control Room (live dashboard)
+  27. Section P — Commission Room (pricing, hire me)
+  28. Section Q — Interactive Resume (download CV)
+  29. Section R — Testimonials Gallery v2.0 (card flip, tabs)
+  30. Section S — Community Hub (radar + platform cards)
+  31. Section T — Pakistan Tech Rising (manifesto)
+  32. Footer (4-column, waveform border, Urdu toggle note)
+
+  FLOATING / BEHAVIOR LAYERS:
+  33. HAMZA AI Chat (fixed bottom-right, upgraded with business responses)
+  34. CV Download FAB (fixed bottom-left)
+  35. Share Site Button (fixed bottom-right, above AI chat)
+  36. Screensaver Mode (60s inactivity)
+  37. Konami Code Easter Egg (↑↑↓↓←→←→BA)
+  38. Hacker Mode (type HACK / exit EXIT)
+  39. Rocket Launch (hero button trigger)
+  40. Ambient Toast Notifications (auto every 12–18s)
+  41. Social Proof Bubbles (auto every 18–30s — Effect 49)
+  42. Constellation formation (8s idle particles)
+  43. Wormhole nav transitions (nav clicks)
+  44. Cookie Consent Banner
+  45. Language system (EN / Urdu toggle — Effect 41)
+
+  HASH-BASED PAGES (from Part 5 — all preserved):
+  /about  /privacy  /terms  /contact  /apps  /blog
+  /faq  /hire  /tools  /cookies  /disclaimer  /sitemap  /404  /coming-soon
+
+  TOTAL MAIN SECTIONS: 32 (up from 27)
+  TOTAL EFFECTS: 50 (up from 40)
+  TOTAL FEATURES: 45 (including overlays and behaviors)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔧  TECHNICAL REQUIREMENTS (Part 6 additions)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FONT ADDITIONS (add to existing Google Fonts import):
+  family=Noto+Nastaliq+Urdu:wght@400;700
+  Used ONLY when Urdu mode is active.
+  Import with: &display=swap  — no render blocking.
+  Apply via CSS: [data-lang="ur"] .body-text { font-family: 'Noto Nastaliq Urdu', serif; }
+
+LOCALSTORAGE KEYS (full list — prevents conflicts):
+  hp_cookie_consent : 'accepted' | 'declined'   (from Part 5)
+  hp_lang           : 'en' | 'ur'               (Part 6 new)
+  hp_ticker_dismissed: 'true'                   (Part 6 new)
+  hp_rocket_complete : 'true'                   (from Part 4)
+  hp_hacker_activated: 'true'                   (from Part 4)
+  hp_konami_done     : 'true'                   (from Part 4)
+
+CANVAS MANAGER ADDITIONS (extend HP object from Part 4):
+  HP.canvases.radar = document.getElementById('canvas-radar')
+  HP.rafs.radar = requestAnimationFrame(drawRadar)
+
+RTL LAYOUT RULES:
+  [data-lang="ur"] nav { flex-direction: row-reverse; }
+  [data-lang="ur"] .section-content { text-align: right; }
+  [data-lang="ur"] .card-grid { direction: rtl; }
+  [data-lang="ur"] .timeline { flex-direction: row-reverse; }
+  Orbitron logo "HAMZA POWERPLAYER" stays LTR always (brand identity)
+  Numbers and icon labels stay LTR always
+
+PRINT MEDIA QUERY ADDITIONS:
+  @media print:
+    .revenue-ticker, .floating-fabs, .ai-chat-button: display: none
+    .resume-card: width: 100%, no tilt, no glass effect, white bg, black text
+    .pricing-cards: page-break-inside: avoid
+
+PERFORMANCE NOTE:
+  Social proof bubbles (Effect 49): max 1 bubble visible at a time
+  If a bubble is already showing, skip next fire event
+  Radar canvas: 30fps target (not 60fps — it's decorative)
+  Revenue ticker: CSS animation only, no requestAnimationFrame (pure CSS marquee)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚫  PART 6 ABSOLUTE PROHIBITIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✗  All prohibitions from Parts 1–5 still apply
+  ✗  No real payment processing — commission cards link to contact, not a payment gateway
+  ✗  No actual API calls for revenue data — all data is mock, hardcoded, mock-random
+  ✗  The Urdu translation must be real Urdu — no Google Translate garbage or placeholder text
+  ✗  The app icons must be CSS-drawn — no placeholder gray boxes, no emojis as icons
+  ✗  Noto Nastaliq Urdu must load conditionally — only when lang = 'ur' (never preload)
+  ✗  The manifesto text must be written with genuine emotion — not corporate copy
+  ✗  The radar canvas must have a real sweep animation — not a static map
+  ✗  The resume must be PRINTABLE — @media print must produce a clean document
+  ✗  Social proof bubbles must never overlap the revenue ticker or navigation
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅  PART 6 FINAL DELIVERY REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Merge all 6 parts into ONE complete index.html file.
+  The existing Part 5 hash-router and all 14 pages remain intact.
+
+  ✓  Revenue ticker ribbon — live mock sales, auto-updating, dismissible
+  ✓  Trophy Room — all 12 apps, CSS icon art, filter system, download counter
+  ✓  Control Room — ECG heartbeat, world map, revenue chart, activity grid
+  ✓  Commission Room — 3 pricing tiers with hologram lift (Effect 42)
+  ✓  Interactive Resume — tilted 3D card, accordion sections, print/download
+  ✓  Testimonials v2.0 — card flip reveal (Effect 47), tabbed by source
+  ✓  Community Hub — radar canvas with sweep + 6 platform cards
+  ✓  Pakistan Tech Rising — emotional manifesto, green/white aurora, crescent
+  ✓  Language toggle EN/Urdu — morph transition (Effect 41), RTL layout
+  ✓  Social proof bubbles — float up, random position, auto-fire (Effect 49)
+  ✓  Signature stamp on legal pages (Effect 50)
+  ✓  Ambient breathing borders on all glass cards (Effect 48)
+  ✓  Magnetic section snapping with snap/free toggle (Effect 44)
+  ✓  App icon 3D stack hover system in Trophy Room (Effect 45)
+  ✓  CV Download FAB (bottom-left, permanent)
+  ✓  Share Site button with Web Share API
+  ✓  HAMZA AI upgraded with business query responses
+  ✓  All 50 effects functioning simultaneously
+  ✓  All 32 main sections in correct order
+  ✓  All 14 hash-routed pages from Part 5 still working
+  ✓  Print styles for resume and legal pages
+  ✓  Noto Nastaliq Urdu loaded conditionally
+
+  LIGHTHOUSE TARGETS:
+  ✓  Performance > 82 (acceptable given 50 effects + 45 features)
+  ✓  Accessibility > 90 (RTL support does not break ARIA)
+  ✓  SEO > 95
+  ✓  PWA: installable, offline-capable
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Parts 1–5 built a portfolio the world had never seen.
+
+  Part 6 turns it into a business.
+  A community.
+  A movement.
+
+  When someone asks who built this —
+  they'll already know.
+
+  They've seen the ticker.
+  They've read the manifesto.
+  They've felt the radar pulse.
+
+  They know exactly who built this.
+
+        HAMZA POWERPLAYER.
+        Pakistan → World.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PART 6 END · SECTIONS: 32 MAIN · EFFECTS: 50 · FEATURES: 45 · 1 HTML FILE
+  SERIES COMPLETE: PART 1 + 2 + 3 + 4 + 5 + 6 = THE DEFINITIVE EMPIRE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

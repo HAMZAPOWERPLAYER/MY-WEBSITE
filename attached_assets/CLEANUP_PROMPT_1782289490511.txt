@@ -1,0 +1,28 @@
+CLEANUP & FIX PROMPT — HAMZA POWERPLAYER PROJECT
+═══════════════════════════════════════════════════
+
+Stop what you are doing. Do a full project cleanup right now.
+
+REMOVE ALL USELESS THINGS:
+- Delete any unused components that were created but never imported anywhere
+- Delete duplicate files or backup copies
+- Remove any test files, placeholder files, or empty files
+- Clean up tsconfig.json — remove ALL old monorepo paths, fix it properly for this single project
+- Remove any unused imports in every file
+- Delete any folders that are empty or serve no purpose
+- Remove any console.log() statements left in code
+- Clean up package.json — remove unused dependencies
+
+FIX WHAT IS BROKEN:
+- Fix the tsconfig.json base config paths properly right now
+- Make sure all imports resolve correctly
+- Make sure the project builds without errors
+- Fix any type errors blocking the build
+
+THEN:
+- Run the project
+- Confirm it works
+- Show me a clean working preview
+
+Keep only what is needed. Delete everything else.
+One clean working project. Nothing more.

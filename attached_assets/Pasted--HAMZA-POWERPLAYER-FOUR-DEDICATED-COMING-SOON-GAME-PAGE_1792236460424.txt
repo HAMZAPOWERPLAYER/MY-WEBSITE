@@ -1,0 +1,91 @@
+# HAMZA POWERPLAYER — FOUR DEDICATED COMING SOON GAME PAGES
+
+Continue working in the existing HAMZA POWERPLAYER website repository. This prompt supplements all previous website-upgrade prompts. Do not restart the project or remove existing functionality.
+
+## 1. Create Four Individual Game Pages
+
+Create a dedicated, visually polished page for each of these upcoming games:
+
+1. **THE LAST BELL**
+   - Android package ID: `com.hamzapowerplayer.lastbell`
+   - Route: `/games/the-last-bell`
+
+2. **PAY ME BACK**
+   - Android package ID: `com.hamzapowerplayer.paymeback`
+   - Route: `/games/pay-me-back`
+
+3. **DECAY**
+   - Android package ID: `com.hamzapowerplayer.decay`
+   - Route: `/games/decay`
+
+4. **ECHOES OF THE SHADOWS**
+   - Android package ID: `com.hamzapowerplayer.echoesoftheshadows`
+   - Route: `/games/echoes-of-the-shadows`
+
+Use the exact package IDs above. Do not confuse package identifiers with Google Play listing URLs.
+
+## 2. Professional Game Page Design
+
+Build a reusable game-detail page template with a unique presentation for each game.
+
+Each page should include:
+- Game title and a prominent **COMING SOON** status.
+- A distinctive hero section with an appropriate visual style.
+- Game artwork or screenshots only when verified assets are available.
+- A short description based on confirmed project information.
+- Genre, platform, and gameplay information only when supported by existing project files.
+- A clear return link to the games directory and homepage.
+- Consistent HAMZA POWERPLAYER branding.
+- Responsive layouts for phones, tablets, and desktop.
+- Accessible typography, keyboard navigation, and readable contrast.
+
+Use original, game-appropriate styling rather than four identical copies with different titles.
+
+## 3. Honest Publication Status
+
+All four pages must initially display **COMING SOON** unless repository evidence confirms a different current status.
+
+- Do not fabricate release dates, trailers, ratings, reviews, gameplay screenshots, or download counts.
+- Do not display functional Google Play download buttons until the exact listing URLs are verified.
+- Do not create fake download links or claim that a game is available when it is not.
+- If a project already contains verified artwork or useful documentation, reuse it appropriately.
+- Clearly distinguish a website preview from an actual released game.
+
+If an existing game project has reached a more advanced development stage, describe that accurately without falsely claiming a public release.
+
+## 4. Games Directory Integration
+
+Create or update a central `/games` directory featuring all four games.
+
+Each game card should show:
+- Game title.
+- Appropriate available artwork.
+- A concise, verified description.
+- Current development or release status.
+- A working link to its dedicated page.
+
+Add the games to the main homepage's project showcase where appropriate. Ensure visitors can discover every game through normal navigation.
+
+## 5. SEO and Technical Requirements
+
+For each page:
+- Add a unique title and meta description.
+- Use the correct canonical URL for the verified production domain.
+- Provide suitable social-sharing metadata.
+- Use meaningful headings, accessible image descriptions, and internal links.
+- Include public game pages in the sitemap when appropriate.
+- Ensure direct navigation and browser refresh work in production.
+
+Keep game metadata in the central typed project registry. Avoid duplicated page implementations.
+
+## 6. Verification
+
+After implementing the pages:
+- Run the available TypeScript checks and production build.
+- Test all four game routes and the games directory.
+- Verify the displayed package IDs.
+- Check navigation, responsive layouts, images, and metadata.
+- Confirm that no unverified store links or invented release information appear.
+- Report actual test results and any unresolved issues.
+
+**Execution instruction:** Implement the pages in the existing project, preserve all prior website improvements, and verify the result. Do not stop at producing a plan.
