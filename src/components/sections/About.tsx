@@ -11,7 +11,7 @@ import { SITE_LINKS } from '@/lib/siteLinks';
 const STATS = [
   { val: APPS.length, suffix: '', label: 'Published Apps', color: 'var(--neon-cyan)' },
   { val: PROJECTS.length, suffix: '', label: 'Public Repositories', color: 'var(--gold)' },
-  { val: GAMES.length, suffix: '', label: 'Games in Development', color: 'var(--neon-violet)' },
+  { val: GAMES.length, suffix: '', label: 'Android Games', color: 'var(--neon-violet)' },
   { val: SITE_LINKS.length, suffix: '', label: 'Verified Destinations', color: 'var(--neon-cyan)' },
 ];
 

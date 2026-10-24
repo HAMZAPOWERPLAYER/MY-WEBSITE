@@ -29,7 +29,7 @@ const FEATURED: FeaturedItem[] = [
     name: game.name,
     route: game.route,
     tagline: game.tagline ?? game.summary ?? '',
-    badge: 'COMING SOON',
+    badge: game.status === 'published' ? 'LIVE GAME' : 'COMING SOON',
     gradient: game.accent?.gradient,
   })),
 ];

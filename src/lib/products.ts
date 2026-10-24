@@ -123,12 +123,13 @@ export const PRODUCTS: ProductRecord[] = [
     route: '/games/the-last-bell',
     name: 'THE LAST BELL',
     kind: 'game',
-    status: 'coming-soon',
+    status: 'published',
     summary:
       'First-person mobile horror for Android. Explore a darkened school, find three keys, avoid the entity, and escape.',
     tagline: 'Find the keys. Avoid the entity. Escape the school.',
     platform: 'Android',
     packageId: 'com.hamzapowerplayer.lastbell',
+    storeUrl: 'https://play.google.com/store/apps/details?id=com.hamzapowerplayer.lastbell',
     genre: 'First-person survival horror',
     gameplay: [
       'Explore a darkened school rendered in first person',

@@ -7,7 +7,7 @@ import { Footer } from '@/components/sections/Footer';
 
 const BASE_URL = 'https://www.hamzapowerplayer.com';
 const DEFAULT_TITLE = 'HAMZA POWERPLAYER — App Developer & Digital Product Builder';
-const DEFAULT_DESC = 'Official portfolio of HAMZA POWERPLAYER, featuring published apps, public software projects, and games in development.';
+const DEFAULT_DESC = 'Official portfolio of HAMZA POWERPLAYER, featuring published apps, a live Android game, public software projects, and games in development.';
 const OG_IMAGE = `${BASE_URL}/opengraph.jpg`;
 
 interface Props {

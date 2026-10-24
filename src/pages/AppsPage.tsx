@@ -29,7 +29,7 @@ export default function AppsPage() {
   return (
     <PageLayout
       title="HAMZA POWERPLAYER Android Apps | Official Listings"
-      description="Explore Android apps by HAMZA POWERPLAYER, browse dedicated product pages, and open the confirmed Google Play listing for SubSight. Only live listings appear."
+      description="Explore Android apps by HAMZA POWERPLAYER, browse product pages, and open the confirmed Google Play listings for PakiGPA and SubSight. Only live apps appear."
       path="/apps"
       schemas={[JSON.stringify({
         "@context": "https://schema.org",
@@ -101,7 +101,7 @@ export default function AppsPage() {
           {filtered.length === 0 && <p className="sm:col-span-2 py-12 text-center font-accent text-sm text-[var(--text-muted)]">No apps match your search.</p>}
         </div>
         <p className="mt-8 text-center font-accent text-xs text-[var(--text-muted)]">
-          Source code projects and games in development are listed separately in <Link href="/projects" className="text-[var(--neon-cyan)]">Projects</Link> and <Link href="/games" className="text-[var(--neon-cyan)]">Games</Link>.
+          Source code projects and Android games are listed separately in <Link href="/projects" className="text-[var(--neon-cyan)]">Projects</Link> and <Link href="/games" className="text-[var(--neon-cyan)]">Games</Link>.
         </p>
       </div>
     </PageLayout>

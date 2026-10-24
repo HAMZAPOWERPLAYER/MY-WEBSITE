@@ -36,7 +36,7 @@ export default function ComingSoonPage() {
             href="/games"
             className="inline-flex items-center gap-2 rounded-xl border border-[rgba(0,240,255,0.25)] px-5 py-3 font-display text-xs font-bold tracking-wider text-[var(--neon-cyan)]"
           >
-            <Gamepad2 size={14} /> View games in development
+            <Gamepad2 size={14} /> View Android games
           </Link>
           <Link
             href="/"

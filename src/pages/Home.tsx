@@ -41,13 +41,13 @@ export default function Home() {
   return (
     <>
       <title>HAMZA POWERPLAYER | Apps, Software Projects & Games</title>
-      <meta name="description" content="Official HAMZA POWERPLAYER portfolio: discover the SubSight Android app, public GitHub projects, upcoming games, verified links, and contact options." />
+      <meta name="description" content="Official HAMZA POWERPLAYER portfolio: explore PakiGPA, SubSight, and The Last Bell on Google Play, plus public GitHub projects and games in development." />
       <link rel="canonical" href="https://www.hamzapowerplayer.com/" />
       <meta property="og:title" content="HAMZA POWERPLAYER | Apps, Software Projects & Game Development" />
-      <meta property="og:description" content="Official portfolio featuring the SubSight Android app, public GitHub software projects, upcoming games, and verified contact links." />
+      <meta property="og:description" content="Official portfolio featuring PakiGPA, SubSight, and The Last Bell on Google Play, plus public GitHub projects, games in development, and verified contact links." />
       <meta property="og:url" content="https://www.hamzapowerplayer.com/" />
       <meta name="twitter:title" content="HAMZA POWERPLAYER | Apps, Projects & Games" />
-      <meta name="twitter:description" content="Official portfolio featuring SubSight, public software projects, upcoming games, and verified contact links." />
+      <meta name="twitter:description" content="Official portfolio featuring PakiGPA, SubSight, The Last Bell, public software projects, games in development, and verified contact links." />
       <SmoothScroll>
         <div className="relative min-h-screen" style={{ background: 'var(--bg-base)' }}>
         <AuroraEngine />
@@ -78,7 +78,7 @@ export default function Home() {
           <section aria-label="Explore products and projects" className="mx-auto grid max-w-6xl gap-4 px-6 py-10 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { href: '/apps', label: 'Apps', detail: 'Published app listings' },
-              { href: '/games', label: 'Games', detail: 'Games in development' },
+              { href: '/games', label: 'Games', detail: 'The Last Bell & more' },
               { href: '/projects', label: 'Projects', detail: 'Public GitHub repositories' },
               { href: '/links', label: 'Links', detail: 'Profiles and destinations' },
             ].map((item) => (

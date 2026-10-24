@@ -7,7 +7,7 @@ export default function BlogPage() {
   return (
     <PageLayout
       title="Developer Notes and Build Logs | HAMZA POWERPLAYER"
-      description="The HAMZA POWERPLAYER blog is not published yet. Until then, explore verified apps, public GitHub projects, and upcoming games instead of invented articles."
+      description="The HAMZA POWERPLAYER blog is not published yet. Until then, explore verified apps, The Last Bell, and public GitHub projects instead of invented articles."
       path="/blog"
     >
       <PageHero label="THOUGHTS" title="Blog" subtitle="Writing in progress — no articles are published yet" />

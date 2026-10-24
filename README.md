@@ -1,6 +1,6 @@
 # HAMZA POWERPLAYER — Developer Portfolio & Application Directory
 
-> A polished, fast, accessible, and search-engine-friendly developer portfolio and application directory built for **HAMZA POWERPLAYER**. The site presents the verified SubSight and PakiGPA Android apps, public GitHub software projects, upcoming games, and verified contact destinations — with no fabricated activity, ratings, reviews, or download counts.
+> A polished, fast, accessible, and search-engine-friendly developer portfolio and application directory built for **HAMZA POWERPLAYER**. The site presents the verified PakiGPA, SubSight, and The Last Bell Android releases, public GitHub software projects, games in development, and verified contact destinations — with no fabricated activity, ratings, reviews, or download counts.
 
 **Live site:** https://www.hamzapowerplayer.com (canonical `www` hostname; non-www redirects)
 
@@ -55,9 +55,10 @@ This is a single-page React application that is prerendered to static HTML at bu
 | Package manager | pnpm 11 (with `pnpm-workspace.yaml` catalog) |
 | Deployment target | Vercel (static output, clean URLs) |
 | Public routes | 29 (prerendered) |
-| Public products | 2 published apps, 4 games in development, 8 public projects |
-| Published apps | SubSight, PakiGPA |
-| Games in development | THE LAST BELL, PAY ME BACK, DECAY, ECHOES OF THE SHADOWS |
+| Public products | 2 published apps, 1 published game, 3 games in development, 7 public projects |
+| Published apps | PakiGPA, SubSight |
+| Published game | THE LAST BELL |
+| Games in development | PAY ME BACK, DECAY, ECHOES OF THE SHADOWS |
 | Public repositories | 8 (verified via GitHub API) |
 | Backend | None — fully static, contact via WhatsApp drafts |
 | License (portfolio) | Private (`"private": true`) |
@@ -75,8 +76,8 @@ This is a single-page React application that is prerendered to static HTML at bu
 ### 3.2 Dedicated pages
 - `/apps/subsight` — published Android app, verified Google Play + Uptodown links.
 - `/apps/paki-gpa` — published Android app, verified Google Play link.
-- `/games/the-last-bell`, `/games/pay-me-back`, `/games/decay`, `/games/echoes-of-the-shadows` — all **COMING SOON**, no download buttons, package IDs displayed honestly.
-- `/projects/*` — 8 public GitHub repositories with verified descriptions, topics, languages, and licenses.
+- `/games/the-last-bell` — published Android horror game with a verified Google Play listing. `/games/pay-me-back`, `/games/decay`, `/games/echoes-of-the-shadows` — **COMING SOON**, no download buttons, package IDs displayed honestly.
+- `/projects/*` — 7 public GitHub repositories with verified descriptions, topics, languages, and licenses.
 - Static pages: About, Privacy, Terms, Contact, Apps, Games, Projects, Links, Blog, FAQ, Hire, Tools, Cookies, Disclaimer, Sitemap, Coming Soon, 404.
 
 ### 3.3 Application directory & metadata
@@ -84,7 +85,7 @@ This is a single-page React application that is prerendered to static HTML at bu
 - Missing data is represented explicitly; nothing is invented.
 
 ### 3.4 GitHub & project showcase
-- 8 public repositories verified through the GitHub API: Decay, DECAY-FLUTTER-VERSION, DEV-TOOLBOX-FREE, IMAGE-UPSCALER-4K-FREE, last-bell, MY-WEBSITE, PDFToolkit-Free, PHOTOPASS.
+- 8 public repositories verified through the GitHub API (7 project routes plus the last-bell game repository): Decay, DECAY-FLUTTER-VERSION, DEV-TOOLBOX-FREE, IMAGE-UPSCALER-4K-FREE, last-bell, MY-WEBSITE, PDFToolkit-Free, PHOTOPASS.
 - Repository descriptions, topics, languages, and licenses are copied from public metadata.
 
 ### 3.5 SEO & discoverability
@@ -216,9 +217,10 @@ The canonical site origin is hardcoded in `src/lib/products.ts` as `SITE_ORIGIN 
 
 ## 9. Data & link integrity
 
-- Store links are only included when the exact Google Play listing was verified (currently SubSight and PakiGPA).
+- Store links are only included when the exact Google Play listing was verified (currently PakiGPA, SubSight, and The Last Bell).
 - The SubSight Uptodown link (`https://com-hamzapowerplayer-subsight.en.uptodown.com/android`) was **verified on re-check** (live as "Subsight 1.0.5" by HAMZA POWERPLAYER, package `com.hamzapowerplayer.subsight`). It is rendered as a verified "Alternative Download" on `/apps/subsight`.
 - PakiGPA (`https://play.google.com/store/apps/details?id=com.hamzapowerplayer.pakigpa`) was verified as a published Android app (CGPA calculator for Pakistani students). Its listing provides support email `hamzapowerplayer.global@gmail.com` and phone `+92 312 9584661`.
+- The Last Bell (`https://play.google.com/store/apps/details?id=com.hamzapowerplayer.lastbell`) was verified as a live Google Play game listing titled "THE LAST BELL".
 - GitHub metadata (descriptions, topics, languages, licenses) was read from the public GitHub API for `HAMZAPOWERPLAYER` (8 public repositories).
 - `scripts/check-links.mjs` validates internal routes and configured external URLs syntactically; it does not fail the build when a third-party host is temporarily unavailable.
 
@@ -246,7 +248,7 @@ The canonical site origin is hardcoded in `src/lib/products.ts` as `SITE_ORIGIN 
 
 | Artifact | Routes | Notes |
 |---|---|---|
-| Current build | 29 | SubSight + PakiGPA published; 4 games coming soon; 8 projects |
+| Current build | 29 | PakiGPA + SubSight + The Last Bell published; 3 games coming soon; 7 project routes |
 
 ## 11. QA & verification
 
@@ -259,8 +261,8 @@ The canonical site origin is hardcoded in `src/lib/products.ts` as `SITE_ORIGIN 
 | Link & metadata validation | `pnpm run check:links` | exit 0, all route/canonical/H1/metadata/sitemap/robots/asset checks passed, 0 SEO length warnings |
 
 ### Content assertions verified
-- All 4 game package IDs present + `COMING SOON` on game pages.
-- SubSight and PakiGPA Play Store links present.
+- All 4 game package IDs present; THE LAST BELL is published with a verified Play link, and the other three show `COMING SOON`.
+- PakiGPA, SubSight, and The Last Bell Play Store links present.
 - Uptodown link rendered on SubSight page (verified).
 - No fabricated-claim strings (download counts, ratings, reviews, simulated activity) in rendered output.
 - No unverified store links rendered.
@@ -315,8 +317,8 @@ Check that the route is in `INDEXABLE_STATIC_PAGE_ROUTES` or `PRODUCTS`. The `/c
 
 | Priority | Item |
 |---|---|
-| P0 | Complete first end-to-end on-device run for THE LAST BELL |
-| P0 | Assign app icon in Player Settings and rebuild AAB |
+| P0 | Maintain THE LAST BELL live listing and ship post-launch fixes |
+| P0 | Grow THE LAST BELL installs and store presence |
 | P1 | Neutralize local file: packages and commit CI workflow |
 | P1 | Delete legacy StandaloneInputModule from scenes |
 | P2 | Resume spawn points — remember player position |

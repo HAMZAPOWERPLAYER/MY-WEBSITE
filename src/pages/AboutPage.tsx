@@ -11,10 +11,10 @@ const VALUES = [
 ];
 
 const STATUS_LINES = [
-  { t: 0, line: '> Published Android app: SubSight' },
-  { t: 400, line: '> Public source projects: GitHub' },
-  { t: 800, line: '> Game projects: Coming Soon' },
-  { t: 1200, line: '> Store listing: Google Play' },
+  { t: 0, line: '> Published apps: PakiGPA, SubSight' },
+  { t: 400, line: '> Live game: The Last Bell' },
+  { t: 800, line: '> Public source projects: GitHub' },
+  { t: 1200, line: '> Store listings: Google Play' },
   { t: 1600, line: '> Contact: WhatsApp or LinkedIn' },
 ];
 
@@ -47,7 +47,7 @@ export default function AboutPage() {
   return (
     <PageLayout
       title="About HAMZA POWERPLAYER | Apps and Software Projects"
-      description="Learn about HAMZA POWERPLAYER and explore the confirmed SubSight Android listing, public GitHub repositories, games in development, and project links."
+      description="Learn about HAMZA POWERPLAYER and explore the confirmed PakiGPA, SubSight, and The Last Bell releases, public GitHub repositories, and project links."
       path="/about"
       schemas={[JSON.stringify({
         "@context": "https://schema.org",
@@ -110,7 +110,7 @@ export default function AboutPage() {
                 ['Name', 'HAMZA POWERPLAYER'],
                 ['Role', 'App Developer · Software Creator'],
                 ['Work', 'Android apps and public software projects'],
-                ['Focus', 'Apps, open repositories, and games in development'],
+                ['Focus', 'Apps, open repositories, and Android games'],
               ].map(([k, v]) => (
                 <div key={k} className="flex gap-3 items-start">
                   <span className="font-mono text-[11px] text-[var(--neon-cyan)] w-24 shrink-0 pt-0.5 tracking-wider">{k}:</span>
@@ -128,7 +128,7 @@ export default function AboutPage() {
           </h2>
           <div className="w-16 h-[2px] mb-8 rounded-full" style={{ background: 'linear-gradient(90deg, var(--neon-cyan), transparent)' }} />
           <div className="space-y-5 font-accent text-[rgba(240,240,255,0.82)] leading-[1.85] text-[16px]">
-            <p>HAMZA POWERPLAYER builds and publishes software projects. This portfolio links to the SubSight Android app, public GitHub repositories, and game projects that are still in development.</p>
+            <p>HAMZA POWERPLAYER builds and publishes software projects. This portfolio links to the PakiGPA, SubSight, and The Last Bell releases, public GitHub repositories, and game projects that are still in development.</p>
             <div className="pl-6 border-l-4 border-[var(--neon-cyan)] my-8 py-3 rounded-r-lg"
               style={{ background: 'rgba(0,240,255,0.04)' }}>
               <p className="text-xl md:text-2xl font-display font-black text-[var(--text-primary)]">

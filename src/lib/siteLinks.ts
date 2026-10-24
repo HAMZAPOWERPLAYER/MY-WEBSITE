@@ -56,7 +56,7 @@ export const PRODUCT_LINKS: SiteLink[] = PRODUCTS.flatMap((product) => {
     links.push({
       title: 'Google Play Store',
       url: product.storeUrl,
-      category: 'Apps',
+      category: product.kind === 'game' ? 'Games' : 'Apps',
       associatedWith: product.name,
       verification: 'http-verified',
     });

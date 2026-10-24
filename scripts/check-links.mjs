@@ -28,8 +28,14 @@ try {
 
   for (const product of PRODUCTS) {
     if (!product.slug || !product.route.startsWith('/')) errors.push(`Invalid product route: ${product.name}`);
-    if (product.kind === 'game' && (!product.packageId || product.status !== 'coming-soon' || product.storeUrl)) {
-      errors.push(`Game facts/status are incomplete or imply an unverified release: ${product.name}`);
+    if (product.kind === 'game') {
+      if (!product.packageId) errors.push(`Game package ID is missing: ${product.name}`);
+      if (product.status === 'published' && !product.storeUrl) {
+        errors.push(`Published game has no verified store URL: ${product.name}`);
+      }
+      if (product.status === 'coming-soon' && product.storeUrl) {
+        errors.push(`Unreleased game has a store URL: ${product.name}`);
+      }
     }
     for (const outbound of [product.githubUrl, product.storeUrl].filter(Boolean)) {
       try {

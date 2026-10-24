@@ -8,14 +8,14 @@ const YEARS = [
     year: 'NOW',
     title: 'THE BUILD',
     state: 'current',
-    goals: ['Maintain the SubSight Android app', 'Grow public GitHub projects', 'Finish the upcoming game projects'],
+    goals: ['Maintain PakiGPA, SubSight, and The Last Bell', 'Grow public GitHub projects', 'Ship the remaining game projects'],
     status: 'IN PROGRESS',
   },
   {
     year: 'NEXT',
     title: 'THE SHIP',
     state: 'future',
-    goals: ['Release the four game projects', 'Expand the developer toolbox', 'Publish more public source'],
+    goals: ['Grow the Android games lineup', 'Expand the developer toolbox', 'Publish more public source'],
     status: 'UPCOMING',
   },
   {

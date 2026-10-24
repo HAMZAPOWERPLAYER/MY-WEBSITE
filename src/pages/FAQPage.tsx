@@ -7,11 +7,12 @@ import { Plus, X } from 'lucide-react';
 type Cat = 'GENERAL' | 'APPS' | 'HIRING' | 'TECH' | 'PRIVACY';
 
 const FAQS: { cat: Cat; q: string; a: string }[] = [
-  { cat: 'GENERAL', q: 'Who is HAMZA POWERPLAYER?', a: 'HAMZA POWERPLAYER develops apps and software projects. This portfolio links to the SubSight Android listing, public GitHub repositories, and games in development.' },
+  { cat: 'GENERAL', q: 'Who is HAMZA POWERPLAYER?', a: 'HAMZA POWERPLAYER develops apps and games. This portfolio links to the PakiGPA, SubSight, and The Last Bell releases, public GitHub repositories, and games in development.' },
   { cat: 'GENERAL', q: 'Where can I follow the public work?', a: 'Browse the Projects page for public GitHub repositories and use the Links page for the confirmed profiles and product pages.' },
   { cat: 'GENERAL', q: 'How can I send a message?', a: 'Use WhatsApp or LinkedIn from the Contact page. This website does not offer email contact.' },
-  { cat: 'APPS', q: 'Which app has a verified store listing?', a: 'SubSight has a confirmed Google Play listing linked from the Apps page. No other app listing is presented as released here.' },
-  { cat: 'APPS', q: 'Is there an iOS listing?', a: 'No iOS store listing has been verified for this portfolio. The confirmed SubSight listing is for Android on Google Play.' },
+  { cat: 'APPS', q: 'Which apps and games have verified store listings?', a: 'PakiGPA, SubSight, and The Last Bell each have a confirmed Google Play listing linked from this site.' },
+  { cat: 'APPS', q: 'Is The Last Bell available?', a: 'Yes. The Last Bell is live on Google Play for Android. Open the Games page for its verified listing, gameplay details, and public source repository.' },
+  { cat: 'APPS', q: 'Is there an iOS listing?', a: 'No iOS store listing has been verified for this portfolio. The confirmed app and game listings are Android releases on Google Play.' },
   { cat: 'APPS', q: 'How do I report an app issue or request a feature?', a: 'Message through WhatsApp or LinkedIn and describe the app, device, and issue. Avoid sending passwords or other sensitive information.' },
   { cat: 'HIRING', q: 'Are you currently available for a project?', a: 'Current availability is not published. Send a project brief through WhatsApp or LinkedIn to ask.' },
   { cat: 'HIRING', q: 'How much does a project cost and how long will it take?', a: 'Pricing and schedule depend on the agreed scope. Ask directly for an estimate before committing.' },
@@ -53,7 +54,7 @@ export default function FAQPage() {
   return (
     <PageLayout
       title="HAMZA POWERPLAYER FAQs | Apps, Projects and Contact"
-      description="Find verified details about SubSight, public GitHub projects, upcoming games, contacting HAMZA POWERPLAYER, and how this website handles browser storage."
+      description="Find verified details about PakiGPA, SubSight, and The Last Bell, public GitHub projects, contacting HAMZA POWERPLAYER, and browser storage."
       path="/faq"
     >
       <PageHero label="ANSWERS" title="FAQ" subtitle="Everything you wanted to know" />
