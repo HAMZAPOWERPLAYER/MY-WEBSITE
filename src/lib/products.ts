@@ -33,6 +33,8 @@ export interface ProductRecord {
   status: ProductStatus;
   summary?: string;
   tagline?: string;
+  /** Short, card-friendly description used where horizontal space is limited. */
+  shortTagline?: string;
   platform?: string;
   packageId?: string;
   genre?: string;
@@ -43,6 +45,10 @@ export interface ProductRecord {
   version?: string;
   releaseDate?: string;
   storeUrl?: string;
+  /** Official store artwork, stored locally so the site has no third-party image dependency. */
+  iconUrl?: string;
+  screenshots?: string[];
+  heroImage?: string;
   altDownloads?: AltDownload[];
   githubUrl?: string;
   repoName?: string;
@@ -74,9 +80,18 @@ export const PRODUCTS: ProductRecord[] = [
     summary:
       'Offline CGPA and GPA calculator for Pakistani university students. Supports HEC, FAST-NUCES, NUST, COMSATS, UET, GIKI, LUMS, and PU grading scales, plus a custom scale builder, what-if planner, GPA trend chart, and PDF transcript export. No ads, no login, fully offline.',
     tagline: 'The CGPA calculator built for Pakistani students.',
+    shortTagline: 'Offline CGPA & GPA calculator',
     platform: 'Android',
     packageId: 'com.hamzapowerplayer.pakigpa',
     storeUrl: 'https://play.google.com/store/apps/details?id=com.hamzapowerplayer.pakigpa',
+    iconUrl: '/products/paki-gpa/icon.webp',
+    screenshots: [
+      '/products/paki-gpa/screenshot-1.webp',
+      '/products/paki-gpa/screenshot-2.webp',
+      '/products/paki-gpa/screenshot-3.webp',
+      '/products/paki-gpa/screenshot-4.webp',
+    ],
+    heroImage: '/products/paki-gpa/screenshot-1.webp',
     features: [
       'Semester GPA calculator with credit hours and letter or marks grades',
       'Cumulative CGPA weighted by credit hours across semesters',
@@ -101,11 +116,32 @@ export const PRODUCTS: ProductRecord[] = [
     name: 'SubSight',
     kind: 'app',
     status: 'published',
-    summary: 'Subscription tracking app for Android.',
+    summary:
+      'Offline subscription tracker and bill manager for Android. Track recurring payments, see monthly and yearly totals, and get reminders before renewals or trial endings. No account is required, and your data stays on the device.',
     tagline: 'Track every subscription in one place.',
+    shortTagline: 'Track subscriptions and renewals',
     platform: 'Android',
     packageId: 'com.hamzapowerplayer.Subsight',
     storeUrl: 'https://play.google.com/store/apps/details?id=com.hamzapowerplayer.Subsight',
+    features: [
+      'One dashboard for subscriptions, bills, and recurring payments',
+      'Monthly spend, yearly projection, daily cost, and upcoming renewals',
+      'Renewal, bill, and free-trial reminders with a calendar view',
+      'Weekly, bi-weekly, monthly, quarterly, semi-annual, yearly, and custom cycles',
+      'Subscription health score, price-hike detection, and cancellation simulator',
+      'Categories, payment methods, custom logos, and household mode',
+      'Local CSV, PDF, and JSON export',
+      '170+ currencies, including USD, EUR, GBP, PKR, and INR',
+      'No account, no cloud, and no tracking',
+    ],
+    iconUrl: '/products/subsight/icon.webp',
+    screenshots: [
+      '/products/subsight/screenshot-1.webp',
+      '/products/subsight/screenshot-2.webp',
+      '/products/subsight/screenshot-3.webp',
+      '/products/subsight/screenshot-4.webp',
+    ],
+    heroImage: '/products/subsight/screenshot-1.webp',
     keywords: ['subscription tracker', 'android app', 'bills', 'renewals'],
     altDownloads: [
       {
@@ -118,6 +154,41 @@ export const PRODUCTS: ProductRecord[] = [
     accent: { gradient: 'linear-gradient(135deg,#00f0ff,#7c3aed)', theme: 'CYAN' },
   },
   {
+    id: 'fantasy-text-pro',
+    slug: 'fantasy-text-pro',
+    route: '/apps/fantasy-text-pro',
+    name: 'Fantasy Text Pro',
+    kind: 'app',
+    status: 'published',
+    summary:
+      'Stylish text and fancy fonts generator for Android. Convert normal text into 70+ aesthetic Unicode styles, build social media bios, and copy results in one tap. Works offline.',
+    tagline: 'Stylish text and fancy fonts, offline.',
+    shortTagline: 'Fancy text & bio generator',
+    platform: 'Android',
+    packageId: 'com.hamzapowerplayerpp.fantisytextpro',
+    version: '1.0.0',
+    releaseDate: 'May 18, 2026',
+    iconUrl: '/products/fantasy-text-pro/icon.png',
+    heroImage: '/products/fantasy-text-pro/icon.png',
+    features: [
+      '70+ stylish fonts and Unicode text styles',
+      'Built-in bio generator for social media profiles',
+      'One-tap copy for any generated text',
+      'Works offline, no account required',
+      'Styles for Instagram, WhatsApp, Facebook, TikTok, and gaming apps',
+    ],
+    keywords: ['fancy text', 'stylish fonts', 'unicode text', 'bio generator', 'android app', 'personalization'],
+    altDownloads: [
+      {
+        label: 'Uptodown',
+        url: 'https://fantasy-text-pro.en.uptodown.com/android',
+        verification: 'verified',
+      },
+    ],
+    privacyUrl: `${SITE_ORIGIN}/privacy`,
+    accent: { gradient: 'linear-gradient(135deg,#ec4899,#8b5cf6)', theme: 'PINK' },
+  },
+  {
     id: 'the-last-bell',
     slug: 'the-last-bell',
     route: '/games/the-last-bell',
@@ -127,9 +198,19 @@ export const PRODUCTS: ProductRecord[] = [
     summary:
       'First-person mobile horror for Android. Explore a darkened school, find three keys, avoid the entity, and escape.',
     tagline: 'Find the keys. Avoid the entity. Escape the school.',
+    shortTagline: 'First-person Android horror',
     platform: 'Android',
     packageId: 'com.hamzapowerplayer.lastbell',
     storeUrl: 'https://play.google.com/store/apps/details?id=com.hamzapowerplayer.lastbell',
+    iconUrl: '/products/the-last-bell/icon.webp',
+    screenshots: [
+      '/products/the-last-bell/screenshot-1.webp',
+      '/products/the-last-bell/screenshot-2.webp',
+      '/products/the-last-bell/screenshot-3.webp',
+      '/products/the-last-bell/screenshot-4.webp',
+      '/products/the-last-bell/screenshot-5.webp',
+    ],
+    heroImage: '/products/the-last-bell/screenshot-2.webp',
     genre: 'First-person survival horror',
     gameplay: [
       'Explore a darkened school rendered in first person',

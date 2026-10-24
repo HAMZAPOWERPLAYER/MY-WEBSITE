@@ -12,7 +12,7 @@
   --neon-violet: #7c3aed;
   --gold: #f5c518;
   --text-primary: #f0f0ff;
-  --text-muted: #6b7280;
+  --text-muted: #9aa3b2;
   --border-glow: rgba(0, 240, 255, 0.15);
   --danger: #ff2d55;
   --success: #00ff88;
@@ -867,10 +867,7 @@ select:focus-visible {
 
 /* ── Interactive cursor upgrade ── */
 .interactive {
-  cursor: none;
-}
-@media (hover: none) {
-  .interactive { cursor: pointer; }
+  cursor: pointer;
 }
 
 /* ── Backdrop gradient for sections ── */
@@ -918,4 +915,165 @@ html.lenis, html.lenis body {
 }
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ENTERPRISE REDESIGN PRIMITIVES
+   A restrained system for the homepage and product case studies.
+   ═══════════════════════════════════════════════════════════════ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+:focus-visible {
+  outline: 2px solid var(--neon-cyan);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 10001;
+  transform: translateY(-220%);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  background: #08081a;
+  padding: 0.65rem 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--neon-cyan);
+  transition: transform 0.2s ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.hp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+}
+.hp-eyebrow::before {
+  content: '';
+  width: 1.5rem;
+  height: 1px;
+  flex: none;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+.hp-display {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+.hp-h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.75rem, 3.6vw, 2.75rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  text-wrap: balance;
+  color: var(--text-primary);
+}
+
+.hp-card {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.015) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 24px 60px rgba(0, 0, 0, 0.22);
+}
+
+.hp-card-hover {
+  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+.hp-card-hover:hover {
+  border-color: rgba(0, 240, 255, 0.26);
+  transform: translateY(-3px);
+}
+
+.hp-grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.032) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 0%, #000 15%, transparent 78%);
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 0%, #000 15%, transparent 78%);
+}
+
+.hp-ambient {
+  background:
+    radial-gradient(ellipse 55% 42% at 12% 0%, rgba(0, 240, 255, 0.10), transparent 68%),
+    radial-gradient(ellipse 50% 40% at 88% 6%, rgba(124, 58, 237, 0.10), transparent 68%);
+}
+
+.hp-media {
+  position: relative;
+  overflow: hidden;
+  background: #070712;
+}
+.hp-media img.hp-media-blur {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transform: scale(1.15);
+  opacity: 0.28;
+  filter: blur(28px);
+}
+.hp-media img.hp-media-main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.hp-input {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.8rem 1rem 0.8rem 2.75rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.hp-input::placeholder {
+  color: rgba(154, 163, 178, 0.75);
+}
+.hp-input:focus {
+  border-color: rgba(0, 240, 255, 0.5);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

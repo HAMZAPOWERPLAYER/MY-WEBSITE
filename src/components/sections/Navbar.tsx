@@ -1,270 +1,264 @@
-import { useState, useEffect, useRef } from 'react';
-import { Menu, X, Zap } from 'lucide-react';
-import { useLenisScroll } from '@/components/effects/SmoothScroll';
+import { useEffect, useRef, useState } from 'react';
+import { Link } from 'wouter';
+import { Menu, X } from 'lucide-react';
+import { trapFocus } from '@/lib/focusTrap';
 
-const NAV_LINKS = [
+type NavLink = { label: string; id?: string; href?: string };
+
+const NAV_LINKS: NavLink[] = [
+  { label: 'Work', id: 'work' },
+  { label: 'Apps', href: '/apps' },
+  { label: 'Games', href: '/games' },
+  { label: 'Services', id: 'services' },
   { label: 'About', id: 'about' },
-  { label: 'Skills', id: 'skills' },
-  { label: 'Projects', id: 'projects' },
-  { label: 'Tech', id: 'tech' },
-  { label: 'AI', id: 'ai' },
-  { label: 'Vision', id: 'roadmap' },
-  { label: 'Console', id: 'console' },
-  { label: 'Contact', id: 'contact' },
+];
+
+const MOBILE_EXTRA = [
+  { label: 'Projects', href: '/projects' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Links', href: '/links' },
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState('');
-  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [logoVisible, setLogoVisible] = useState(false);
-  const lenisScroll = useLenisScroll();
-
-  useEffect(() => {
-    // Entrance animation
-    const t = setTimeout(() => setLogoVisible(true), 300);
-    return () => clearTimeout(t);
-  }, []);
+  const [progress, setProgress] = useState(0);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const mobilePanelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
-      const scrollY = window.scrollY;
-      setScrolled(scrollY > 20);
-      const docH = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollProgress(docH > 0 ? (scrollY / docH) * 100 : 0);
+      setScrolled(window.scrollY > 12);
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(scrollable > 0 ? Math.min(100, (window.scrollY / scrollable) * 100) : 0);
     };
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Scrollspy
   useEffect(() => {
-    const sectionIds = NAV_LINKS.map(l => l.id);
-    const observers: IntersectionObserver[] = [];
-    sectionIds.forEach(id => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveId(id); },
-        { threshold: 0.3, rootMargin: '-10% 0px -10% 0px' }
-      );
-      obs.observe(el);
-      observers.push(obs);
+    const ids = NAV_LINKS.flatMap((link) => (link.id ? [link.id] : []));
+    const visible = new Set<string>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) visible.add(entry.target.id);
+          else visible.delete(entry.target.id);
+        });
+
+        if (visible.size === 0) {
+          setActiveId('');
+          return;
+        }
+
+        const topMost = [...visible].sort((a, b) => {
+          const elementA = document.getElementById(a);
+          const elementB = document.getElementById(b);
+          return (
+            (elementA?.getBoundingClientRect().top ?? 0) -
+            (elementB?.getBoundingClientRect().top ?? 0)
+          );
+        })[0];
+
+        setActiveId(topMost);
+      },
+      { rootMargin: '-20% 0px -60% 0px', threshold: 0 },
+    );
+    ids.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
     });
-    return () => observers.forEach(o => o.disconnect());
+    return () => observer.disconnect();
   }, []);
 
-  const scrollTo = (id: string) => {
-    setMobileMenuOpen(false);
-    lenisScroll(id);
-  };
+  useEffect(() => {
+    if (!menuOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeButtonRef.current?.focus();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+      if (event.key === 'Tab') trapFocus(event, mobilePanelRef.current);
+    };
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      menuButtonRef.current?.focus();
+    };
+  }, [menuOpen]);
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 h-16 ${
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
           scrolled
-            ? 'bg-[rgba(4,4,10,0.8)] backdrop-blur-2xl border-b border-[rgba(0,240,255,0.08)] shadow-[0_1px_0_rgba(0,240,255,0.06),0_8px_32px_rgba(0,0,0,0.4)]'
-            : 'bg-transparent'
+            ? 'border-b border-white/[0.08] bg-[#04040a]/85 backdrop-blur-xl'
+            : 'border-b border-transparent bg-transparent'
         }`}
       >
-        {/* Top progress bar */}
-        <div className="absolute top-0 left-0 right-0 h-[1.5px] overflow-hidden z-[60]">
-          <div
-            className="h-full origin-left transition-none"
-            style={{
-              width: `${scrollProgress}%`,
-              background: 'linear-gradient(90deg, #00f0ff, #7c3aed, #f5c518)',
-              boxShadow: '0 0 8px rgba(0,240,255,0.8)',
-            }}
-          />
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-white/[0.04]">
+          <div className="h-full bg-[var(--neon-cyan)]/60" style={{ width: `${progress}%` }} />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
-          {/* Logo */}
-          <div
-            className="flex items-center gap-3 cursor-pointer interactive group"
+        <nav aria-label="Primary" className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6">
+          <button
+            type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            style={{
-              opacity: logoVisible ? 1 : 0,
-              transform: logoVisible ? 'translateX(0)' : 'translateX(-20px)',
-              transition: 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1)',
-            }}
+            className="group flex shrink-0 items-center gap-3"
+            aria-label="HAMZA POWERPLAYER — back to top"
           >
-            {/* HP hex badge */}
-            <div className="relative w-9 h-9 flex items-center justify-center">
-              <div
-                className="absolute inset-0 rounded-lg"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(0,240,255,0.15), rgba(124,58,237,0.1))',
-                  border: '1px solid rgba(0,240,255,0.3)',
-                  boxShadow: '0 0 12px rgba(0,240,255,0.2)',
-                }}
-              />
-              <div
-                className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(0,240,255,0.25), rgba(124,58,237,0.2))',
-                  boxShadow: '0 0 20px rgba(0,240,255,0.4)',
-                }}
-              />
-              <span className="relative font-display font-black text-sm text-[var(--neon-cyan)]" style={{ textShadow: '0 0 10px rgba(0,240,255,0.8)' }}>HP</span>
-            </div>
-            <span className="font-display font-bold tracking-wider text-sm hidden sm:block text-[var(--text-primary)] group-hover:text-[var(--neon-cyan)] transition-colors duration-300">
+            <span className="grid h-8 w-8 place-items-center rounded-lg border border-[rgba(0,240,255,0.28)] bg-[rgba(0,240,255,0.06)] font-display text-[10px] font-black tracking-wide text-[var(--neon-cyan)]">
+              HP
+            </span>
+            <span className="hidden font-display text-[11px] font-bold tracking-[0.16em] text-[var(--text-primary)] transition-colors group-hover:text-[var(--neon-cyan)] sm:block">
               HAMZA POWERPLAYER
             </span>
-          </div>
+          </button>
 
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-1">
-            {NAV_LINKS.map((link, i) => {
-              const isActive = activeId === link.id;
-              const isHovered = hoveredLink === link.id;
-              return (
-                <button
-                  key={link.id}
-                  onClick={() => scrollTo(link.id)}
-                  onMouseEnter={() => setHoveredLink(link.id)}
-                  onMouseLeave={() => setHoveredLink(null)}
-                  className="relative px-4 py-2 rounded-lg font-accent text-sm font-medium interactive group"
-                  style={{
-                    color: isActive ? 'var(--neon-cyan)' : isHovered ? 'var(--text-primary)' : 'var(--text-muted)',
-                    transition: 'color 0.2s ease',
-                    opacity: logoVisible ? 1 : 0,
-                    transform: logoVisible ? 'translateY(0)' : 'translateY(-10px)',
-                    transitionDelay: `${0.1 + i * 0.05}s`,
-                  }}
+          <div className="hidden items-center gap-1 md:flex">
+            {NAV_LINKS.map((link) =>
+              link.href ? (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="rounded-lg px-3 py-2 text-[13px] font-medium text-[var(--text-muted)] transition-colors hover:bg-white/[0.04] hover:text-white"
                 >
-                  {/* Hover background */}
-                  <span
-                    className="absolute inset-0 rounded-lg transition-opacity duration-200"
-                    style={{
-                      background: 'rgba(0,240,255,0.06)',
-                      opacity: isHovered || isActive ? 1 : 0,
-                    }}
-                  />
-                  <span className="relative z-10">{link.label}</span>
-                  {/* Active indicator */}
-                  {isActive && (
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.label}
+                  href={`#${link.id}`}
+                  className={`relative rounded-lg px-3 py-2 text-[13px] font-medium transition-colors hover:bg-white/[0.04] ${
+                    activeId === link.id
+                      ? 'text-[var(--text-primary)]'
+                      : 'text-[var(--text-muted)] hover:text-white'
+                  }`}
+                >
+                  {link.label}
+                  {activeId === link.id && (
                     <span
-                      className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full"
-                      style={{ background: 'var(--neon-cyan)', boxShadow: '0 0 6px var(--neon-cyan)' }}
+                      aria-hidden="true"
+                      className="absolute inset-x-3 -bottom-0.5 h-px bg-[var(--neon-cyan)]"
                     />
                   )}
-                  {/* Underline on hover */}
-                  <span
-                    className="absolute -bottom-0.5 left-0 right-0 h-[1px] transition-transform duration-200 origin-left"
-                    style={{
-                      background: 'linear-gradient(90deg, var(--neon-cyan), var(--neon-violet))',
-                      transform: isHovered && !isActive ? 'scaleX(1)' : 'scaleX(0)',
-                      boxShadow: '0 0 6px rgba(0,240,255,0.6)',
-                    }}
-                  />
-                </button>
-              );
-            })}
+                </a>
+              ),
+            )}
           </div>
 
-          {/* CTA + Mobile toggle */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => scrollTo('contact')}
-              className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full text-xs font-display font-bold tracking-wider interactive transition-all duration-300 hover:scale-105"
-              style={{
-                background: 'linear-gradient(135deg, rgba(0,240,255,0.12), rgba(124,58,237,0.08))',
-                border: '1px solid rgba(0,240,255,0.25)',
-                color: 'var(--neon-cyan)',
-                boxShadow: '0 0 12px rgba(0,240,255,0.1)',
-                opacity: logoVisible ? 1 : 0,
-                transition: 'opacity 0.6s ease 0.6s, transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease',
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 20px rgba(0,240,255,0.3)';
-                (e.currentTarget as HTMLButtonElement).style.background = 'linear-gradient(135deg, rgba(0,240,255,0.2), rgba(124,58,237,0.15))';
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 12px rgba(0,240,255,0.1)';
-                (e.currentTarget as HTMLButtonElement).style.background = 'linear-gradient(135deg, rgba(0,240,255,0.12), rgba(124,58,237,0.08))';
-              }}
+          <div className="flex items-center gap-2">
+            <Link
+              href="/contact"
+              className="hidden items-center gap-2 rounded-lg border border-[rgba(0,240,255,0.28)] bg-[rgba(0,240,255,0.06)] px-4 py-2 font-display text-[11px] font-bold tracking-[0.08em] text-[var(--neon-cyan)] transition-colors hover:bg-[rgba(0,240,255,0.12)] md:inline-flex"
             >
-              <Zap size={12} />
-              HIRE ME
-            </button>
-
+              Contact
+            </Link>
             <button
-              className="md:hidden text-[var(--text-primary)] interactive p-2 rounded-lg hover:bg-[rgba(255,255,255,0.06)] transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
+              ref={menuButtonRef}
+              type="button"
+              onClick={() => setMenuOpen(true)}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-[var(--text-primary)] transition-colors hover:bg-white/[0.06] md:hidden"
+              aria-label="Open menu"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-navigation"
             >
-              <div className="relative w-6 h-6">
-                <span className={`absolute inset-0 transition-all duration-300 flex items-center justify-center ${mobileMenuOpen ? 'opacity-100 rotate-0' : 'opacity-0 rotate-90'}`}>
-                  <X size={22} />
-                </span>
-                <span className={`absolute inset-0 transition-all duration-300 flex items-center justify-center ${mobileMenuOpen ? 'opacity-0 -rotate-90' : 'opacity-100 rotate-0'}`}>
-                  <Menu size={22} />
-                </span>
-              </div>
+              <Menu size={20} aria-hidden="true" />
             </button>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </header>
 
-      {/* Mobile Menu — full-screen overlay */}
-      <div
-        className="fixed inset-0 z-40 md:hidden"
-        style={{
-          background: 'rgba(4,4,10,0.97)',
-          backdropFilter: 'blur(24px)',
-          opacity: mobileMenuOpen ? 1 : 0,
-          pointerEvents: mobileMenuOpen ? 'auto' : 'none',
-          transition: 'opacity 0.35s ease',
-        }}
-      >
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-64 h-64 rounded-full opacity-10 pointer-events-none"
-          style={{ background: 'radial-gradient(circle, #00f0ff, transparent 70%)', filter: 'blur(40px)' }} />
-        <div className="absolute bottom-0 right-0 w-64 h-64 rounded-full opacity-10 pointer-events-none"
-          style={{ background: 'radial-gradient(circle, #7c3aed, transparent 70%)', filter: 'blur(40px)' }} />
+      {menuOpen && (
+        <div
+          id="mobile-navigation"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site navigation"
+          className="fixed inset-0 z-[60] md:hidden"
+        >
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[#04040a]/98 backdrop-blur-xl"
+            onClick={() => setMenuOpen(false)}
+          />
 
-        <div className="flex flex-col items-center justify-center h-full gap-4 px-6">
-          <p className="font-accent text-[10px] tracking-[6px] text-[var(--text-muted)] mb-4 uppercase">Navigation</p>
-          {NAV_LINKS.map((link, i) => (
-            <button
-              key={link.id}
-              onClick={() => scrollTo(link.id)}
-              className="w-full max-w-xs font-display text-xl font-bold interactive group flex items-center justify-between px-6 py-3 rounded-xl transition-all duration-200"
-              style={{
-                color: activeId === link.id ? 'var(--neon-cyan)' : 'var(--text-primary)',
-                background: activeId === link.id ? 'rgba(0,240,255,0.06)' : 'rgba(255,255,255,0.02)',
-                border: `1px solid ${activeId === link.id ? 'rgba(0,240,255,0.2)' : 'rgba(255,255,255,0.05)'}`,
-                opacity: mobileMenuOpen ? 1 : 0,
-                transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(30px)',
-                transitionDelay: mobileMenuOpen ? `${i * 0.05}s` : '0s',
-              }}
-            >
-              <span>{link.label}</span>
-              {activeId === link.id && (
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--neon-cyan)] shadow-[0_0_8px_var(--neon-cyan)]" />
+          <div ref={mobilePanelRef} className="relative flex h-full flex-col px-6 pb-8 pt-4">
+            <div className="flex h-16 items-center justify-between">
+              <span className="flex items-center gap-3">
+                <span className="grid h-8 w-8 place-items-center rounded-lg border border-[rgba(0,240,255,0.28)] bg-[rgba(0,240,255,0.06)] font-display text-[10px] font-black text-[var(--neon-cyan)]">
+                  HP
+                </span>
+                <span className="font-display text-[11px] font-bold tracking-[0.16em] text-[var(--text-primary)]">
+                  HAMZA POWERPLAYER
+                </span>
+              </span>
+              <button
+                ref={closeButtonRef}
+                type="button"
+                onClick={() => setMenuOpen(false)}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-[var(--text-primary)] transition-colors hover:bg-white/[0.06]"
+                aria-label="Close menu"
+              >
+                <X size={20} aria-hidden="true" />
+              </button>
+            </div>
+
+            <nav aria-label="Mobile" className="mt-10 flex flex-col">
+              {NAV_LINKS.map((link) =>
+                link.href ? (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="border-b border-white/[0.06] py-4 font-display text-xl font-bold tracking-wide text-[var(--text-primary)]"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.label}
+                    href={`#${link.id}`}
+                    onClick={() => setMenuOpen(false)}
+                    className="border-b border-white/[0.06] py-4 font-display text-xl font-bold tracking-wide text-[var(--text-primary)]"
+                  >
+                    {link.label}
+                  </a>
+                ),
               )}
-            </button>
-          ))}
+              {MOBILE_EXTRA.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="border-b border-white/[0.06] py-4 font-display text-xl font-bold tracking-wide text-[var(--text-primary)]"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
 
-          <button
-            onClick={() => scrollTo('contact')}
-            className="mt-4 w-full max-w-xs py-3.5 rounded-full font-display font-bold tracking-wider text-sm text-[#04040a] interactive"
-            style={{
-              background: 'linear-gradient(135deg, #00f0ff, #7c3aed)',
-              boxShadow: '0 0 30px rgba(0,240,255,0.3)',
-              opacity: mobileMenuOpen ? 1 : 0,
-              transition: `opacity 0.3s ease ${NAV_LINKS.length * 0.05 + 0.1}s`,
-            }}
-          >
-            ⚡ HIRE ME
-          </button>
+            <div className="mt-auto pt-8">
+              <Link
+                href="/contact"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-center rounded-xl bg-[var(--neon-cyan)] px-5 py-3.5 font-display text-xs font-black tracking-[0.08em] text-[#04040a]"
+              >
+                Start a conversation
+              </Link>
+              <p className="mt-4 text-center font-mono text-[10px] tracking-[0.14em] text-[var(--text-muted)]">
+                PAKISTAN · WORKING WORLDWIDE
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

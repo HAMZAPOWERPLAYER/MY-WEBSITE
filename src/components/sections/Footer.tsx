@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
-import { SiGithub, SiYoutube, SiWhatsapp } from 'react-icons/si';
-import { Linkedin, ArrowUp, Heart } from 'lucide-react';
-import { WaveformBorder } from '@/components/effects/WaveformBorder';
-import { useLenisScroll } from '@/components/effects/SmoothScroll';
-import { GlowText } from '@/components/effects/GlowText';
+import { SiGithub, SiWhatsapp, SiYoutube } from 'react-icons/si';
+import { ArrowUp, Heart, Linkedin } from 'lucide-react';
 
 const PAGES_COL = [
   { label: 'Home', href: '/' },
@@ -14,7 +11,6 @@ const PAGES_COL = [
   { label: 'Projects', href: '/projects' },
   { label: 'Links', href: '/links' },
   { label: 'Blog', href: '/blog' },
-  { label: 'Tools', href: '/tools' },
   { label: 'FAQ', href: '/faq' },
 ];
 
@@ -22,7 +18,7 @@ const WORK_COL = [
   { label: 'Hire Me', href: '/hire' },
   { label: 'Contact', href: '/contact' },
   { label: 'Services', href: '/hire' },
-  { label: 'Portfolio', href: '/' },
+  { label: 'Tools', href: '/tools' },
 ];
 
 const LEGAL_COL = [
@@ -34,199 +30,114 @@ const LEGAL_COL = [
 ];
 
 const SOCIAL = [
-  { Icon: SiGithub, href: 'https://github.com/HAMZAPOWERPLAYER', label: 'GitHub', color: '#f0f0ff' },
-  { Icon: Linkedin, href: 'https://www.linkedin.com/in/hamzapowerplayerofficial', label: 'LinkedIn', color: '#0A66C2' },
-  { Icon: SiWhatsapp, href: 'https://wa.me/923129584661', label: 'WhatsApp', color: '#25D366' },
-  { Icon: SiYoutube, href: 'https://youtube.com/@hamzapowerplayer', label: 'YouTube', color: '#FF0000' },
+  { Icon: SiGithub, href: 'https://github.com/HAMZAPOWERPLAYER', label: 'GitHub' },
+  { Icon: Linkedin, href: 'https://www.linkedin.com/in/hamzapowerplayerofficial', label: 'LinkedIn' },
+  { Icon: SiWhatsapp, href: 'https://wa.me/923129584661', label: 'WhatsApp' },
+  { Icon: SiYoutube, href: 'https://youtube.com/@hamzapowerplayer', label: 'YouTube' },
 ];
 
+function FooterColumn({ title, links }: { title: string; links: { label: string; href: string }[] }) {
+  return (
+    <div>
+      <h2 className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--text-muted)]">{title}</h2>
+      <ul className="mt-4 space-y-2.5">
+        {links.map((link) => (
+          <li key={link.label}>
+            <Link
+              href={link.href}
+              className="text-xs text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]"
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export function Footer() {
-  const [secretUnlocked, setSecretUnlocked] = useState(false);
-  const [bgOpacity, setBgOpacity] = useState(0);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const lenisScroll = useLenisScroll();
 
   useEffect(() => {
-    setSecretUnlocked(localStorage.getItem('konami') === 'true');
+    const onScroll = () => setShowScrollTop(window.scrollY > 600);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  useEffect(() => {
-    const footer = document.querySelector('footer');
-    if (!footer) return;
-    const handler = () => {
-      const rect = footer.getBoundingClientRect();
-      const proximity = Math.max(0, Math.min(1, 1 - rect.top / window.innerHeight));
-      setBgOpacity(proximity * 0.07);
-      setShowScrollTop(window.scrollY > 600);
-    };
-    window.addEventListener('scroll', handler, { passive: true });
-    return () => window.removeEventListener('scroll', handler);
-  }, []);
-
-  const NavLink = ({ label, href }: { label: string; href: string }) => {
-    if (href.startsWith('/#')) {
-      const id = href.slice(2);
-      return (
-        <button
-          onClick={() => lenisScroll(id)}
-          className="block font-accent text-xs text-[var(--text-muted)] hover:text-[var(--neon-cyan)] transition-colors text-left"
-        >
-          {label}
-        </button>
-      );
-    }
-    return (
-      <Link href={href} className="block font-accent text-xs text-[var(--text-muted)] hover:text-[var(--neon-cyan)] transition-colors">
-        {label}
-      </Link>
-    );
-  };
 
   return (
-    <footer className="relative bg-[var(--bg-surface)] border-t border-[rgba(0,240,255,0.08)] overflow-hidden">
-      <div className="w-full">
-        <WaveformBorder flip />
-      </div>
+    <footer className="relative border-t border-white/[0.08] bg-[#050510]">
+      <div className="mx-auto max-w-6xl px-6 py-14">
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
+          <div>
+            <Link href="/" className="inline-flex items-center gap-3">
+              <span className="grid h-9 w-9 place-items-center rounded-lg border border-[rgba(0,240,255,0.28)] bg-[rgba(0,240,255,0.06)] font-display text-[11px] font-black text-[var(--neon-cyan)]">
+                HP
+              </span>
+              <span className="font-display text-xs font-bold tracking-[0.14em] text-[var(--text-primary)]">
+                HAMZA POWERPLAYER
+              </span>
+            </Link>
 
-      {/* Aurora bleed */}
-      <div className="absolute top-0 left-0 right-0 h-40 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.06) 0%, transparent 70%)' }} />
-
-      {/* Giant background text */}
-      <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-        <span className="font-display font-black whitespace-nowrap"
-          style={{ fontSize: '7vw', opacity: bgOpacity, letterSpacing: '0.1em', color: 'transparent', WebkitTextStroke: '1px rgba(0,240,255,0.15)' }}>
-          HAMZA POWERPLAYER
-        </span>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10 pt-16 pb-10">
-
-        {/* Social strip */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
-          {SOCIAL.map(({ Icon, href, label, color }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className="group relative w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 interactive"
-              style={{
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(255,255,255,0.07)',
-              }}
-              onMouseEnter={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.background = `${color}15`;
-                el.style.borderColor = `${color}40`;
-                el.style.boxShadow = `0 0 16px ${color}30`;
-                el.style.transform = 'translateY(-3px)';
-              }}
-              onMouseLeave={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.background = 'rgba(255,255,255,0.03)';
-                el.style.borderColor = 'rgba(255,255,255,0.07)';
-                el.style.boxShadow = 'none';
-                el.style.transform = '';
-              }}
-            >
-              <Icon size={16} style={{ color: 'var(--text-muted)', transition: 'color 0.2s ease' }} className="group-hover:!text-white" />
-            </a>
-          ))}
-        </div>
-
-        {/* 4-column grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
-          {/* Brand column */}
-          <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center"
-                style={{ border: '1px solid rgba(0,240,255,0.3)', boxShadow: '0 0 16px rgba(0,240,255,0.2)', background: 'rgba(0,240,255,0.06)' }}
-              >
-                <span className="font-display font-black text-sm text-[var(--neon-cyan)]" style={{ textShadow: '0 0 8px rgba(0,240,255,0.8)' }}>HP</span>
-              </div>
-              <span className="font-display font-bold tracking-wider text-sm text-[var(--text-primary)]">HAMZA POWERPLAYER</span>
-            </div>
-            <p className="font-accent text-xs text-[var(--text-muted)] leading-relaxed mb-3">
-              Building the future, one app at a time.
+            <p className="mt-4 max-w-xs text-xs leading-relaxed text-[var(--text-muted)]">
+              Android apps and games, built end to end — from the first screen to the store release.
             </p>
-            <p className="font-accent text-xs text-[var(--text-muted)] mb-1">Pakistan 🇵🇰</p>
-            <p className="font-accent text-xs text-[var(--text-muted)]">Available Worldwide 🌍</p>
+            <p className="mt-3 text-xs text-[var(--text-muted)]">Pakistan · Working worldwide</p>
 
-            {/* Status */}
-            <div className="flex items-center gap-2 mt-4">
-              <div className="glow-dot" />
-              <span className="font-accent text-[10px] text-[var(--success)] tracking-wider">OPEN TO PROJECTS</span>
+            <div className="mt-4 flex items-center gap-2">
+              <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[var(--success)]" />
+              <span className="font-mono text-[10px] tracking-[0.12em] text-[var(--success)]">
+                OPEN TO FOCUSED PROJECTS
+              </span>
+            </div>
+
+            <div className="mt-5 flex items-center gap-2">
+              {SOCIAL.map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.02] text-[var(--text-muted)] transition-colors hover:border-white/20 hover:text-white"
+                >
+                  <Icon size={13} aria-hidden="true" />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Pages */}
-          <div>
-            <div className="font-body text-xs text-[var(--neon-cyan)] tracking-widest mb-4">PAGES</div>
-            <div className="space-y-2.5">
-              {PAGES_COL.map(l => <NavLink key={l.label} {...l} />)}
-            </div>
-          </div>
-
-          {/* Work */}
-          <div>
-            <div className="font-body text-xs text-[var(--neon-cyan)] tracking-widest mb-4">WORK</div>
-            <div className="space-y-2.5">
-              {WORK_COL.map(l => <NavLink key={l.label} {...l} />)}
-            </div>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <div className="font-body text-xs text-[var(--neon-cyan)] tracking-widest mb-4">LEGAL</div>
-            <div className="space-y-2.5">
-              {LEGAL_COL.map(l => <NavLink key={l.label} {...l} />)}
-            </div>
-          </div>
+          <FooterColumn title="Pages" links={PAGES_COL} />
+          <FooterColumn title="Work" links={WORK_COL} />
+          <FooterColumn title="Legal" links={LEGAL_COL} />
         </div>
 
-        {/* Divider */}
-        <div className="neon-divider mb-8" />
-
-        {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-1.5 font-accent text-xs text-[var(--text-muted)]">
+        <div className="mt-12 flex flex-col gap-4 border-t border-white/[0.08] pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--text-muted)]">
             <span>© {new Date().getFullYear()}</span>
-            <span className="text-[var(--neon-cyan)] font-bold">HAMZA POWERPLAYER</span>
-            <span>· Built with</span>
-            <Heart size={10} className="text-[var(--danger)]" fill="currentColor" />
+            <span className="font-medium text-[var(--text-primary)]">HAMZA POWERPLAYER</span>
+            <span aria-hidden="true">·</span>
+            <span>Built with</span>
+            <Heart size={10} aria-hidden="true" className="text-[var(--danger)]" fill="currentColor" />
             <span>in Pakistan</span>
-          </div>
+          </p>
 
-          {secretUnlocked && (
-            <div className="font-body text-[10px] text-[var(--gold)] tracking-widest opacity-60">
-              ⬆⬆⬇⬇◀▶◀▶ KONAMI UNLOCKED
-            </div>
-          )}
-
-          <div className="font-accent text-xs text-[var(--text-muted)]">
-            Powered by <span className="text-[var(--neon-cyan)]">React</span> · <span className="text-[var(--neon-violet)]">Vite</span> · <span className="text-[var(--gold)]">Tailwind</span>
-          </div>
+          <p className="text-xs text-[var(--text-muted)]">
+            React · Vite · Tailwind CSS
+          </p>
         </div>
       </div>
 
-      {/* Scroll-to-top FAB */}
       <button
+        type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-6 right-6 w-11 h-11 rounded-full flex items-center justify-center interactive transition-all duration-300 z-50"
-        style={{
-          background: 'linear-gradient(135deg, rgba(0,240,255,0.15), rgba(124,58,237,0.1))',
-          border: '1px solid rgba(0,240,255,0.25)',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.3), 0 0 12px rgba(0,240,255,0.15)',
-          opacity: showScrollTop ? 1 : 0,
-          transform: showScrollTop ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.8)',
-          pointerEvents: showScrollTop ? 'auto' : 'none',
-        }}
+        className={`fixed bottom-6 right-6 z-40 hidden h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-[#08081a]/90 text-[var(--text-primary)] shadow-lg backdrop-blur transition-all duration-300 hover:border-[rgba(0,240,255,0.4)] hover:text-[var(--neon-cyan)] sm:inline-flex ${
+          showScrollTop ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-3 opacity-0'
+        }`}
         aria-label="Scroll to top"
       >
-        <ArrowUp size={16} className="text-[var(--neon-cyan)]" />
+        <ArrowUp size={15} aria-hidden="true" />
       </button>
     </footer>
   );

@@ -1,7 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { CookieConsent } from "@/components/effects/CookieConsent";
-import { CVDownloadFAB } from "@/components/effects/CVDownloadFAB";
 import Home from "@/pages/Home";
 
 const AboutPage = lazy(() => import("@/pages/AboutPage"));
@@ -66,7 +65,6 @@ function App({ initialPath }: AppProps) {
 
   return (
     <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")} hook={locationHook}>
-      <CVDownloadFAB />
       <Router />
       <CookieConsent />
     </WouterRouter>

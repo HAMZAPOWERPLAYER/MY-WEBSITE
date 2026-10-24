@@ -1,7 +1,4 @@
 import { useEffect, type ReactNode } from 'react';
-import AuroraEngine from '@/components/effects/AuroraEngine';
-import { CustomCursor } from '@/components/effects/CustomCursor';
-import { HamzaAI } from '@/components/effects/HamzaAI';
 import { PageNavbar } from './PageNavbar';
 import { Footer } from '@/components/sections/Footer';
 
@@ -55,13 +52,19 @@ export function PageLayout({ children, title, description, path, ogType = 'websi
       {schemas?.map((schema) => (
         <script key={schema} type="application/ld+json" data-page-schema="true">{schema}</script>
       ))}
-      <div className="bg-[var(--bg-base)] min-h-screen text-[var(--text-primary)] overflow-x-hidden selection:bg-[var(--neon-cyan)] selection:text-[#04040a]">
-        <AuroraEngine />
-        <div className="noise-overlay" />
-        <CustomCursor />
-        <HamzaAI />
+
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
+
+      <div className="relative min-h-screen overflow-x-hidden bg-[var(--bg-base)] text-[var(--text-primary)] selection:bg-[var(--neon-cyan)] selection:text-[#04040a]">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_70%_45%_at_50%_-10%,rgba(0,240,255,0.05),transparent_70%)]"
+        />
+        <div aria-hidden="true" className="pointer-events-none fixed inset-0 hp-ambient opacity-40" />
         <PageNavbar />
-        <main className="relative z-10 pt-16">
+        <main id="main-content" className="relative pt-16">
           {children}
         </main>
         <Footer />

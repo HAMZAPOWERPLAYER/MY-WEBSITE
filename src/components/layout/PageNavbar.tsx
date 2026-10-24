@@ -1,20 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
+import { trapFocus } from '@/lib/focusTrap';
 
-const PAGE_LINKS = [
+const PRIMARY_LINKS = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
   { label: 'Apps', href: '/apps' },
   { label: 'Games', href: '/games' },
   { label: 'Projects', href: '/projects' },
-  { label: 'Links', href: '/links' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Hire Me', href: '/hire' },
+  { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
 
 const MORE_LINKS = [
+  { label: 'Links', href: '/links' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Hire Me', href: '/hire' },
   { label: 'Tools', href: '/tools' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Privacy', href: '/privacy' },
@@ -22,87 +23,241 @@ const MORE_LINKS = [
   { label: 'Sitemap', href: '/sitemap' },
 ];
 
+function isActivePath(location: string, href: string) {
+  if (href === '/') return location === '/';
+  return location === href || location.startsWith(`${href}/`);
+}
+
 export function PageNavbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const [location] = useLocation();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const mobilePanelRef = useRef<HTMLDivElement>(null);
+  const moreRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => { setMobileOpen(false); }, [location]);
+  useEffect(() => {
+    setMobileOpen(false);
+    setMoreOpen(false);
+  }, [location]);
+
+  useEffect(() => {
+    if (!moreOpen) return;
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (moreRef.current && !moreRef.current.contains(event.target as Node)) {
+        setMoreOpen(false);
+      }
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMoreOpen(false);
+    };
+
+    document.addEventListener('pointerdown', onPointerDown);
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [moreOpen]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeButtonRef.current?.focus();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMobileOpen(false);
+      if (event.key === 'Tab') trapFocus(event, mobilePanelRef.current);
+    };
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      menuButtonRef.current?.focus();
+    };
+  }, [mobileOpen]);
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-16 ${
-        scrolled ? 'bg-[rgba(4,4,10,0.9)] backdrop-blur-xl border-b border-[var(--border-glow)]' : 'bg-transparent'
-      }`}>
-        <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 cursor-pointer">
-            <span className="font-display font-bold text-xl text-[var(--neon-cyan)] neon-text-glow">HP</span>
-            <span className="font-accent font-semibold tracking-wider text-sm hidden sm:block text-[var(--text-primary)]">
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+          scrolled
+            ? 'border-b border-white/[0.08] bg-[#04040a]/85 backdrop-blur-xl'
+            : 'border-b border-transparent bg-transparent'
+        }`}
+      >
+        <nav aria-label="Primary" className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6">
+          <Link href="/" className="group flex shrink-0 items-center gap-3">
+            <span className="grid h-8 w-8 place-items-center rounded-lg border border-[rgba(0,240,255,0.28)] bg-[rgba(0,240,255,0.06)] font-display text-[10px] font-black tracking-wide text-[var(--neon-cyan)]">
+              HP
+            </span>
+            <span className="hidden font-display text-[11px] font-bold tracking-[0.16em] text-[var(--text-primary)] transition-colors group-hover:text-[var(--neon-cyan)] sm:block">
               HAMZA POWERPLAYER
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-5">
-            {PAGE_LINKS.map(link => {
-              const isActive = location === link.href;
+          <div className="hidden items-center gap-1 lg:flex">
+            {PRIMARY_LINKS.map((link) => {
+              const active = isActivePath(location, link.href);
               return (
-                <Link key={link.href} href={link.href}
-                  className="font-accent text-sm font-medium relative group transition-colors duration-200"
-                  style={{ color: isActive ? 'var(--neon-cyan)' : 'var(--text-muted)' }}>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`relative rounded-lg px-3 py-2 text-[13px] font-medium transition-colors hover:bg-white/[0.04] ${
+                    active ? 'text-[var(--text-primary)]' : 'text-[var(--text-muted)] hover:text-white'
+                  }`}
+                >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 h-[2px] bg-[var(--neon-cyan)] transition-all duration-300 group-hover:w-full"
-                    style={{ width: isActive ? '100%' : '0%', boxShadow: '0 0 8px #00f0ff' }} />
+                  {active && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-x-3 -bottom-0.5 h-px bg-[var(--neon-cyan)]"
+                    />
+                  )}
                 </Link>
               );
             })}
-            {/* More dropdown */}
-            <div className="relative" onMouseEnter={() => setMoreOpen(true)} onMouseLeave={() => setMoreOpen(false)}>
-              <button className="font-accent text-sm font-medium text-[var(--text-muted)] hover:text-[var(--neon-cyan)] flex items-center gap-1 transition-colors">
-                More <ChevronDown size={14} />
+
+            <div
+              ref={moreRef}
+              className="relative"
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget as Node)) {
+                  setMoreOpen(false);
+                }
+              }}
+            >
+              <button
+                type="button"
+                onClick={() => setMoreOpen((open) => !open)}
+                className="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-[13px] font-medium text-[var(--text-muted)] transition-colors hover:bg-white/[0.04] hover:text-white"
+                aria-haspopup="true"
+                aria-expanded={moreOpen}
+                aria-controls="more-navigation"
+              >
+                More{' '}
+                <ChevronDown
+                  size={13}
+                  aria-hidden="true"
+                  className={`transition-transform ${moreOpen ? 'rotate-180' : ''}`}
+                />
               </button>
-              {moreOpen && (
-                <div className="absolute top-full right-0 mt-2 w-44 rounded-xl overflow-hidden"
-                  style={{ background: 'rgba(8,8,26,0.98)', border: '1px solid rgba(0,240,255,0.2)', backdropFilter: 'blur(20px)', boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
-                  {MORE_LINKS.map(link => (
-                    <Link key={link.href} href={link.href}
-                      className="block px-4 py-2.5 font-accent text-sm text-[var(--text-muted)] hover:text-[var(--neon-cyan)] hover:bg-[rgba(0,240,255,0.05)] transition-colors">
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
+              <div
+                id="more-navigation"
+                className={`absolute right-0 top-full w-44 overflow-hidden rounded-xl border border-white/10 bg-[#08081a]/98 p-1 shadow-2xl backdrop-blur-xl transition-all duration-150 ${
+                  moreOpen ? 'visible translate-y-1 opacity-100' : 'invisible translate-y-0 opacity-0'
+                }`}
+              >
+                {MORE_LINKS.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMoreOpen(false)}
+                    className="block rounded-lg px-3 py-2 text-xs text-[var(--text-muted)] transition-colors hover:bg-white/[0.05] hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
-          <button className="md:hidden text-[var(--text-primary)]" onClick={() => setMobileOpen(v => !v)}>
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </nav>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/hire"
+              className="hidden items-center gap-2 rounded-lg border border-[rgba(0,240,255,0.28)] bg-[rgba(0,240,255,0.06)] px-4 py-2 font-display text-[11px] font-bold tracking-[0.08em] text-[var(--neon-cyan)] transition-colors hover:bg-[rgba(0,240,255,0.12)] md:inline-flex"
+            >
+              Hire me
+            </Link>
+            <button
+              ref={menuButtonRef}
+              type="button"
+              onClick={() => setMobileOpen(true)}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-[var(--text-primary)] transition-colors hover:bg-white/[0.06] lg:hidden"
+              aria-label="Open menu"
+              aria-expanded={mobileOpen}
+              aria-controls="page-mobile-navigation"
+            >
+              <Menu size={20} aria-hidden="true" />
+            </button>
+          </div>
+        </nav>
+      </header>
 
-      {/* Mobile menu */}
-      <div className="fixed inset-0 z-40 md:hidden flex flex-col items-center justify-center gap-5"
-        style={{
-          background: 'rgba(4,4,10,0.97)', backdropFilter: 'blur(24px)',
-          transform: mobileOpen ? 'translateX(0)' : 'translateX(100%)',
-          transition: 'transform 0.3s ease',
-          pointerEvents: mobileOpen ? 'auto' : 'none',
-        }}>
-        {[...PAGE_LINKS, ...MORE_LINKS].map((link, i) => (
-          <Link key={link.href} href={link.href}
-            className="font-display text-xl font-bold hover:text-[var(--neon-cyan)] transition-colors"
-            style={{ color: location === link.href ? 'var(--neon-cyan)' : 'var(--text-primary)', transitionDelay: `${i * 0.04}s` }}>
-            {link.label}
-          </Link>
-        ))}
-      </div>
+      {mobileOpen && (
+        <div
+          id="page-mobile-navigation"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site navigation"
+          className="fixed inset-0 z-[60] lg:hidden"
+        >
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[#04040a]/98 backdrop-blur-xl"
+            onClick={() => setMobileOpen(false)}
+          />
+
+          <div ref={mobilePanelRef} className="relative flex h-full flex-col px-6 pb-8 pt-4">
+            <div className="flex h-16 items-center justify-between">
+              <span className="flex items-center gap-3">
+                <span className="grid h-8 w-8 place-items-center rounded-lg border border-[rgba(0,240,255,0.28)] bg-[rgba(0,240,255,0.06)] font-display text-[10px] font-black text-[var(--neon-cyan)]">
+                  HP
+                </span>
+                <span className="font-display text-[11px] font-bold tracking-[0.16em] text-[var(--text-primary)]">
+                  HAMZA POWERPLAYER
+                </span>
+              </span>
+              <button
+                ref={closeButtonRef}
+                type="button"
+                onClick={() => setMobileOpen(false)}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-[var(--text-primary)] transition-colors hover:bg-white/[0.06]"
+                aria-label="Close menu"
+              >
+                <X size={20} aria-hidden="true" />
+              </button>
+            </div>
+
+            <nav aria-label="Mobile" className="mt-4 flex-1 overflow-y-auto">
+              {[...PRIMARY_LINKS, ...MORE_LINKS].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`block border-b border-white/[0.06] py-2.5 font-display text-base font-bold tracking-wide ${
+                    isActivePath(location, link.href) ? 'text-[var(--neon-cyan)]' : 'text-[var(--text-primary)]'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="pt-4">
+              <Link
+                href="/hire"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-center rounded-xl bg-[var(--neon-cyan)] px-5 py-3 font-display text-xs font-black tracking-[0.08em] text-[#04040a]"
+              >
+                Start a project
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

@@ -1,295 +1,132 @@
-import { useEffect, useRef, useState } from 'react';
-import { MagneticButton } from '../effects/MagneticButton';
-import { ParticleCanvas } from '../effects/ParticleCanvas';
-import { WaveformBorder } from '../effects/WaveformBorder';
-import { RocketLaunch } from '../effects/RocketLaunch';
-import { SplitText } from '../effects/SplitText';
-import { GlowText, GradientBadge } from '../effects/GlowText';
-import { BlurReveal } from '../effects/BlurReveal';
-import { useLenisScroll } from '../effects/SmoothScroll';
-import { ArrowDown, Zap, Code2 } from 'lucide-react';
+import { Link } from 'wouter';
+import { ArrowRight, ArrowUpRight, Play } from 'lucide-react';
+import { APPS, GAMES } from '@/lib/products';
+import { ProductIcon } from '@/components/product/ProductArtwork';
 
-const TITLE = 'HAMZA POWERPLAYER';
-
-const subtitles = [
-  'Building Apps for the Future',
-  'Engineering AI Experiences',
-  'Creating Tomorrow\'s Technology',
-];
+const lastBell = GAMES.find((game) => game.slug === 'the-last-bell');
+const featuredApps = APPS.filter((app) => app.status === 'published');
 
 export function Hero() {
-  const [subtitleIndex, setSubtitleIndex] = useState(0);
-  const [rocketActive, setRocketActive] = useState(false);
-  const [missionDone, setMissionDone] = useState(false);
-  const [entered, setEntered] = useState(false);
-  const [letterPositions, setLetterPositions] = useState<{ x: number; y: number }[]>(
-    Array.from({ length: TITLE.length }, () => ({ x: 0, y: 0 }))
-  );
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const rafRef = useRef<number>(0);
-  const mouseRef = useRef({ x: -9999, y: -9999 });
-  const targetRef = useRef(Array.from({ length: TITLE.length }, () => ({ x: 0, y: 0 })));
-  const currentRef = useRef(Array.from({ length: TITLE.length }, () => ({ x: 0, y: 0 })));
-  const explodedRef = useRef(false);
-  const lenisScroll = useLenisScroll();
-
-  // Entry animation
-  useEffect(() => {
-    const t = setTimeout(() => setEntered(true), 100);
-    return () => clearTimeout(t);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSubtitleIndex(prev => (prev + 1) % subtitles.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Gravity letter effect
-  useEffect(() => {
-    const title = titleRef.current;
-    if (!title) return;
-    const handleMouseMove = (e: MouseEvent) => { mouseRef.current = { x: e.clientX, y: e.clientY }; };
-    const handleMouseLeave = () => { mouseRef.current = { x: -9999, y: -9999 }; };
-    document.addEventListener('mousemove', handleMouseMove);
-    title.addEventListener('mouseleave', handleMouseLeave);
-
-    function loop() {
-      const spans = title?.querySelectorAll('.gravity-letter');
-      if (!spans || spans.length === 0) { rafRef.current = requestAnimationFrame(loop); return; }
-      const updates: { x: number; y: number }[] = [];
-      spans.forEach((span, i) => {
-        const rect = span.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = mouseRef.current.x - cx;
-        const dy = mouseRef.current.y - cy;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const maxDist = 130;
-        const MAX_PULL = 28;
-        let tx = 0, ty = 0;
-        if (dist < maxDist && !explodedRef.current) {
-          const force = (1 - dist / maxDist) ** 2;
-          tx = dx * force * MAX_PULL / Math.max(dist, 1);
-          ty = dy * force * MAX_PULL / Math.max(dist, 1);
-        }
-        targetRef.current[i] = { x: tx, y: ty };
-        currentRef.current[i] = {
-          x: currentRef.current[i].x + (targetRef.current[i].x - currentRef.current[i].x) * 0.1,
-          y: currentRef.current[i].y + (targetRef.current[i].y - currentRef.current[i].y) * 0.1,
-        };
-        updates.push({ ...currentRef.current[i] });
-      });
-      setLetterPositions(updates);
-      rafRef.current = requestAnimationFrame(loop);
-    }
-    rafRef.current = requestAnimationFrame(loop);
-    return () => {
-      cancelAnimationFrame(rafRef.current);
-      document.removeEventListener('mousemove', handleMouseMove);
-      title?.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
-
-  function handleTitleClick() {
-    if (explodedRef.current) return;
-    explodedRef.current = true;
-    const newTargets = Array.from({ length: TITLE.length }, () => ({
-      x: (Math.random() - 0.5) * 300,
-      y: (Math.random() - 0.5) * 200,
-    }));
-    newTargets.forEach((t, i) => { targetRef.current[i] = t; });
-    setTimeout(() => {
-      explodedRef.current = false;
-      newTargets.forEach((_, i) => { targetRef.current[i] = { x: 0, y: 0 }; });
-    }, 2000);
-  }
-
   return (
-    <>
-      {rocketActive && (
-        <RocketLaunch onClose={() => { setRocketActive(false); setMissionDone(true); }} />
-      )}
+    <section id="hero" className="relative overflow-hidden pb-16 pt-28 sm:pb-24 sm:pt-36">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 hp-ambient" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 hp-grid-bg opacity-70" />
 
-      <section id="hero" className="relative min-h-[100dvh] flex flex-col items-stretch justify-center overflow-hidden">
-        {/* Layered backgrounds */}
-        <div className="mesh-gradient-bg"><div className="blob-3" /></div>
-        <div className="grid-overlay" />
-        <ParticleCanvas />
+      <div className="relative mx-auto max-w-6xl px-6">
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)] lg:gap-16">
+          <div className="min-w-0">
+            <p className="hp-eyebrow">Independent app &amp; game developer</p>
 
-        {/* Floating ghost letters — desktop only */}
-        <div className="hidden md:block absolute inset-0 pointer-events-none overflow-hidden z-[1]">
-          {['H','A','M','Z','A'].map((char, i) => (
-            <div
-              key={i}
-              className="absolute font-display font-black select-none"
-              style={{
-                fontSize: 140,
-                color: 'transparent',
-                WebkitTextStroke: '1px rgba(0,240,255,0.04)',
-                left: `${6 + i * 18}%`,
-                top: `${8 + Math.sin(i * 1.2) * 18}%`,
-                animation: `hero-letter-${i} ${14 + i * 2}s ease-in-out infinite alternate`,
-                willChange: 'transform',
-              }}
-            >
-              {char}
-            </div>
-          ))}
-        </div>
-
-        {/* Ambient orbs */}
-        <div className="absolute inset-0 pointer-events-none z-[1]">
-          <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full opacity-[0.04]"
-            style={{ background: 'radial-gradient(circle, #00f0ff, transparent 70%)', filter: 'blur(60px)', animation: 'float 18s ease-in-out infinite alternate' }} />
-          <div className="absolute bottom-1/3 left-1/4 w-72 h-72 rounded-full opacity-[0.06]"
-            style={{ background: 'radial-gradient(circle, #7c3aed, transparent 70%)', filter: 'blur(60px)', animation: 'float 22s ease-in-out infinite alternate-reverse' }} />
-        </div>
-
-        {/* Main content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center flex flex-col items-center mt-16 flex-1 justify-center">
-          
-          {/* Badge */}
-          <div
-            style={{
-              opacity: entered ? 1 : 0,
-              transform: entered ? 'translateY(0)' : 'translateY(-20px)',
-              transition: 'opacity 0.8s ease 0.2s, transform 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s',
-            }}
-            className="mb-8 flex flex-wrap items-center justify-center gap-2"
-          >
-            <GradientBadge color="cyan">
-              <Code2 size={10} />
-              APP DEVELOPER
-            </GradientBadge>
-            <GradientBadge color="violet">AI BUILDER</GradientBadge>
-            <GradientBadge color="gold">CREATOR</GradientBadge>
-          </div>
-
-          {/* Gravity title */}
-          <h1
-            ref={titleRef}
-            className="font-display font-black mb-6 tracking-tight leading-tight cursor-pointer"
-            style={{
-              fontSize: 'clamp(2.4rem, 9.5vw, 6.5rem)',
-              opacity: entered ? 1 : 0,
-              transform: entered ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.96)',
-              transition: 'opacity 1s ease 0.4s, transform 1s cubic-bezier(0.16,1,0.3,1) 0.4s',
-            }}
-            onClick={handleTitleClick}
-          >
-            {TITLE.split('').map((char, i) => (
-              <span
-                key={i}
-                className={`gravity-letter inline-block ${char === ' ' ? 'w-[0.28em]' : ''}`}
-                style={{
-                  transform: `translate(${letterPositions[i]?.x ?? 0}px, ${letterPositions[i]?.y ?? 0}px)`,
-                  transition: explodedRef.current ? 'transform 2s cubic-bezier(0.34,1.56,0.64,1)' : 'none',
-                  willChange: 'transform',
-                  backgroundImage: 'linear-gradient(135deg, #00f0ff 0%, #a78bfa 40%, #00f0ff 80%)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  filter: `drop-shadow(0 0 ${8 + Math.abs(letterPositions[i]?.x ?? 0) * 0.25}px rgba(0,240,255,0.55))`,
-                }}
-              >
-                {char === ' ' ? '\u00A0' : char}
+            <h1 className="hp-display mt-5 text-[var(--text-primary)]">
+              <span className="block whitespace-nowrap text-[clamp(3.2rem,11vw,6.6rem)]">HAMZA</span>
+              <span className="mt-1 block whitespace-nowrap bg-gradient-to-r from-[var(--neon-cyan)] via-[#8ab4ff] to-[#a78bfa] bg-clip-text text-[clamp(2rem,5.6vw,4rem)] text-transparent">
+                POWERPLAYER
               </span>
-            ))}
-          </h1>
+            </h1>
 
-          {/* Rotating subtitle */}
-          <div
-            className="h-8 mb-10 relative overflow-hidden w-full max-w-xl mx-auto"
-            style={{
-              opacity: entered ? 1 : 0,
-              transition: 'opacity 0.8s ease 0.8s',
-            }}
-          >
-            {subtitles.map((sub, i) => (
-              <div
-                key={i}
-                className={`absolute inset-0 font-accent text-lg md:text-xl text-[var(--text-muted)] transition-all duration-1000 transform ${
-                  i === subtitleIndex ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                }`}
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
+              I design, build, and ship Android apps and games. Three products are live on Google
+              Play: PakiGPA, SubSight, and The Last Bell.
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="#work"
+                className="inline-flex items-center gap-2 rounded-xl bg-[var(--neon-cyan)] px-5 py-3 font-display text-xs font-black tracking-wide text-[#04040a] transition-transform hover:-translate-y-0.5"
               >
-                {sub}
-              </div>
-            ))}
+                Explore the work <ArrowRight size={14} aria-hidden="true" />
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] px-5 py-3 font-display text-xs font-bold tracking-wide text-[var(--text-primary)] transition-colors hover:border-white/30 hover:bg-white/[0.06]"
+              >
+                Start a conversation
+              </Link>
+            </div>
+
+            <p className="mt-7 flex items-center gap-2 font-mono text-[10px] tracking-[0.16em] text-[var(--text-muted)]">
+              <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[var(--success)]" />
+              BASED IN PAKISTAN · WORKING WORLDWIDE
+            </p>
           </div>
 
-          {/* CTAs */}
-          <div
-            className="flex flex-col sm:flex-row gap-4 mb-6"
-            style={{
-              opacity: entered ? 1 : 0,
-              transform: entered ? 'translateY(0)' : 'translateY(20px)',
-              transition: 'opacity 0.8s ease 1.1s, transform 0.8s ease 1.1s',
-            }}
-          >
-            <MagneticButton onClick={() => lenisScroll('projects')}>
-              <Zap size={14} className="mr-1.5" />
-              EXPLORE PROJECTS
-            </MagneticButton>
-            <MagneticButton variant="secondary" onClick={() => lenisScroll('contact')}>
-              CONTACT ME
-            </MagneticButton>
-          </div>
+          {/* Live product proof */}
+          <div className="relative min-w-0">
+            <div
+              aria-hidden="true"
+              className="absolute -inset-6 rounded-[2rem] bg-[radial-gradient(ellipse_at_center,rgba(124,58,237,0.28),transparent_70%)] blur-2xl"
+            />
 
-          {/* Rocket Launch */}
-          <div
-            className="relative mt-2"
-            style={{
-              opacity: entered ? 1 : 0,
-              transition: 'opacity 0.8s ease 1.3s',
-            }}
-          >
-            <button
-              onClick={() => setRocketActive(true)}
-              disabled={rocketActive}
-              className="relative px-8 py-3 rounded-full font-display font-black text-sm tracking-widest transition-all hover:scale-105 disabled:opacity-50 interactive"
-              style={{
-                border: '1px solid rgba(0,240,255,0.4)',
-                background: 'rgba(0,240,255,0.06)',
-                color: 'var(--neon-cyan)',
-                boxShadow: '0 0 20px rgba(0,240,255,0.15), inset 0 0 20px rgba(0,240,255,0.04)',
-                animation: 'rocket-shimmer 2.5s ease-in-out infinite',
-              }}
-            >
-              <span className="mr-2">🚀</span>
-              LAUNCH SEQUENCE — INITIATE
-              <div className="absolute -inset-1 rounded-full border border-[rgba(0,240,255,0.2)]"
-                style={{ animation: 'attention-ring 2.5s ease-in-out infinite' }} />
-            </button>
-            {missionDone && (
-              <div className="mt-3 font-mono text-xs text-[var(--gold)] text-center"
-                style={{ textShadow: '0 0 10px var(--gold)', animation: 'fadeIn 0.5s ease' }}>
-                [ MISSION COMPLETE ✓ ]
-              </div>
+            {lastBell && (
+              <Link
+                href={lastBell.route}
+                className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-[#070712] shadow-[0_30px_80px_rgba(0,0,0,0.45)]"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src={lastBell.heroImage ?? lastBell.screenshots?.[0]}
+                    alt="The Last Bell gameplay artwork"
+                    width={800}
+                    height={500}
+                    fetchPriority="high"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-gradient-to-t from-[#04040a] via-[#04040a]/55 to-transparent"
+                  />
+                  <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-[rgba(0,255,136,0.3)] bg-black/50 px-2.5 py-1 font-mono text-[10px] tracking-[0.14em] text-[var(--success)] backdrop-blur">
+                    <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[var(--success)]" />
+                    LIVE ON GOOGLE PLAY
+                  </span>
+                  <div className="absolute inset-x-4 bottom-4 flex items-end justify-between gap-4">
+                    <div className="flex min-w-0 items-center gap-3">
+                      <ProductIcon product={lastBell} size="md" />
+                      <div className="min-w-0">
+                        <p className="truncate font-display text-lg font-black tracking-wide text-white">
+                          {lastBell.name}
+                        </p>
+                        <p className="truncate text-xs text-white/65">
+                          {lastBell.shortTagline ?? lastBell.genre ?? 'Android game'}
+                        </p>
+                      </div>
+                    </div>
+                    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur transition-colors group-hover:bg-white/15">
+                      <ArrowUpRight size={15} aria-hidden="true" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
             )}
+
+            <div className="mt-3 grid gap-2.5">
+              {featuredApps.map((app) => (
+                <Link
+                  key={app.id}
+                  href={app.route}
+                  className="hp-card hp-card-hover group flex items-center gap-3.5 p-3.5"
+                >
+                  <ProductIcon product={app} size="md" />
+                  <div className="min-w-0 flex-1">
+                    <p className="font-display text-sm font-bold text-[var(--text-primary)]">{app.name}</p>
+                    <p className="mt-0.5 truncate text-[11px] text-[var(--text-muted)]">
+                      {app.shortTagline ?? app.tagline}
+                    </p>
+                  </div>
+                  <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 text-[var(--text-muted)] transition-colors group-hover:border-[rgba(0,240,255,0.3)] group-hover:text-[var(--neon-cyan)]">
+                    <ArrowUpRight size={14} aria-hidden="true" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+
+            <p className="mt-4 flex items-center gap-2 pl-1 font-mono text-[10px] tracking-[0.12em] text-[var(--text-muted)]">
+              <Play size={10} aria-hidden="true" className="text-[var(--success)]" />
+              THREE LIVE PRODUCTS · ONE DEVELOPER
+            </p>
           </div>
         </div>
-
-        {/* Scroll indicator */}
-        <div
-          className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10"
-          style={{
-            opacity: entered ? 1 : 0,
-            transition: 'opacity 1s ease 1.6s',
-            animation: entered ? 'float-y 3s ease-in-out infinite 1.6s' : 'none',
-          }}
-        >
-          <span className="font-accent text-[10px] tracking-[4px] text-[var(--text-muted)] uppercase">Scroll</span>
-          <div className="w-[1px] h-10 bg-gradient-to-b from-[var(--neon-cyan)] to-transparent" />
-          <ArrowDown size={12} className="text-[var(--neon-cyan)] opacity-60" />
-        </div>
-
-        {/* Waveform border at bottom */}
-        <div className="relative z-10 w-full mt-auto">
-          <WaveformBorder />
-        </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
