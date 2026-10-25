@@ -60,7 +60,7 @@ export default function SubsightPrivacyPage() {
           <section>
             <h2 className="font-display text-xl font-bold text-[var(--text-primary)]">7. Contact Us</h2>
             <p>If you have questions about this Privacy Policy:</p>
-            <p>Email: sartarkhan09876@gmail.com</p>
+            <p>Email: hamzapowerplayer.global@gmail.com</p>
             <p>Phone: +923129584661</p>
           </section>
         </div>
