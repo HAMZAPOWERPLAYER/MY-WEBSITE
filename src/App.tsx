@@ -22,6 +22,9 @@ const GameDetailPage = lazy(() => import("@/pages/GameDetailPage"));
 const ProductDetailPage = lazy(() => import("@/pages/ProductDetailPage"));
 const ProjectsPage = lazy(() => import("@/pages/ProjectsPage"));
 const LinksPage = lazy(() => import("@/pages/LinksPage"));
+const SubsightPrivacyPage = lazy(() => import("@/pages/SubsightPrivacyPage"));
+const PakiGpaPrivacyPage = lazy(() => import("@/pages/PakiGpaPrivacyPage"));
+const LastBellPrivacyPage = lazy(() => import("@/pages/LastBellPrivacyPage"));
 
 function Router() {
   return (
@@ -38,6 +41,9 @@ function Router() {
         <Route path="/games/:slug" component={GameDetailPage} />
         <Route path="/projects" component={ProjectsPage} />
         <Route path="/projects/:slug" component={ProductDetailPage} />
+        <Route path="/subsight/privacy-policy" component={SubsightPrivacyPage} />
+        <Route path="/pakigpa/privacy-policy" component={PakiGpaPrivacyPage} />
+        <Route path="/the-last-bell/privacy-policy" component={LastBellPrivacyPage} />
         <Route path="/links" component={LinksPage} />
         <Route path="/blog" component={BlogPage} />
         <Route path="/faq" component={FAQPage} />

@@ -174,6 +174,32 @@ export default function PrivacyPage() {
                 <p className="text-[var(--text-muted)]">Message via WhatsApp or LinkedIn on the <a className="text-[var(--neon-cyan)]" href="/contact">Contact page</a>.</p>
               </div>
             </div>
+
+            <div id="app-policies" className="mt-10">
+              <h2 className="font-display font-black text-xl mb-4">App &amp; Game Privacy Policies</h2>
+              <p className="text-sm text-[var(--text-muted)] mb-4">
+                Privacy policies for HAMZA POWERPLAYER apps and games are hosted here on the official domain.
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { name: 'SubSight', desc: 'Subscription tracker for Android', href: '/subsight/privacy-policy' },
+                  { name: 'PakiGPA', desc: 'CGPA calculator for Android', href: '/pakigpa/privacy-policy' },
+                  { name: 'The Last Bell', desc: 'First-person horror game for Android', href: '/the-last-bell/privacy-policy' },
+                ].map((app) => (
+                  <a
+                    key={app.name}
+                    href={app.href}
+                    className="glass-card rounded-xl p-4 transition-colors hover:border-[rgba(0,240,255,0.3)]"
+                  >
+                    <p className="font-display text-sm font-bold text-[var(--text-primary)]">{app.name}</p>
+                    <p className="mt-1 text-xs text-[var(--text-muted)]">{app.desc}</p>
+                    <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--neon-cyan)]">
+                      Privacy Policy →
+                    </p>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -95,6 +95,15 @@ try {
     await mkdir(path.dirname(destination), { recursive: true });
     await writeFile(destination, page);
     console.log(`Prerendered ${route} -> ${path.relative(process.cwd(), destination)}`);
+
+    // Also emit a directory index for policy pages so the trailing-slash URLs
+    // (used by Google Play Console) resolve with a 200 instead of a redirect.
+    if (route.endsWith('/privacy-policy')) {
+      const dirIndex = path.join(outputDir, route.slice(1), 'index.html');
+      await mkdir(path.dirname(dirIndex), { recursive: true });
+      await writeFile(dirIndex, page);
+      console.log(`Prerendered ${route}/ -> ${path.relative(process.cwd(), dirIndex)}`);
+    }
   }
 
   const notFoundRendered = await renderAppToString(React.createElement(App, { initialPath: '/__not-found__' }));
