@@ -12,7 +12,7 @@ const SOCIAL_ICONS = [
 
 export function ContactCTA() {
   return (
-    <section id="contact" className="relative scroll-mt-20 py-20 sm:py-28">
+    <section id="contact" className="relative scroll-mt-20 py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-6">
         <div className="hp-beam rounded-3xl">
           <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#070712] p-8 sm:p-12 lg:p-16">

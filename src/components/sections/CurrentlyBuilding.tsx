@@ -1,62 +1,91 @@
 import { Link } from 'wouter';
-import { ArrowUpRight, Github } from 'lucide-react';
+import { ArrowUpRight, CalendarX, Github, Layers } from 'lucide-react';
 import { GAMES, GITHUB_PROFILE_URL } from '@/lib/products';
-import { StatusPill } from '@/components/product/ProductArtwork';
+import { SectionHeading } from '@/components/sections/SectionHeading';
+import { BentoGrid, BentoTile } from '@/components/bento/BentoTile';
 
 const upcoming = GAMES.filter((game) => game.status === 'coming-soon');
 
+/**
+ * The Lab — games in development, one tile per title plus an honest
+ * status tile and a GitHub follow tile. No dates, no trailers, no
+ * store listings — the copy says exactly that.
+ */
 export function CurrentlyBuilding() {
   return (
-    <section id="building" className="relative scroll-mt-20 border-t border-white/[0.06] py-20 sm:py-28">
+    <section id="building" className="relative scroll-mt-20 py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
-          <div className="lg:sticky lg:top-24 lg:self-start">
-            <p className="hp-eyebrow">In development</p>
-            <h2 className="hp-h2 mt-4">What&apos;s next.</h2>
-            <p className="mt-5 text-base leading-relaxed text-[var(--text-muted)]">
-              Three Android games are in development. None of them has a release date, trailer, or
-              store listing yet — this page will change when that is no longer true.
-            </p>
+        <SectionHeading
+          eyebrow="The lab"
+          title="What's next."
+          description="Android games in development. None of them has a release date, trailer, or store listing yet — this page will change when that is no longer true."
+        />
+
+        <BentoGrid className="mt-12" aria-label="Games in development">
+          {upcoming.map((game, index) => (
+            <BentoTile key={game.id} size={index === 0 ? '2x1' : '1x1'} index={index}>
+              <Link
+                href={game.route}
+                aria-label={`${game.name} — read the development notes`}
+                className="relative z-[2] flex h-full flex-col justify-center"
+              >
+                <p className="bento-kicker">
+                  <span aria-hidden="true" className="bento-dot" />
+                  In development
+                </p>
+                <h3 className="bento-h mt-2 truncate text-lg">{game.name}</h3>
+                <p className="mt-1 line-clamp-1 text-sm text-[var(--text-muted)]">
+                  {game.tagline ?? 'An upcoming Android title in early development.'}
+                </p>
+              </Link>
+            </BentoTile>
+          ))}
+
+          <BentoTile size="2x1" index={3}>
+            <div className="relative z-[2] flex h-full items-center gap-5">
+              <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/12 bg-white/[0.05] text-[var(--text-primary)]">
+                <CalendarX size={21} aria-hidden="true" />
+              </span>
+              <div className="min-w-0">
+                <h3 className="bento-h text-lg">No dates. No trailers.</h3>
+                <p className="mt-1 text-sm leading-relaxed text-[var(--text-muted)]">
+                  Releases are announced only when they exist. This page changes the day any of
+                  that is no longer true.
+                </p>
+              </div>
+            </div>
+          </BentoTile>
+
+          <BentoTile size="1x1" index={4}>
+            <div className="relative z-[2] flex h-full flex-col justify-center">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/12 bg-white/[0.05] text-[var(--text-primary)]">
+                <Layers size={19} aria-hidden="true" />
+              </span>
+              <p className="hp-stat-value mt-3 font-display text-3xl font-black leading-none tracking-tight">
+                {upcoming.length}
+              </p>
+              <p className="bento-kicker mt-2">In the pipeline</p>
+            </div>
+          </BentoTile>
+
+          <BentoTile size="1x1" index={5}>
             <a
               href={GITHUB_PROFILE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hp-btn-ghost mt-7 px-5 py-3 font-display text-xs font-bold tracking-wide"
+              className="relative z-[2] flex h-full flex-col justify-center"
+              aria-label="Follow the build on GitHub (opens in a new tab)"
             >
-              <Github size={14} aria-hidden="true" /> Follow the build
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/12 bg-white/[0.05] text-[var(--text-primary)]">
+                <Github size={19} aria-hidden="true" />
+              </span>
+              <h3 className="bento-h mt-4 text-base">Follow the build</h3>
+              <p className="bento-link mt-2">
+                @HAMZAPOWERPLAYER <ArrowUpRight size={12} aria-hidden="true" />
+              </p>
             </a>
-          </div>
-
-          <ul className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
-            {upcoming.map((game, index) => (
-              <li key={game.id} className="hp-row-hover relative">
-                <Link
-                  href={game.route}
-                  className="group flex items-center gap-4 py-5 sm:gap-6 sm:px-2"
-                >
-                  <span className="hp-stat-value w-6 shrink-0 font-mono text-[11px] font-bold">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="truncate font-display text-base font-bold tracking-wide text-[var(--text-primary)] transition-colors group-hover:text-[var(--neon-cyan)]">
-                      {game.name}
-                    </h3>
-                    <p className="mt-1 truncate text-xs text-[var(--text-muted)]">
-                      {game.tagline ?? 'An upcoming Android title in early development.'}
-                    </p>
-                  </div>
-                  <StatusPill status={game.status} className="hidden sm:inline-flex" />
-                  <span
-                    aria-hidden="true"
-                    className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 text-[var(--text-muted)] transition-all duration-300 group-hover:translate-x-0.5 group-hover:border-[rgba(0,240,255,0.35)] group-hover:text-[var(--neon-cyan)] group-hover:shadow-[0_0_16px_rgba(0,240,255,0.2)]"
-                  >
-                    <ArrowUpRight size={15} />
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+          </BentoTile>
+        </BentoGrid>
       </div>
     </section>
   );

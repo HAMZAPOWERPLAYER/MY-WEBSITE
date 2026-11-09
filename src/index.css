@@ -5,15 +5,16 @@
 @custom-variant dark (&:is(.dark *));
 
 :root, .dark {
-  --bg-base: #04040a;
-  --bg-surface: #08081a;
-  --glass: rgba(255, 255, 255, 0.03);
+  --bg-base: #050506;
+  --bg-surface: #0b0b0d;
+  --glass: rgba(255, 255, 255, 0.04);
   --neon-cyan: #00f0ff;
   --neon-violet: #7c3aed;
   --gold: #f5c518;
-  --text-primary: #f0f0ff;
-  --text-muted: #9aa3b2;
-  --border-glow: rgba(0, 240, 255, 0.15);
+  --text-primary: #F5F5F7;
+  --text-muted: #8B8B93;
+  --bento-accent: #E5282E;
+  --border-glow: rgba(255, 255, 255, 0.10);
   --danger: #ff2d55;
   --success: #00ff88;
 
@@ -40,7 +41,7 @@
   --muted: 215 14% 46%;
   --muted-foreground: 215 14% 46%;
 
-  --app-font-sans: 'Syne', sans-serif;
+  --app-font-sans: 'IBM Plex Mono', monospace;
   --app-font-serif: 'Orbitron', sans-serif;
   --app-font-mono: 'IBM Plex Mono', monospace;
 
@@ -93,7 +94,7 @@
 }
 
 .font-accent {
-  font-family: 'Syne', sans-serif;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 .font-body {
@@ -913,17 +914,6 @@ select:focus-visible {
   transform: translateX(-50%) translateY(0);
 }
 
-/* ── Lenis smooth scroll ── */
-html.lenis, html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
 /* ═══════════════════════════════════════════════════════════════
    ENTERPRISE REDESIGN PRIMITIVES
    A restrained system for the homepage and product case studies.
@@ -1065,7 +1055,7 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.03);
   padding: 0.8rem 1rem 0.8rem 2.75rem;
-  font-family: 'Syne', sans-serif;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.875rem;
   color: var(--text-primary);
   outline: none;
@@ -1609,6 +1599,15 @@ svg {
   .hp-grid-floor::before {
     animation: none;
   }
+  /* Entrance rise + infinite marquee also stop for reduced motion. */
+  .hp-rise,
+  .hp-rise-1, .hp-rise-2, .hp-rise-3, .hp-rise-4, .hp-rise-5, .hp-rise-6 {
+    animation: none;
+  }
+  .hp-marquee {
+    animation: none;
+    transform: none;
+  }
   .hp-card-hover:hover,
   .glass-card:hover {
     transform: none;
@@ -1623,4 +1622,400 @@ svg {
     drop-shadow(0 2px 0 rgba(8, 8, 18, 0.9))
     drop-shadow(0 4px 0 rgba(8, 8, 18, 0.55))
     drop-shadow(0 12px 22px rgba(124, 58, 237, 0.26));
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BENTO GRID + GLASS — dark monochrome system
+   Grid: 12 cols desktop / 6 tablet / 1 mobile, 16px gap. Tiles: 24px
+   radius, 24px padding, rgba(255,255,255,0.04) glass with blur(20px)
+   saturate(140%), 1px rgba(255,255,255,0.10) border and an inner top
+   highlight. Strictly monochrome; #E5282E is reserved for the primary
+   CTA and live-status dots.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.bento-scope {
+  /* Monochrome accent set — everything that was neon renders white here. */
+  --neon-cyan: #f5f5f7;
+  --neon-violet: #b9b9c2;
+  --gold: #b9b9c2;
+  --success: #E5282E;
+  --ring: #f5f5f7;
+  --hp-grad: linear-gradient(120deg, #ffffff 0%, #d6d6dc 46%, #a9a9b2 100%);
+  --hp-grad-deep: linear-gradient(150deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.04) 55%, transparent);
+}
+
+/* ── Fixed white blobs behind the grid: the glass needs something to blur ── */
+.bento-blobs {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.bento-blob {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, transparent 70%);
+  filter: blur(120px);
+}
+.bento-blob--a { width: 55vw; height: 55vw; top: -14%; left: -10%; opacity: 0.10; }
+.bento-blob--b { width: 48vw; height: 48vw; top: 34%; right: -14%; opacity: 0.08; }
+.bento-blob--c { width: 42vw; height: 42vw; bottom: -18%; left: 22%; opacity: 0.06; }
+
+/* ── The grid ──
+   Cell spans are driven by two custom properties so the same size classes
+   work on the 12-column desktop grid (unit = 3), the 6-column tablet grid
+   (unit = 3), and the hero's 4-column grid (unit = 2). */
+.bento-grid {
+  --cell-cols-1: 1;
+  --cell-cols-2: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  grid-auto-flow: row dense;
+  grid-auto-rows: auto;
+}
+@media (min-width: 640px) {
+  .bento-grid {
+    --cell-cols-1: 3;
+    --cell-cols-2: 6;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-auto-rows: minmax(150px, auto);
+  }
+}
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-rows: minmax(176px, auto);
+  }
+}
+
+/* Compact 4-column variant (hero side panel): 4 cols desktop / 2 tablet / 1 mobile. */
+.bento-grid--4 {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .bento-grid--4 {
+    --cell-cols-1: 1;
+    --cell-cols-2: 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(132px, auto);
+  }
+}
+@media (min-width: 1024px) {
+  .bento-grid--4 {
+    --cell-cols-1: 2;
+    --cell-cols-2: 4;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: minmax(140px, auto);
+  }
+}
+
+/* One bento unit = `--cell-cols-*` columns on the active grid. */
+@media (min-width: 640px) {
+  .bento-cell--1x1 { grid-column: span var(--cell-cols-1, 3); }
+  .bento-cell--2x1 { grid-column: span var(--cell-cols-2, 6); }
+  .bento-cell--2x2 { grid-column: span var(--cell-cols-2, 6); grid-row: span 2; }
+  .bento-cell--1x2 { grid-column: span var(--cell-cols-1, 3); grid-row: span 2; }
+}
+
+/* ── The glass tile ── */
+.bento-tile {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  /* Solid fallback — swapped for glass only when the tile is in view and
+     the device supports (and can afford) backdrop-filter. */
+  background: rgba(20, 20, 22, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    border-color 0.3s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+}
+.bento-tile--flush {
+  padding: 0;
+}
+
+/* Glass activates only for visible tiles (set by BentoTile's observer). */
+.bento-tile[data-visible='true'] {
+  background: rgba(255, 255, 255, 0.04);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .bento-tile[data-visible='true']:hover {
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: translateY(-2px);
+  }
+}
+
+/* Soft radial light that follows the cursor inside the tile.
+   --bento-mx / --bento-my are written by BentoTile in rAF, never React. */
+.bento-tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    340px circle at var(--bento-mx, 50%) var(--bento-my, 50%),
+    rgba(255, 255, 255, 0.09),
+    transparent 62%
+  );
+}
+.bento-tile:hover::before {
+  opacity: 1;
+}
+
+/* Fallback 1 — unsupported backdrop-filter. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .bento-tile[data-visible='true'] {
+    background: rgba(20, 20, 22, 0.9);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Fallback 2 — phones: skip the blur, keep the solid surface. */
+@media (max-width: 640px) {
+  .bento-tile[data-visible='true'] {
+    background: rgba(20, 20, 22, 0.9);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Reduced motion: flat tiles, no lift, no cursor-light transition. */
+@media (prefers-reduced-motion: reduce) {
+  .bento-tile,
+  .bento-tile:hover {
+    transform: none !important;
+    transition: none !important;
+  }
+  .bento-tile::before {
+    transition: none;
+  }
+}
+
+/* Keyboard focus ring inside the bento scope. */
+.bento-scope :focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Bento content primitives (shared by every section — no per-section copies) ── */
+
+/* Design rules: dark monochrome base, two font families (Orbitron display,
+   IBM Plex Mono for everything else), and horizontal overflow clipped at the
+   root so decorative layers can never cause sideways scrolling. */
+html,
+body {
+  overflow-x: clip;
+}
+
+/* Live-status dot — one of the two allowed uses of the red accent. */
+.bento-dot {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: #E5282E;
+  box-shadow: 0 0 0 0 rgba(229, 40, 46, 0.55);
+  animation: bento-dot-pulse 2.2s ease-in-out infinite;
+}
+@keyframes bento-dot-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(229, 40, 46, 0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(229, 40, 46, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(229, 40, 46, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bento-dot { animation: none; }
+}
+
+/* Primary CTA — the only other allowed home for #E5282E. */
+.bento-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.875rem;
+  background: #E5282E;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 10px 30px -12px rgba(229, 40, 46, 0.6);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, filter 0.3s ease;
+}
+.bento-cta:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 16px 40px -12px rgba(229, 40, 46, 0.7);
+}
+.bento-cta:active {
+  transform: translateY(0);
+}
+
+/* Monochrome text link used across tiles. */
+.bento-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  transition: opacity 0.2s ease, gap 0.2s ease;
+}
+.bento-link:hover {
+  opacity: 0.75;
+  gap: 0.55rem;
+}
+
+/* Monochrome chip (tech groups, keywords). */
+.bento-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: #c9c9cf; /* 9.9:1 on the tile surface */
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+.bento-chip:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-1px);
+}
+
+/* Tile kicker + heading scale. */
+.bento-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.bento-h {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+
+/* ── Monochrome overrides for hard-coded WOW v3/v4 effects on the homepage ── */
+.bento-scope .hp-aurora::before {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.09) 0%, transparent 65%);
+}
+.bento-scope .hp-aurora::after {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.07) 0%, transparent 65%);
+}
+.bento-scope .hp-grid-floor::before {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+}
+.bento-scope .hp-title-halo {
+  background:
+    radial-gradient(ellipse 55% 45% at 28% 42%, rgba(255, 255, 255, 0.10), transparent 70%),
+    radial-gradient(ellipse 48% 42% at 72% 58%, rgba(255, 255, 255, 0.07), transparent 70%);
+}
+.bento-scope .hp-gradient-text {
+  background: linear-gradient(110deg, #ffffff 0%, #cfcfd6 45%, #8f8f98 100%);
+  background-size: 200% 100%;
+  /* Re-declare the clip: the background shorthand above resets
+     background-clip, and this higher-specificity rule would otherwise
+     win the cascade and paint a solid rectangle over the text. */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+.bento-scope .hp-stat-value {
+  background: linear-gradient(180deg, #ffffff 30%, rgba(255, 255, 255, 0.55));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.bento-scope .hp-btn-pro {
+  background: #E5282E;
+  color: #ffffff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+    0 10px 34px -10px rgba(229, 40, 46, 0.55);
+}
+.bento-scope .hp-btn-pro:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+    0 16px 44px -10px rgba(229, 40, 46, 0.72);
+}
+.bento-scope .hp-btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.38);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px -14px rgba(255, 255, 255, 0.25);
+}
+.bento-scope .hp-beam::before {
+  background: conic-gradient(
+    from var(--hp-beam-angle),
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.14) 28%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.14) 78%,
+    rgba(255, 255, 255, 0.5)
+  );
+}
+.bento-scope .hp-card-spot::before {
+  background: radial-gradient(
+    480px circle at var(--spot-x, 50%) var(--spot-y, 0%),
+    rgba(255, 255, 255, 0.08),
+    transparent 62%
+  );
+}
+.bento-scope .hp-hairline::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.35), transparent);
+}
+.bento-scope .glow-dot {
+  background: #E5282E;
+  box-shadow: 0 0 0 0 rgba(229, 40, 46, 0.55);
+  animation: bento-dot-pulse 2.2s ease-in-out infinite;
+}
+.bento-scope .hp-card-hover:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 34px 70px rgba(0, 0, 0, 0.5),
+    0 0 46px -20px rgba(255, 255, 255, 0.28);
+}
+.bento-scope .hp-nav-link-active {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
 }

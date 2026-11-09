@@ -166,7 +166,7 @@ export function CreatorCollab() {
     <section
       id="collaborations"
       aria-label="Featured creator collaborations"
-      className="relative scroll-mt-20 py-16 sm:py-24"
+      className="relative scroll-mt-20 py-16 md:py-24"
     >
       <div className="mx-auto max-w-6xl px-6">
         {/* Official seal heading */}

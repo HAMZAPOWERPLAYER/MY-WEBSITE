@@ -29,7 +29,7 @@ const PRINCIPLES = [
 
 export function About() {
   return (
-    <section id="about" className="relative scroll-mt-20 border-t border-white/[0.06] py-20 sm:py-28">
+    <section id="about" className="relative scroll-mt-20 border-t border-white/[0.06] py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <div>

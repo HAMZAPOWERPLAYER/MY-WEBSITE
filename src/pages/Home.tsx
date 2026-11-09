@@ -3,10 +3,13 @@ import { Hero } from '@/components/sections/Hero';
 import { CreatorCollab } from '@/components/sections/CreatorCollab';
 import { ProductShowcase } from '@/components/sections/ProductShowcase';
 import { Services } from '@/components/sections/Services';
+import { TechStack } from '@/components/sections/TechStack';
+import { Numbers } from '@/components/sections/Numbers';
 import { About } from '@/components/sections/About';
 import { CurrentlyBuilding } from '@/components/sections/CurrentlyBuilding';
 import { ContactCTA } from '@/components/sections/ContactCTA';
 import { Footer } from '@/components/sections/Footer';
+import { BentoBlobs } from '@/components/bento/BentoTile';
 
 export default function Home() {
   return (
@@ -33,19 +36,19 @@ export default function Home() {
         Skip to content
       </a>
 
-      <div className="relative min-h-screen overflow-x-hidden bg-[var(--bg-base)] text-[var(--text-primary)] selection:bg-[var(--neon-cyan)] selection:text-[#04040a]">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_70%_45%_at_50%_-10%,rgba(0,240,255,0.05),transparent_70%)]"
-        />
+      <div className="bento-scope relative min-h-screen overflow-x-hidden bg-[var(--bg-base)] text-[var(--text-primary)] selection:bg-[var(--neon-cyan)] selection:text-[#050506]">
+        {/* Fixed white blobs — the glass tiles need something to blur. */}
+        <BentoBlobs />
         <Navbar />
         <main id="main-content" className="relative">
           <Hero />
-          <CreatorCollab />
           <ProductShowcase />
           <Services />
-          <About />
+          <TechStack />
+          <Numbers />
           <CurrentlyBuilding />
+          <CreatorCollab />
+          <About />
           <ContactCTA />
         </main>
         <Footer />
